@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>易混词</title>
+<!-- 2014-12-24 Wed 15:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">易混词</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 名词</a>
+<ul>
+<li><a href="#sec-1-1">1.1. battle 与 war</a></li>
+<li><a href="#sec-1-2">1.2. cloth，clothes，clothing与dress</a></li>
+<li><a href="#sec-1-3">1.3. drawing， painting 和 picture</a></li>
+<li><a href="#sec-1-4">1.4. dinner 和 meal</a></li>
+<li><a href="#sec-1-5">1.5. family，house，home</a></li>
+<li><a href="#sec-1-6">1.6. job 与 work</a></li>
+<li><a href="#sec-1-7">1.7. person，people和man</a></li>
+<li><a href="#sec-1-8">1.8. problem 与 question</a></li>
+<li><a href="#sec-1-9">1.9. table 与 desk</a></li>
+<li><a href="#sec-1-10">1.10. farmer 与 peasant</a></li>
+<li><a href="#sec-1-11">1.11. floor 与 ground</a></li>
+<li><a href="#sec-1-12">1.12. door 和 gate</a></li>
+<li><a href="#sec-1-13">1.13. sound 与 noise</a></li>
+<li><a href="#sec-1-14">1.14. road、street、way</a></li>
+<li><a href="#sec-1-15">1.15. hedge、fence</a></li>
+<li><a href="#sec-1-16">1.16. value、worth、price、cost</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. 形容词</a>
+<ul>
+<li><a href="#sec-2-1">2.1. each和every的区别</a>
+<ul>
+<li><a href="#sec-2-1-1">2.1.1. each 强调个体，是形容词(adj)和代词(PRON).形容词时，起修饰限定作用，代词可以单独使用。each指2个或2个以上中的每一个。</a></li>
+<li><a href="#sec-2-1-2">2.1.2. every 强调整体，只能做adj</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2">2.2. vast、huge、enormous、tremendous、 immense、 igignantic、massive</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. 形容词和副词</a>
+<ul>
+<li><a href="#sec-3-1">3.1. all 和 whole</a></li>
+<li><a href="#sec-3-2">3.2. alone 和 lonely</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 名词</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> battle 与 war</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>battle 是指局部的战争、战役、战斗
+</li>
+<li>war 是指整体的战斗
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> cloth，clothes，clothing与dress</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>cloth 指“布”，“布料”。
+
+<p>
+a dish cloth 一块擦碗布
+a piece of cloth 一块布料
+</p>
+</li>
+
+<li>clothes 指具体的衣服，包括内衣、外衣，不能与数词连用。
+
+<p>
+I want to buy sports clothes. 我想买运动服。
+</p>
+</li>
+
+<li>clothing 是服装的总称， 包括内衣、外衣、还有帽子、鞋袜、手套之类。 @&lt;font color="#ff0000"&gt;只能用单数，无复数@&lt;/font&gt;
+
+<p>
+Now people are all in their winter clothing. 现在人们都穿着冬装。
+This ti a fatory taht makes childred's clothing. 这是一家制作童装的工厂。
+</p>
+</li>
+
+<li>dress 做不可数名词时，指外衣，尤指 社交场合穿的服装。 做可数名词时，长指 连衣裙
+
+<p>
+He doesn't care much about dress. 他不太注意衣着。
+She wore a blue dress last night. 她昨晚穿了件蓝色连衣裙。
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> drawing， painting 和 picture</h3>
+<div class="outline-text-3" id="text-1-3">
+<ul class="org-ul">
+<li>drawing 是指用铅笔，钢笔，工具画的画。
+</li>
+<li>painting 是指用颜料画的画 （油画、水彩画等）
+</li>
+<li>picture 可指 drawing、painting、photo等
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> dinner 和 meal</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>dinner 是指“正餐（午饭或晚饭）” 或者 “宴会”
+
+<p>
+Let's go and have dinner together. 我们一起出去吃饭吧。
+We're having fish for dinner. 我们午饭吃鱼。
+Come to dinner with us tonight. 今晚来和我们共进晚餐。
+</p>
+</li>
+
+<li>meal 是指“一餐（一顿饭）”
+
+<p>
+What time do you usually have your meals? 你们通常什么时候用餐？
+We take three meals a day. 我们每天吃三顿饭。
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> family，house，home</h3>
+<div class="outline-text-3" id="text-1-5">
+<ul class="org-ul">
+<li>family 指家庭成员， 是“家人、家族、一家”的意思。@&lt;font color="#ff0000"&gt; 表示家族全体时 视为单数 ， 表示家庭成员时 视为复数 @&lt;/font&gt; 
+
+<p>
+He has a family of three.
+</p>
+</li>
+
+<li>house 指房子，建筑物
+
+<p>
+She left home at the age of sixteen.
+</p>
+</li>
+
+<li>home 指家庭，包括家人，家居，家园。
+
+<p>
+He bought a very big house.
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> job 与 work</h3>
+<div class="outline-text-3" id="text-1-6">
+<ul class="org-ul">
+<li>job 是可数名词
+
+<p>
+She got a job of washing clothes.
+He has tried different jobs.
+</p>
+</li>
+
+<li>work 是不可数名词
+
+<p>
+It takes a lot of work to build a building.
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> person，people和man</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+待补充
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> problem 与 question</h3>
+<div class="outline-text-3" id="text-1-8">
+<ul class="org-ul">
+<li>problem 指等待解决（solve）或决定（decide）的问题，难题。
+
+<p>
+That's no problem. I can lend you my money.
+</p>
+</li>
+
+<li>question 指等待回答的 问题，提问。
+
+<p>
+May i ask some questions?
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> table 与 desk</h3>
+<div class="outline-text-3" id="text-1-9">
+<ul class="org-ul">
+<li>table 通常用于吃饭，游乐等，一般没有抽屉
+</li>
+<li>desk 被称为书桌，课桌，通常有抽屉
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> farmer 与 peasant</h3>
+<div class="outline-text-3" id="text-1-10">
+<ul class="org-ul">
+<li>farmer 美国农民，很少或者不种自己吃的粮食。
+</li>
+<li>peasant 中国农民，以种地为生。
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> floor 与 ground</h3>
+<div class="outline-text-3" id="text-1-11">
+<ul class="org-ul">
+<li>gloor 指室内的地板，地面
+</li>
+<li>ground 指室外的地面，也可以指地球表面
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> door 和 gate</h3>
+<div class="outline-text-3" id="text-1-12">
+<ul class="org-ul">
+<li>door 一般指房子，房间，家具的门，也可用于比喻意义
+
+<p>
+Close the door when you go out.
+Good luck is often the door to success. 好运常是成功的大门。
+He lives next door to us.
+</p>
+</li>
+
+<li>gate 指围墙、篱笆、栅栏的开口处。
+
+<p>
+He walked through the gate into the garden.
+We'll meet at the school gate at nine.
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> sound 与 noise</h3>
+<div class="outline-text-3" id="text-1-13">
+<ul class="org-ul">
+<li>sound 指一般的声音， 多做可数名词
+
+<p>
+I was waiting for the sound of the other shoe!
+The door was open, sounds came from the bedroom.
+</p>
+</li>
+
+<li>noise 指令人不愉快的嘈杂声，刺耳声， 可以作可数名词也可以做不可数名词
+
+<p>
+But every night he heard the noise upstairs.
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-14" class="outline-3">
+<h3 id="sec-1-14"><span class="section-number-3">1.14</span> road、street、way</h3>
+<div class="outline-text-3" id="text-1-14">
+<ul class="org-ul">
+<li>road 意为 宽阔的大道。
+</li>
+<li>street 意为 道路两旁的建筑物比较高，可 视为 街道。
+</li>
+<li>way 表示要到达某地所要经过的途径，还可引申为 方式、 方法。
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-15" class="outline-3">
+<h3 id="sec-1-15"><span class="section-number-3">1.15</span> hedge、fence</h3>
+<div class="outline-text-3" id="text-1-15">
+<ul class="org-ul">
+<li>hedge是植物修剪成的篱笆
+</li>
+<li>fence是人工制作的
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> value、worth、price、cost</h3>
+<div class="outline-text-3" id="text-1-16">
+<ul class="org-ul">
+<li>value 价值（按人的主观判断对物品本身内在的有用评价）。
+</li>
+<li>price 东西的标价。购买某物品时要付的钱。
+</li>
+<li>cost 成本。
+</li>
+<li>worth 指物体本身永远不变的价值。
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 形容词</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> each和every的区别</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> each 强调个体，是形容词(adj)和代词(PRON).形容词时，起修饰限定作用，代词可以单独使用。each指2个或2个以上中的每一个。</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li>each boy
+</li>
+<li>each of the boys
+</li>
+<li>each of my hands
+</li>
+<li>each of my parents
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> every 强调整体，只能做adj</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+every 指三个或三个以上中的每一个。
+</p>
+<ul class="org-ul">
+<li>every students (不能写为every of the student) 
+</li>
+<li>every one of my fingers.  
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> vast、huge、enormous、tremendous、 immense、 igignantic、massive</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>@&lt;font color="#ff0000"&gt; vast @&lt;/font&gt; 着重空间，面积，范围的巨大，数量的庞大。不涉及重量。用作比喻时也指 阅历广，花费大。
+
+<ul class="org-ul">
+<li>Our country has a large population, vast territory and abundant resources.
+
+<p>
+我国人口众多，地大物博。
+</p>
+</li>
+
+<li>Vast amount of data about sales, prices, market conditions are stored in the computer system.
+
+<p>
+计算机中存储着大量的关于销售、价格、市场状况的记录。
+</p>
+</li>
+
+<li>In the vast desert in Northwest China, there is a small leaf-shaped oasis about 25 kilometers to the southwest of the city of Dunhuang in Gansu Province.
+
+<p>
+在中国西北部一望无尽际的浩瀚荒漠中，甘肃省敦煌市东南25公里处有一片树叶形的绿洲。
+</p>
+</li>
+</ul>
+</li>
+
+<li>@&lt;font color="#ff0000"&gt; huge @&lt;/font&gt;  指体积，数量大的超过一般标准。可用来形容物体、距离、声音和程度等。
+
+<ul class="org-ul">
+<li>They spent a huge amount of money on that villa.
+
+<p>
+他花巨款买下了那幢别墅。
+</p>
+</li>
+
+<li>They hanged a huge inflated balloon above the company site to celebrate its fiftieth anniversary.
+
+<p>
+他们在公司所在地的上方挂了一个巨大的充气气球来庆祝五十周年。
+</p>
+</li>
+
+<li>Down a few stairs was a huge stone slab carved with mysterious designs and hieroglyphics.
+
+<p>
+往下走几级梯子，有一个巨大的石板，上面刻着神秘的图案和象形文字。
+</p>
+</li>
+
+<li>The huge curtain of falling water drops more than 100 meters into the mighty Zambezi River.
+
+<p>
+巨幅的瀑布在100米的高处从天而降，流入到宽广的赞比西河。
+</p>
+</li>
+</ul>
+</li>
+
+<li>@&lt;font color="#ff0000"&gt; enormous @&lt;/font&gt; 指体积、规模、数量上的巨大。 着重体积庞大，硕大无比。令人咋舌的事物。多用来形容形体，数量和程度。 有时含有紧急，严重的意思。
+
+<ul class="org-ul">
+<li>我们已经在这些问题上花费来大量的注意力。
+
+<p>
+An enormous amount of attention has been lavished on these problems.
+</p>
+</li>
+
+<li>An enormous gap remains between the advanced countries and the developing countries.
+
+<p>
+发达国家与发展中国家之间存在这巨大的差距。
+</p>
+</li>
+
+<li>Ever since the new manager start working, everyone in the office feel an enormous pressure.
+
+<p>
+自从新经理开始工作以来，办公室里的每个人都感觉到一种巨大的压力。
+</p>
+</li>
+</ul>
+</li>
+
+<li>@&lt;font color="#ff0000"&gt; tremendous @&lt;/font&gt; 语气比enormous强，而且多用于抽象的事物。
+
+<ul class="org-ul">
+<li>Many foreign visitors marvel at the tremendous changes in Shanghai having made in recent years.
+
+<p>
+许多外国游客惊叹上海最近几年发生的巨大变化。
+</p>
+</li>
+
+<li>By his speech, he whipped up tremendous enthusiasm among the audience.
+
+<p>
+他用演说激发了听众的极大的热情。
+</p>
+</li>
+
+<li>Spaceships must attain tremendous speeds to reach these planets in reasonable time.
+
+<p>
+宇宙飞船必须获得巨大的速度才能在一定时间内到达这些行星。 （reasonable: 合理的，合适的。）
+</p>
+</li>
+</ul>
+</li>
+
+<li>@&lt;font color="#ff0000"&gt; immense @&lt;/font&gt; 指三维空间和广度的巨大，也指规模巨大。 有大到不能计算的意味。
+
+<ul class="org-ul">
+<li>Many early explorers got lost in the immense, uncharted Atlantic.
+
+<p>
+许多早期的探险家迷失在浩瀚未知的大西洋。
+</p>
+</li>
+
+<li>He made an immense amount of money in business.
+
+<p>
+他在生意中赚了一大笔钱。
+</p>
+</li>
+</ul>
+</li>
+
+<li>@&lt;font color="#ff0000"&gt; massive @&lt;/font&gt;  指巨大的，笨重的。指大的体积、数量和重量，侧重庞大而笨重。
+
+<ul class="org-ul">
+<li>Massive medical bills are draining finances of the country.
+
+<p>
+巨大的医疗账单耗费国家的财政支出。
+</p>
+</li>
+
+<li>Last week we had a massive power failure during a freak afternoon thunderstorm.
+
+<p>
+上星期在反常的午后雷雨过程中，我们遇上大规模的停电。
+</p>
+</li>
+</ul>
+</li>
+
+<li>@&lt;font color="#ff0000"&gt; gigantic @&lt;/font&gt;  指特别巨大、庞大，巨人似的。
+
+<ul class="org-ul">
+<li>The earth may be thought of as a gigantic magnet.     
+
+<p>
+整个地球可看作是一块硕大无朋的磁石。
+</p>
+</li>
+
+<li>The project is on such a gigantic scale that the cost is hard to  calculate.
+
+<p>
+这项工程浩大，所费不赀。
+</p>
+</li>
+
+<li>To achieve the four modernizations and make China a powerful socialist country before the end of this century will be a gigantic task.     
+
+<p>
+实现四个现代化,使中国在本世纪 末成为一个强大的社会主义国家将是一项宏大的任务。
+</p>
+</li>
+
+<li>The rapid development of automobiles has posed a gigantic burden to the public transportation.
+
+<p>
+汽车的快速发展给公共交通带来了巨大的负担。
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 形容词和副词</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> all 和 whole</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+都可译为“整个的”“全部的”
+</p>
+
+<ul class="org-ul">
+<li>修饰单数可数名词或抽象名词时，它们可以呼唤，但词序不同。 all放在the，this，that，my，your等词前面   whole则放在之后
+
+<ul class="org-ul">
+<li>She has worked all the afternoon.
+</li>
+
+<li>She has worked the whole afternoon.
+</li>
+</ul>
+</li>
+
+<li>修饰复数可数名词时，all的意义是 “所有的”，  whole的意义是“整整的”
+
+<ul class="org-ul">
+<li>All students will go there for a meeting.
+
+<p>
+所有的学生都将去那儿开会。
+</p>
+</li>
+
+<li>It rained for two whole days.
+
+<p>
+雨下了整整两天。
+</p>
+</li>
+</ul>
+</li>
+
+<li>修饰地名时， whole不能直接跟地名。
+
+<ul class="org-ul">
+<li>All Japan was surprised at the news.
+</li>
+
+<li>The whole of Japan was suprised at the news.
+</li>
+</ul>
+</li>
+
+<li>all 可以修饰物质名词，而whole不能。
+
+<ul class="org-ul">
+<li>He ate all the food.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> alone 和 lonely</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>alone 表示 独自一人
+</li>
+
+<li>lonely 表示 “孤单，寂寞”的情绪
+</li>
+</ul>
+
+
+
+<ul class="org-ul">
+<li>alone 作形容词时，只做表语
+
+<ul class="org-ul">
+<li>But the children are not alone. 
+
+<p>
+但是孩子们不是独自呆着的。
+</p>
+</li>
+
+<li>He will be alone from now on.
+
+<p>
+他从此将一个人了。
+</p>
+</li>
+</ul>
+</li>
+
+<li>alone 也可以作副词，修饰动词
+
+<ul class="org-ul">
+<li>She was sitting in the bed alone when we went to see her.
+
+<p>
+我们去看她的时候，她正一个人坐在床上。
+</p>
+</li>
+</ul>
+</li>
+
+<li>lonely 一般只用做形容词
+
+<ul class="org-ul">
+<li>So we never feel lonely.
+
+<p>
+所以我们从来不感到孤单
+</p>
+</li>
+
+<li>Robert is a very lonely traveller.
+
+<p>
+罗伯特时一个极其孤单的旅行者
+</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

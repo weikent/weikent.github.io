@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Swift 枚举</title>
+<!-- 2014-12-24 Wed 15:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Swift 枚举</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. enmu</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> enmu</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+枚举里竟然可以有方法
+</p>
+
+
+
+<p>
+如果指定一个枚举是Int的。则不需要指定每一项的原始值（raw值，可以使用toRaw得到）
+如果指定一个枚举是非Int的。则必须指定每一项的原始值（raw值，可以使用toRaw得到），否则每一项没有Row值。
+如果没有指定一个枚举的类型，则每一项没有Raw值，只能使用枚举中的函数来返回每一项的实际意义。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">enum</span> <span style="color: #00f900;">Suit</span> : String{
+    <span style="color: #00fcff; background-color: #000000;">case</span> Spades = <span style="color: #ff40ff;">"a"</span>, Hearts = <span style="color: #ff40ff;">"b"</span>, Diamonds=<span style="color: #ff40ff;">"c"</span>, Clubs=<span style="color: #ff40ff;">"d"</span> <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#22240;&#20026;&#26159;String&#31867;&#22411;&#30340;&#12290;&#25152;&#20197;&#24517;&#39035;&#25351;&#23450;&#8220;a&#8221;&#65292;&#8220;b&#8221;&#12290;&#12290;</span>
+    func simpleDescription() -&gt; String {
+        <span style="color: #00fcff; background-color: #000000;">switch</span> self {
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Spades:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"spades"</span>
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Hearts:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"hearts"</span>
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Diamonds:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"diamonds"</span>
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Clubs:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"clubs"</span>
+        }
+    }
+
+}
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">hearts</span> = Suit.Hearts
+let heartsDescription = hearts.simpleDescription()
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">dd</span> = hearts.toRaw()                   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#19981;&#28982;&#27492;&#22788;&#20250;&#25552;&#31034; hearts&#27809;&#26377;toRow&#36825;&#20010;&#26041;&#27861;&#12290;</span>
+</pre>
+</div>
+
+
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">enum</span> <span style="color: #00f900;">Rank</span>: Int {
+    <span style="color: #00fcff; background-color: #000000;">case</span> Ace = 1
+    <span style="color: #00fcff; background-color: #000000;">case</span> Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
+    <span style="color: #00fcff; background-color: #000000;">case</span> Jack, Queen, King
+    func <span style="color: #00f900;">simpleDescription</span>() -&gt; String {
+        <span style="color: #00fcff; background-color: #000000;">switch</span> self {
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Ace:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"ace"</span>
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Jack:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"jack"</span>
+        <span style="color: #00fcff; background-color: #000000;">case</span> .Queen:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"queen"</span>
+        <span style="color: #00fcff; background-color: #000000;">case</span> .King:
+            <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"king"</span>
+        <span style="color: #00fcff; background-color: #000000;">default</span>:
+            <span style="color: #00fcff; background-color: #000000;">return</span> String(self.toRaw())
+        }
+    }
+}
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">ace</span> = Rank.Ace
+
+let aceRawValue = ace.toRaw()
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">a</span> = ace.simpleDescription()
+
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">dd</span> = Rank.fromRaw(50)  <span style="color: #ff922e;">// </span><span style="color: #ff2600;">Rank &#19981;&#23384;&#22312;50&#20010;&#20803;&#32032;&#65292;&#20294;&#36825;&#20010;&#34920;&#36798;&#24335;&#19981;&#20250;&#25253;&#38169;&#65292;&#32780;&#26159;&#25226;dd&#35774;&#32622;&#20026;nil&#12290;</span>
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">cc</span> = dd!.simpleDescription()<span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#25152;&#20197;dd&#26159;&#19968;&#20010;Optional&#30340;&#20540;&#12290;&#22312;&#20351;&#29992;&#20043;&#21069;&#38656;&#35201;&#20351;&#29992;&#65281;&#26469;&#35299;&#21253;&#12290;</span>
+
+<span style="color: #00fcff; background-color: #000000;">if</span> let convertedRank = Rank.fromRaw(3) {   <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25110;&#32773;&#20351;&#29992;&#36825;&#31181;&#26041;&#24335;</span>
+    <span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">threeDescription</span> = convertedRank.simpleDescription()
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

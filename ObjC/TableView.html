@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Xcode  TableView</title>
+<!-- 2014-12-24 Wed 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Xcode  TableView</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. ViewController中添加一个TableView</a></li>
+<li><a href="#sec-2">2. TableView 中如何滑动删除</a></li>
+<li><a href="#sec-3">3. TableViewCell</a>
+<ul>
+<li><a href="#sec-3-1">3.1. IOS中为tableViewCell增加右侧标记（选中或者更多）</a></li>
+<li><a href="#sec-3-2">3.2. TableViewCell 的重用</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> ViewController中添加一个TableView</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+需要在类定义中指定遵守 UITableViewDataSource, UITableViewDelegate 两个协议
+</p>
+
+<p>
+而且必须实现 下面的方法。  其他方法为optional
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">// </span><span style="color: #ff2600;">UITableViewDataSource Methods</span>
+<span style="color: #00f900;">func</span> <span style="color: #c15bf1; background-color: #f7e3c0;">numberOfSectionsInTableView</span>(tableView: UITableView!) -&gt; Int
+{
+    <span style="color: #00fcff; background-color: #000000;">return</span> 1
+}
+
+<span style="color: #00f900;">func</span> <span style="color: #c15bf1; background-color: #f7e3c0;">tableView</span>(tableView: UITableView!, <span style="color: #00f900;">numberOfRowsInSection</span> <span style="color: #fefb00; background-color: #000000;">section</span>: Int) -&gt; Int
+{
+    <span style="color: #00fcff; background-color: #000000;">return</span> self.tableViewItems.count
+}
+
+<span style="color: #00f900;">func</span> <span style="color: #c15bf1; background-color: #f7e3c0;">tableView</span>(tableView: UITableView!, <span style="color: #00f900;">cellForRowAtIndexPath</span> <span style="color: #fefb00; background-color: #000000;">indexPath</span>: NSIndexPath!) -&gt; UITableViewCell!
+{
+    tableView.registerNib(UINib(nibName: <span style="color: #ff40ff;">"MyTableCellTableViewCell"</span>, bundle: nil), forCellReuseIdentifier: <span style="color: #ff40ff;">"myCell"</span>)
+
+    <span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">cell</span> = tableView.dequeueReusableCellWithIdentifier(<span style="color: #ff40ff;">"myCell"</span>, forIndexPath: indexPath) <span style="color: #00f900;">as</span> <span style="color: #fefb00; background-color: #000000;">MyTableCellTableViewCell</span>!
+    <span style="color: #ff922e;">//</span><span style="color: #ff2600;">cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator</span>
+    <span style="color: #ff922e;">//</span><span style="color: #ff2600;">cell.textLabel.text = self.tableViewItems[indexPath.row] as String</span>
+    let rightString = <span style="color: #ff40ff;">"\(indexPath.row)"</span>
+    cell.setupCell(self.tableViewItems[indexPath.row], middle: indexPath.row, right: rightString)
+    <span style="color: #00fcff; background-color: #000000;">return</span> cell
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> TableView 中如何滑动删除</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+要实现滑动删除需要实现如下方法
+</p>
+<ul class="org-ul">
+<li>commitEditingStyle   ： 增加此方法后，可以在滑动的时候出现 delete按钮，并且实际的delete操作是在此函数中实现的
+</li>
+<li>willBeginEditingRowAtIndexPath   ： 此方法是在出现delete按钮之前执行的
+</li>
+<li>didEndEditingRowAtIndexPath    :  此方法是在执行delete操作之后执行的代码
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> TableViewCell</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> IOS中为tableViewCell增加右侧标记（选中或者更多）</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+修改cell的accessoryType 属性
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> TableViewCell 的重用</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+在使用Table Cell 时， 有一个cell 复用的问题。 当TableView要展示某一行时，会自动调用 DataSource method： 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C">- (<span style="color: #00f900;">UITableViewCell</span> *)tableView:(<span style="color: #00f900;">UITableView</span> *)<span style="color: #00f900;">tableView</span>  <span style="color: #c15bf1; background-color: #f7e3c0;">cellForRowAtIndexPath</span>:(<span style="color: #00f900;">NSIndexPath</span> *)indexPath
+</pre>
+</div>
+
+<p>
+第二个参数 indexPath 是 一个 NSIndexPath 实例，indexPath 将section 和 row 封装到一个单独的对象中。 也就是说， indexPath包含 section 和 row 两个property。 通过访问 indexPath 的section 和 row，从而得到具体的section 和row。 
+</p>
+
+<p>
+接下来，看看 cell 的复用问题。 通过以下代码，为cell指定一个类型。当然，你也可以为cell 指定多个类型。 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">static</span> <span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">SimpleTableIdentifier</span> = @<span style="color: #ff40ff;">"SimpleTableIdentifier"</span>;
+</pre>
+</div>
+
+<p>
+在iPhone这个小小的屏幕上，即使Table 由多个行组成，当同一时间只能显示有限的行数。 每个行对应一个UITableViewCell实例（instance）。 既然UITableViewCell 是UIView的一个子类。那么一个cell 就可以包含多个 subview。 比如： 在cell上添加一个 Label、以 image等。试想一下，如果为每个cell都分配一个instance（也就是说，为每个cell都分配一块儿内存），当一个Table 有几百上千行时，那得占用多大的内存啊。 这个内存开销实在不可小觑。 有没有一个更好的解决方案呢？
+</p>
+
+<p>
+我们可以从用户体验上寻求解决方法。想象一下使用场景吧。 用户对Table的操作是上下滑动，当滑动时，如果某一行滑出了屏幕，就把滑出屏幕的这一行对应的instance放到一个固定的 Queue （队列）中，新显示的那一行就可以重用滑出的那一行的instance。这就是说， 在TableView中，要维护一个Queue，专门用来存放 Cell的instance，至于存放多少个，由系统决定。 当系统的内存够多时，就多存放些； 当内存吃紧时，就少存放些。  
+</p>
+
+<p>
+最为理想的情况是，新显示的行正好重用滑出的行。 这样就避免了Cell 频繁地创建和释放。 要想这样，就得为曾经使用的cell分配一个标识符（identifier）， 然后根据这个标识符，找到可重用的cell。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">static</span> <span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">SimpleTableIdentifier</span> = @<span style="color: #ff40ff;">"SimpleTableIdentifier"</span>;
+<span style="color: #00f900;">UITableViewCell</span> *<span style="color: #fefb00; background-color: #000000;">cell</span> = [tableView dequeueReusableCellWithIdentifier: SimpleTableIdentifier];
+</pre>
+</div>
+
+<p>
+这种获取 重用cell 的方法，在某种条件下是获取不到的。 比如： Queue 中已没有可用的cell； 另一种情况是： 第一次显示Cell时，是必须要创建的 cell instance的。 只有先创建cell instance，才能重用。 当cell 获取不到时，就得通过代码来创建了。在创建cell时，一定要为新创建的cell 标上可重用的 标识符 （比如： SimpleTableIdentifier）。 代码如下：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">if</span> (cell == nil) {
+cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier: SimpleTableIdentifier];
+}
+</pre>
+</div>
+
+<p>
+小结： 
+TableView是iOS一个极为强大的功能， 只要是海量数据的展示，都离不开TableView的使用。 对开发者来说，并没有感觉到有多么复杂。 是的， 因为 UITableView 都帮我们做了。  iOS SDK 几度更新， 冗余的代码量越来越少。 就上面这几行代码来说， SDK本身完全可以再优化， 用户无需判断cell是否nil。  不错，当你用到 storyboard 框架时， TableView的使用变得更加简单， 无需再判断cell 是否为nil， 直接重用，没什么问题的。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

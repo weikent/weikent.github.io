@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>配置emacs</title>
+<!-- 2014-12-24 Wed 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">配置emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 启动emacs前的准备</a></li>
+<li><a href="#sec-2">2. 使用el-get.el 来安装所有（几乎所有）el文件。</a></li>
+<li><a href="#sec-3">3. 记笔记就用org-mode了。</a></li>
+<li><a href="#sec-4">4. emacs 配置 python</a>
+<ul>
+<li>
+<ul>
+<li><a href="#sec-4-0-1">4.0.1. 使用el-get.el 安装jedi</a></li>
+<li><a href="#sec-4-0-2">4.0.2. 需要用到ipython.el python-mode.el。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. emacs 中安装auto-complete 和 auto-complete-clang</a></li>
+<li><a href="#sec-6">6. emacs Mac中安装Cscope</a></li>
+<li><a href="#sec-7">7. emacs 使用Cscope</a></li>
+<li><a href="#sec-8">8. emacs 字体</a></li>
+<li><a href="#sec-9">9. 密码显示成***号</a></li>
+<li><a href="#sec-10">10. emacs中强制使用空格代替TAB</a></li>
+<li><a href="#sec-11">11. emacs 设置C语言编辑</a></li>
+<li><a href="#sec-12">12. 记一个题外话，今天突然想起来可以设置clang的include路径。。。。。</a></li>
+</ul>
+</div>
+</div>
+<p>
+emacs主要用来
+</p>
+<ul class="org-ul">
+<li>记笔记
+</li>
+<li>python 
+</li>
+<li>C/C++
+</li>
+</ul>
+
+<p>
+使用到的插件
+</p>
+<ul class="org-ul">
+<li>elget：用来自动安装el文件
+</li>
+</ul>
+<ul class="org-ul">
+<li>color-theme： emacs配色
+</li>
+<li>dired： emacs的目录
+</li>
+<li>linum： 行号
+</li>
+<li>grep：grep-find 查找功能
+</li>
+<li>borwse-kill-ring：剪切板记录
+</li>
+</ul>
+<ul class="org-ul">
+<li>helm： 替代 semx
+</li>
+<li>tramp：用来在emacs中使用root权限打开文件
+</li>
+<li>org：orgmode 用来记笔记
+</li>
+</ul>
+<ul class="org-ul">
+<li>cscope： 也是用来浏览代码的。可以实现C/C++代码中函数、变量的跳转
+</li>
+<li>auto-complete &amp; yasnippet：通用的自动补全工具
+</li>
+<li>auto-complete-clang：配合auto-complete来实现c/c++的代码补全，函数参数提示等
+</li>
+<li>jedi：python的代码补全工具
+</li>
+<li>ipython：python的命令行提示工具
+</li>
+</ul>
+
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 启动emacs前的准备</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>sudo apt-get install clang            : for c/c++
+</li>
+<li>sudo apt-get install cscope           : for c/c++
+</li>
+<li>sudo apt-get install python-dev       : for jedi
+</li>
+<li>sudo apt-get install python-virtualenv : for jedi
+</li>
+<li>sudo apt-get install ttf-inconslate     : ubuntu font
+</li>
+<li>sudo apt-get install automake         : for el-get install doxymacs
+</li>
+<li>sudo apt-get install libxml libxml2-dev : for el-get install doxymacs
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 使用el-get.el 来安装所有（几乎所有）el文件。</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+安装elget需要有git。
+安装master版本比较好。
+<a href="https://github.com/dimitri/el-get">https://github.com/dimitri/el-get</a>
+</p>
+
+<p>
+具体配置看init-elget.el 使用elget
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 记笔记就用org-mode了。</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<del>emacs自带的org即可，配置文件就是lisps目录中的org-mode-settings.el</del>
+几天开始使用elget来下载org了（2014/12/01）
+配置还是init-org.el
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> emacs 配置 python</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+可以使用jedi来替代之前到rope / ropemacs /ropemode  组合。
+</p>
+</div>
+<div id="outline-container-sec-4-0-1" class="outline-4">
+<h4 id="sec-4-0-1"><span class="section-number-4">4.0.1</span> 使用el-get.el 安装jedi</h4>
+<div class="outline-text-4" id="text-4-0-1">
+<p>
+地址：<a href="https://github.com/davidhalter/jedi">https://github.com/davidhalter/jedi</a>
+在ubuntu中安装好需要到软件之后，直接在M-x el-get-install RET jedi即可安装成功。
+</p>
+
+<p>
+在mac中。需要在系统自带的命令行中,jedi的目录中执行 make requestments 。之后在安装。 其他到基本和ubuntu一样。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-0-2" class="outline-4">
+<h4 id="sec-4-0-2"><span class="section-number-4">4.0.2</span> 需要用到ipython.el python-mode.el。</h4>
+<div class="outline-text-4" id="text-4-0-2">
+<p>
+ipython可以通过easy<sub>install</sub> 安装。同时需要安装readline。
+sudo easy<sub>install</sub> ipython readline
+    安装时如果遇到“Modules/2.x/readline.c:8:20: 致命错误： Python.h：没有那个文件或目录” 
+    需要执行 apt-get install python-dev
+</p>
+
+
+<p>
+python-mode可以在<a href="https://launchpad.net/python-mode/">官网</a> 直接下载使用。
+</p>
+
+
+<p>
+配置文件就看lisps\python\init<sub>python</sub>.el init<sub>ipython</sub>.el init<sub>initjedi</sub>.el
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> emacs 中安装auto-complete 和 auto-complete-clang</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+可以查看 <a href="http://blog.csdn.net/winterttr/article/details/7524336"> emacs中使用auto-complete的详细设置</a>
+</p>
+
+<p>
+<a href="http://blog.csdn.net/winterttr/article/details/7273345"> emacs下使用clang补全C++</a>
+<a href="http://blog.csdn.net/cherylnatsu/article/details/7670445">Emacs+auto-complete+clang进行代码补全</a>
+</p>
+
+<p>
+M-x el-get-install RET auto-complete 
+M-x el-get-install RET popup
+M-x el-get-install RET fuzzy
+M-x el-get-install RET pos-tip
+M-x el-get-install RET auto-complete-clang
+使用上面命令，可以直接用el-get安装。
+</p>
+<ul class="org-ul">
+<li>auto-complete:是auto-complete的主要源码
+</li>
+<li>popup: auto-complete的popup列表
+</li>
+<li>fuzzy: auto-complete的模糊查找功能
+</li>
+<li>pos-tip: 用来调整popup函数提示信息的位置。
+</li>
+<li>auto-complete-clang:配合auto-complete的C/C++自动补全插件。
+需要在机器中安装clang工具。
+</li>
+</ul>
+<p>
+mac上好像自带clang
+</p>
+
+<p>
+ubuntu上使用apt-get install clang 可以安装。
+</p>
+
+
+<p>
+@&lt;font color="#ff0000"&gt;echo "" | g++ -v -x c++ -E -   可以得到系统中所有的头文件目录@&lt;/font&gt;
+</p>
+
+
+<p>
+配置文件就看init<sub>initjede</sub>.el了。
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> emacs Mac中安装Cscope</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li>在<a href="http://cscope.sourceforge.net">http://cscope.sourceforge.net</a> 中下载最新版本
+</li>
+<li>解压
+</li>
+<li>修改cscope 源文件
+<ul class="org-ul">
+<li>vim src/constants.h
+</li>
+<li>在111行后添加
+#undef TERMINFO
+#define TERMINFO
+</li>
+</ul>
+</li>
+<li>./configure &amp;&amp; make &amp;&amp; make install
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> emacs 使用Cscope</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+生成索引文件才能使用Cscope的强大功能。
+</p>
+<ol class="org-ol">
+<li>首先需要在源码根目录执行
+<div class="org-src-container">
+
+<pre class="src src-c">cscope-indexer -r
+</pre>
+</div>
+<p>
+-r 表示递归检索子目录。会生成2个文件
+</p>
+<ul class="org-ul">
+<li>cscope.files：文件列表。即根目录下所有文件名
+</li>
+<li>cscope.out：数据库
+</li>
+</ul>
+</li>
+<li>一般执行上一步之后就足够了，项目中的所有源文件都在文件列表里了。但不能跳转到/usr/include目录。如：想看到printf函数的定义，需要跳转到/usr/include/printf.h文件。
+这时就需要手动把/usr/include下的.h文件都添加到cscope.files文件中。
+使用
+<div class="org-src-container">
+
+<pre class="src src-c">find /usr/include -name <span style="color: #ff40ff;">"*.h"</span> -o -name <span style="color: #ff40ff;">"*.c"</span> -o -name <span style="color: #ff40ff;">"*.cc"</span>  -o -name <span style="color: #ff40ff;">"*.cpp"</span> -o -name <span style="color: #ff40ff;">"*.hpp"</span> &gt; cscope.files
+</pre>
+</div>
+<p>
+然后执行下一步
+</p>
+</li>
+<li>使用cscope -Rb 重新生成cscope.out文件。
+<ul class="org-ul">
+<li>-R: 在生成索引文件时，搜索子目录树中的代码
+</li>
+<li>-b: 只生成索引文件，不进入cscope的界面
+</li>
+<li>-k: 在生成索引文件时，不搜索/usr/include目录
+</li>
+<li>-q: 生成cscope.in.out和cscope.po.out文件，加快cscope的索引速度
+</li>
+<li>-i: 如果保存文件列表的文件名不是cscope.files时，需要加此选项告诉cscope到哪儿去找源文件列表。可以使用“-”，表示由标准输入获得文件列表。
+</li>
+<li>-I dir: 在-I选项指出的目录中查找头文件
+</li>
+<li>-u: 扫描所有文件，重新生成交叉索引文件
+</li>
+<li>-C: 在搜索时忽略大小写
+</li>
+<li>-P path: 在以相对路径表示的文件前加上的path，这样，你不用切换到你数据库文件所在的目录也可以使用它了
+</li>
+</ul>
+<p>
+Cscope只在第一次解析时扫描全部文件，以后再调用cscope，它只扫描那些改动过的文件，这大大提高了cscope生成索引的速度。 
+在缺省情况下，cscope在生成数据库后就会进入它自己的查询界面，我们一般不用这个界面，所以使用了“-b”选项。如果你已经进入了这个界面，按CTRL-D退出。
+</p>
+
+<p>
+Cscope在生成数据库中，在你的项目目录中未找到的头文件，会自动到/usr/include目录中查找。如果你想阻止它这样做，使用“-k”选项。
+</p>
+
+<p>
+Cscope缺省只解析C文件(.c和.h)、lex文件(.l)和yacc文件(.y)，虽然它也可以支持C++以及Java，但它在扫描目录时会跳过 C++及Java后缀的文件。如果你希望cscope解析C++或Java文件，需要把这些文件的名字和路径保存在一个名为cscope.files的文 件。当cscope发现在当前目录中存在cscope.files时，就会为cscope.files中列出的所有文件生成索引数据库。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c">find /usr/include -name <span style="color: #ff40ff;">"*.h"</span> -o -name <span style="color: #ff40ff;">"*.c"</span> -o -name <span style="color: #ff40ff;">"*.cc"</span>  -o -name <span style="color: #ff40ff;">"*.cpp"</span> -o -name <span style="color: #ff40ff;">"*.hpp"</span> &gt; cscope.files
+cscope -bkq -i cscope.files
+</pre>
+</div>
+</li>
+
+<li>Cscope默认在每次进行查找时更新cscope.out。当工程十分庞大时，建议关闭该选项以提高查找速度。方法是在~/.emacs文件中加入
+<div class="org-src-container">
+
+<pre class="src src-c">(<span style="color: #00f900;">setq</span> <span style="color: #fefb00; background-color: #000000;">cscope</span>-<span style="color: #00fcff; background-color: #000000;">do</span>-not-update-database t)
+</pre>
+</div>
+</li>
+<li>Cscope可以通过创建反向索引加速查找，方法是调用Cscope时，使用-q参数。真的假的，一试便知。修改cscope-indexer脚本，将
+cscope -b -i $LIST<sub>FILE</sub> -f $DATABASE<sub>FILE</sub>
+替换为
+cscope -q -b -i $LIST<sub>FILE</sub> -f $DATABASE<sub>FILE</sub>
+</li>
+</ol>
+
+
+<p>
+@&lt;font color="#ff0000"&gt;有的时候会出现建立完索引之后也不能用cscope进行查找，这是可以看看在.c文件的目录中是不是也包含cscope.out这个文件。它会覆盖掉根目录下的cscope.out。导致cscope只在当前目录查找。@&lt;/font&gt;
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> emacs 字体</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+inconsolata 确实是很帅的字体。
+</p>
+
+<p>
+使用 sudo apt-get install ttf-inconsolata
+安装 inconsolata字体
+</p>
+
+<p>
+在.emacs文件中 (set-default-font "Inconsolata-12") 设置emacs的默认字体。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> 密码显示成***号</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+
+<pre class="src src-lisp">(add-hook 'comint-output-filter-functions
+          'comint-watch-for-password-prompt)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> emacs中强制使用空格代替TAB</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+    在emacs中可以强制使用空格代替TAB，网上也有许多资料了，我这里说到的是有时在.emacs文件中加入了(setq indent-tabs-mode nil)之后也不管用，编辑时依然会插入TAB。
+    我在配置cc-mode时就出现了这样的问题，配置文件中加入了(setq indent-tabs-mode nil)，但依然插入TAB。
+    这时其实应该查看下这个变量的值，是不是真的已经设置为了nil。用C-h v再输入indent-tabs-mode查看之后，应该这个值还是t。即它并没有被设置为nil。
+    如果你使用了cc-mode的配置，会发现在cc-mode的style定义中加入(setq indent-tabs-mode nil)是无效的，而在其hook定义中加入就是有效的：
+(defconst mystyle
+   '((setq indent-tabs-mode nil))
+    "mystyle" )
+(c-add-style "mystyle" mystyle)
+(defun myhook()
+(c-set-style "mystyle"))
+(add-hook 'c++-mode-hook 'myhook)
+    这样设置后，打开一个新文件，查看indent-tabs-mode的值，还是t。如下的设置才是正确的设置：
+(defconst mystyle
+   '(&#x2026;&#x2026;)
+    "mystyle" )
+(c-add-style "mystyle" mystyle)
+(defun myhook()
+   (setq indent-tabs-mode nil)
+(c-set-style "mystyle"))
+(add-hook 'c++-mode-hook 'myhook)
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> emacs 设置C语言编辑</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+设置c-set-style可以制定类似tab/4空格 缩进，大括号缩进之类的东西。
+</p>
+
+<p>
+<a href="http://www.emacswiki.org/emacs/IndentingC">C语言缩进网站</a>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default c-indent-tabs-mode t     <span style="color: #ff922e;">; </span><span style="color: #ff2600;">Pressing TAB should cause indentation</span>
+                c-indent-level 4         <span style="color: #ff922e;">; </span><span style="color: #ff2600;">A TAB is equivilent to four spaces</span>
+                c-argdecl-indent 0       <span style="color: #ff922e;">; </span><span style="color: #ff2600;">Do not indent argument decl's extra</span>
+                c-tab-always-indent t
+                backward-delete-function nil) <span style="color: #ff922e;">; </span><span style="color: #ff2600;">DO NOT expand tabs when deleting</span>
+  (c-add-style <span style="color: #ff40ff;">"my-c-style"</span> '((c-continued-statement-offset 4))) <span style="color: #ff922e;">; </span><span style="color: #ff2600;">If a statement continues on the next line, indent the continuation by 4</span>
+  (<span style="color: #00fcff; background-color: #000000;">defun</span> <span style="color: #c15bf1; background-color: #f7e3c0;">my-c-mode-hook</span> ()
+    (c-set-style <span style="color: #ff40ff;">"my-c-style"</span>)
+    (c-set-offset 'substatement-open '0) <span style="color: #ff922e;">; </span><span style="color: #ff2600;">brackets should be at same indentation level as the statements they open</span>
+    (c-set-offset 'inline-open '+)
+    (c-set-offset 'block-open '+)
+    (c-set-offset 'brace-list-open '+)   <span style="color: #ff922e;">; </span><span style="color: #ff2600;">all "opens" should be indented by the c-indent-level</span>
+    (c-set-offset 'case-label '+))       <span style="color: #ff922e;">; </span><span style="color: #ff2600;">indent case labels by c-indent-level, too</span>
+  (add-hook 'c-mode-hook 'my-c-mode-hook)
+  (add-hook 'c++-mode-hook 'my-c-mode-hook)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> 记一个题外话，今天突然想起来可以设置clang的include路径。。。。。</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

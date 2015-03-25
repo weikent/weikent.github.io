@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>赖世雄入门</title>
+<!-- 2015-03-24 Tue 22:36 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">赖世雄入门</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Lesson 1 Greetings</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Dialogue A</a></li>
+<li><a href="#sec-1-2">1.2. Dialogue B</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Lesson 2 Courtesy</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Dialogue A</a></li>
+<li><a href="#sec-2-2">2.2. Dialogue B</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Lesson 3 Name, Age and Nationality</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Dialogue A</a></li>
+<li><a href="#sec-3-2">3.2. Dialogue B</a></li>
+<li><a href="#sec-3-3">3.3. 笔记</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Lesson 4 Introductions</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Dialogue A</a></li>
+<li><a href="#sec-4-2">4.2. Dialogue B</a></li>
+<li><a href="#sec-4-3">4.3. 笔记</a>
+<ul>
+<li><a href="#sec-4-3-1">4.3.1. Substitution  替换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Lesson 5 Occupations  职业</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Dialogue A</a></li>
+<li><a href="#sec-5-2">5.2. Dialogue B</a></li>
+<li><a href="#sec-5-3">5.3. 笔记</a>
+<ul>
+<li><a href="#sec-5-3-1">5.3.1. 感叹句</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Lesson 6  Time</a>
+<ul>
+<li><a href="#sec-6-1">6.1. Dialogue A</a></li>
+<li><a href="#sec-6-2">6.2. Dialogue B</a></li>
+<li><a href="#sec-6-3">6.3. 笔记</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. Lesson 7 Day &amp; Date</a>
+<ul>
+<li><a href="#sec-7-1">7.1. Dialogue A</a></li>
+<li><a href="#sec-7-2">7.2. Dialogue B</a></li>
+<li><a href="#sec-7-3">7.3. 笔记</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. Lesson 8  The Weather</a>
+<ul>
+<li><a href="#sec-8-1">8.1. Dialogue A</a></li>
+<li><a href="#sec-8-2">8.2. Dialogue B</a></li>
+<li><a href="#sec-8-3">8.3. 笔记</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Lesson 9  Telephone Conversation I</a>
+<ul>
+<li><a href="#sec-9-1">9.1. Dialogue A</a></li>
+<li><a href="#sec-9-2">9.2. Dialogue B</a></li>
+<li><a href="#sec-9-3">9.3. 笔记</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Lesson 10   Telephone Conversation II</a>
+<ul>
+<li><a href="#sec-10-1">10.1. Dialogue A</a></li>
+<li><a href="#sec-10-2">10.2. Dialogue B</a></li>
+<li><a href="#sec-10-3">10.3. 笔记</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. Lesson 11  Telephone Conversation III</a>
+<ul>
+<li><a href="#sec-11-1">11.1. Dialogue A</a></li>
+<li><a href="#sec-11-2">11.2. Dialogue B</a></li>
+<li><a href="#sec-11-3">11.3. 笔记</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Lesson 1 Greetings</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>A: Good morning, May, How are you?
+</li>
+<li>B: Hi, Tom. I'm fine. And you?
+</li>
+<li>A: Not bad. Thanks.
+</li>
+<li>B: Good. See you.
+</li>
+<li>A: Bye.
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-1-2">
+<ul class="org-ul">
+<li>A: Hi, May. How's it going?
+</li>
+<li>B: Great. And how are you doing?
+</li>
+<li>A: Not bad.
+</li>
+<li>B: OK. See you later.
+</li>
+<li>A: Take care.
+</li>
+<li>B: You, too.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Lesson 2 Courtesy</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>A: Excuse me. Are you Ann?
+</li>
+<li>B: No. I'm not.
+</li>
+<li>A: Oh, I'm sorry. Who's Ann?
+</li>
+<li>B: She is.
+</li>
+<li>A: Thank you.
+</li>
+<li>B: You're welcome.
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>A: Hi, I'm Tom.
+</li>
+<li>B: I beg your pardon?  对不起，请再说一遍。
+</li>
+<li>A: I'm Tom.
+</li>
+<li>B: Oh! Hi, Tom. I'm May.
+</li>
+<li>A: Nice to meet you, May.
+</li>
+<li>B: Pleased to meet you.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Lesson 3 Name, Age and Nationality</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>A: Excuse me, What's your name?
+</li>
+<li>B: I'm May.
+</li>
+<li>A: Hi, May. Where are you from?
+</li>
+<li>B: I'm from Hong Kong. What about you?
+</li>
+<li>A: I'm from Japan.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>A: May I have your name, please?
+</li>
+<li>B: My name is May.
+</li>
+<li>A: How old are you?
+</li>
+<li>B: I'm twenty-five.
+</li>
+<li>A: Where are you from?
+</li>
+<li>B: I'm from Hong Kong.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>you can never be too careful.  再小心也不为过
+</li>
+<li>That is the way the ball bounces. 
+</li>
+<li>May I have your name, please? = what's your name?
+</li>
+
+<li>sonny: 父亲对儿子的昵称。  
+</li>
+
+<li>substitution: 替换
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Lesson 4 Introductions</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>A: Hi, Tom. How's it going?
+</li>
+<li>B: Great! Who's your friend?
+</li>
+<li>A: Oh! I'm sorry. But this is Kay.
+</li>
+<li>B: Pleased to meet you, Kay.
+</li>
+<li>A: Nice to meet you.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>A: Dad. Please meet my girlfriend, May.
+</li>
+<li>B: Glad to meet you, May.
+</li>
+<li>C: Glad to meet you, too, Mr. Lin.
+</li>
+<li>B: And What is your family name, May?
+</li>
+<li>C: It's Chen. But you may call me May.
+</li>
+<li>B: May Chen. It's a nice name.
+</li>
+<li>C: Thank you, Sir.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>how is it going. 
+</li>
+<li>wonderful. cool. great.   太好了。
+</li>
+<li>who is your friend.
+</li>
+<li>pleased  不是［请］的意思。  这个是形容词。［高兴的］     <i>i am</i> pleased to meet you.
+<ul class="org-ul">
+<li>glad 也是 形容词，［高兴的］
+</li>
+</ul>
+</li>
+<li>Nice to meet you. ===&gt; It is nice to meet you.
+</li>
+</ul>
+
+
+
+<ul class="org-ul">
+<li>And what is your family name.
+－ 此处的And可以不加，加上的话是 语气词， 可以译成 ［那么］。
+</li>
+
+<li>family name 姓什么
+<ul class="org-ul">
+<li>也可以   ： last name   or    surname
+</li>
+</ul>
+</li>
+<li>first name 名
+<ul class="org-ul">
+<li>也可以   ： given name ［被给予的名字］
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+女士的名字 陆嘉欣
+</p>
+
+<ul class="org-ul">
+<li>称谓语
+<ul class="org-ul">
+<li>Mr.   先生           Mister
+</li>
+<li>Mrs.   太太          Missus
+</li>
+<li>Miss.    小姐  没有结婚的。
+</li>
+<li>Ms.     女士      不确定婚否。
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>you are always on the ball.
+<ul class="org-ul">
+<li>经常站在球上， 表示注意力集中，精神专注。 随时待命
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>he is yellow / chicken.
+<ul class="org-ul">
+<li>yellow 和 chicken表示胆怯的。
+</li>
+</ul>
+</li>
+
+<li>the movie is on you 
+－ 这电影你请客。
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> Substitution  替换</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+Glad to meet you, Mr. Mrs. Miss. Ms. 
+They are my students.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Lesson 5 Occupations  职业</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>A: Excuse me. Mr. Li. This is Miss Lin.
+</li>
+<li>B: How do you do. Miss Lin.
+</li>
+<li>C: How do you do?
+</li>
+<li>A: Miss Lin works for IBM.
+</li>
+<li>B: What a coincidence! I work in a computer company, too.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>A: Hi, Tom! I'd like you to meet my friend, Sal.
+</li>
+<li>B: Pleased to meet you, Sal.
+</li>
+<li>C: Same here.
+</li>
+<li>B: So, What do you do, Sal.
+</li>
+<li>C: I'm a secretary, What about you?
+</li>
+<li>B: I'm a pilot.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li>what a coincidence! 好巧啊。
+</li>
+<li>Same here.  彼此彼此      我也一样。
+</li>
+<li>i would like sb. to 。  我想请某人做。。。
+</li>
+
+<li>miser 守财奴
+</li>
+<li>filial   孝顺的
+</li>
+
+<li>always a boy at heart.   在心中保持一个男孩。
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>give me a buzz / call / ring.  给我打电话。
+</li>
+<li>you do have some trouble with your voice.  喉咙有些问题。
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-5-3-1" class="outline-4">
+<h4 id="sec-5-3-1"><span class="section-number-4">5.3.1</span> 感叹句</h4>
+<div class="outline-text-4" id="text-5-3-1">
+</div><ol class="org-ol"><li><a id="sec-5-3-1-1" name="sec-5-3-1-1"></a>what   形容词<br  /><div class="outline-text-5" id="text-5-3-1-1">
+<p>
+what + 名词 ＋ 主语 ＋ be动词！
+</p>
+</div>
+</li>
+
+<li><a id="sec-5-3-1-2" name="sec-5-3-1-2"></a>how    副词<br  /><div class="outline-text-5" id="text-5-3-1-2">
+<p>
+How ＋ 形容词 ＋ 主语 ＋ be动词！
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Lesson 6  Time</h2>
+<div class="outline-text-2" id="text-6">
+</div><div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>A: Excuse me, Ma'am. What time is it, please?
+</li>
+<li>B: It's two thirty.
+</li>
+<li>A: Thanks. What time is the next train?
+</li>
+<li>B: Two forty-five.
+</li>
+<li>A: I see. Is it on time?
+</li>
+<li>B: Yes, It is.
+</li>
+<li>A: Thanks.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>A: Hi, Tom. What time is it, please?
+</li>
+<li>B: It's a quarter to seven.
+</li>
+<li>A: Oh, no! i'm late.
+</li>
+<li>B: it's OK.
+</li>
+<li>A: What do you mean?
+</li>
+<li>B: My watch is fast.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li>Mandarin   普通话
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>What time is it, please.
+</li>
+<li>what time do you have.
+</li>
+<li>What time is it by your watch, please.
+</li>
+<li>My watch is slow.
+</li>
+<li>My watch is ten minutes fast.
+</li>
+
+<li>It's five past three.    ==&gt;  It's three o five. ［3点零5］
+<ul class="org-ul">
+<li>o 等于中文的 零。但要念成 o的音   ［欧］
+</li>
+<li>01分到09分要加   o。   10分之后就不要加 o。
+</li>
+</ul>
+</li>
+
+<li>It is five twenty and eighteen seconds.
+</li>
+
+<li>where[等于 if] there is a will[意愿，意志力], there is a way.
+<ul class="org-ul">
+<li>有志者，事竟成。
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Lesson 7 Day &amp; Date</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>A: What day is it today, Tom?   今天是星期几？
+</li>
+<li>B: It's Sunday.
+</li>
+<li>A: And is today June 6?
+</li>
+<li>B: Yes. Why?
+</li>
+<li>A: Because it's my birthday.
+</li>
+<li>B: Happy birthday, May.
+</li>
+<li>A: Thanks.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-7-2">
+<ul class="org-ul">
+<li>A: What's today's date, Tom?  今天是几月几号？
+</li>
+<li>B: It's February 14.
+</li>
+<li>A: What day is it today?
+</li>
+<li>B: Today is Friday.
+</li>
+<li>A: No, it's not. It's Valentine's Day.
+</li>
+<li>B: Happy Valentine's Day, May.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li>What day is it today.   今天是星期几啊？   今天是什么日子啊？
+</li>
+<li>What is today's date.   今天是几月几号？
+</li>
+<li>Valentine‘s Day。    情人节。
+</li>
+
+<li>birthday suit. 生日礼服。  因为出生的时候都没有穿衣服，所以这个短语表示没有穿衣服。
+</li>
+
+<li>June 6， 1998    6不是基数 six，而是序数 sixth
+</li>
+<li>101  one hundred first.
+</li>
+
+<li>基数词与序数词
+<ul class="org-ul">
+<li>基数词表示数量
+
+<p>
+He has five books.
+</p>
+</li>
+<li>序数词表示次序
+
+<p>
+He likes the fifth book.
+</p>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>名词所有格
+<ul class="org-ul">
+<li>人或动物的名词所有格   由名词加“s”形成
+<ul class="org-ul">
+<li>this is a girl's school.  这是某个女孩子所上的学校。
+</li>
+<li>this is a girls' school.  这是一所女子学校。
+</li>
+<li>this is the girl's school.  这是这个女孩所上的学校。    
+</li>
+<li>thisi s the girls' school.  这是这些女孩子上的学校。    
+</li>
+</ul>
+</li>
+<li>人或动物以外的 所有非生命的东西或植物。
+<ul class="org-ul">
+<li>采用 the A of B 的形式
+<ul class="org-ul">
+<li>the color of the table
+</li>
+<li>the roof of the house
+</li>
+<li>the leaves of the tree
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>时间和地点的名词可以使用2种形式。
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+<p>
+the curiosity killed the cat.   好奇害死猫。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Lesson 8  The Weather</h2>
+<div class="outline-text-2" id="text-8">
+</div><div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-8-1">
+<ul class="org-ul">
+<li>A: Hi, May! I am calling from New York.
+</li>
+<li>B: New York! What are you doing there?
+</li>
+<li>A: I'm here on business.
+</li>
+<li>B: How's the weather in New York?
+</li>
+<li>A: It's terrible. It's raining right now&gt;
+</li>
+<li>B: What a shame!
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+There are four seasons in my hometown. It's cool in spring. It's sunny in summer. It's chilly in fall. In winter, it is very cold. Sometimes it even snow.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>What is the weather like today.           How is the weather today.
+</li>
+<li>I am here on business in Guangzhou.
+</li>
+<li>shame on you. 羞羞脸。
+</li>
+
+<li>修饰天气的词
+</li>
+</ul>
+<p>
+sunny   有太阳的
+rainy   下雨的
+cloudy   有云的，阴天的
+windy    有风的
+sonwy     有雪的
+foggy     有雾的
+chilly     寒冷的
+cold       寒冷的。 比chilly更冷
+cool      凉爽的
+hot     热的
+</p>
+
+
+<p>
+－ 有 it is windy today 。
+－ 但没有 it is winding today。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Lesson 9  Telephone Conversation I</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li>A: Hello! May I speak to Bob, please?
+</li>
+<li>B: He's not in.
+</li>
+<li>A: May I leave a message?
+</li>
+<li>B: Sure. Go ahead.
+</li>
+<li>A: This is Tom. Please ask him to call me back as soon as possible.
+</li>
+<li>B: Ok. Bye.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>A: May I speak to Mr. Wang, Please?
+</li>
+<li>B: Who's calling, please?
+</li>
+<li>A: This is Tom Lin.
+</li>
+<li>B: Hold on, please. (a few seconds later) He's out at the moment.
+</li>
+<li>A: When will he be back?
+</li>
+<li>B: I don't know.
+</li>
+<li>A: OK. I'll call back later. Bye.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>Dialogue 和 Conversation
+<ul class="org-ul">
+<li>Dialogue 一定是2个人
+</li>
+<li>Conversation 是多个人。
+</li>
+</ul>
+</li>
+<li>go ahead。  请便吧。
+</li>
+
+<li>Who are you。 是2个人见面的时候说的话。
+</li>
+<li>Who is this。 电话用语。2个人没有见面。
+</li>
+<li>as soon as possible。  ASAP
+<ul class="org-ul">
+<li>第一个as  副词， 一样，
+</li>
+
+<li>soon  副词， 快地。
+</li>
+
+<li>第二个as  连词，   和
+</li>
+
+<li>possible。 可能地。
+</li>
+
+<li>和可能的一样快。
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>
+－ 第一次在电话中或者没有面对面时，介绍自己，不能用  I am。。。。 要用this is   或者   It is。。。
+</p>
+
+
+
+<ul class="org-ul">
+<li>few
+<ul class="org-ul">
+<li>a few + 名词（可数）     都用复数形式。   表可能，有一点
+</li>
+<li>few   ＋ 名词（可数）     都用复数形式。   表否定，很少
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>助动词
+<ul class="org-ul">
+<li>一种帮助动词的词。至于动词之前。用于加强语气。
+</li>
+
+<li>may  可以
+</li>
+
+<li>can   能够，可以
+<ul class="org-ul">
+<li>能够， 用于强调一个人的能力
+</li>
+
+<li>可以，  和may一样的用法。
+</li>
+</ul>
+</li>
+
+<li>will   将要
+
+<ul class="org-ul">
+<li>用于表示将要发生的事情。
+</li>
+</ul>
+</li>
+
+<li>must    必须
+
+<ul class="org-ul">
+<li>用于表示应当履行的义务。  通常在陈述句。
+</li>
+</ul>
+</li>
+
+<li>should   应该
+
+<ul class="org-ul">
+<li>比must 语气弱一些
+</li>
+</ul>
+</li>
+
+<li>shall    要
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+<p>
+－ screen  call    过滤call。
+</p>
+
+<ul class="org-ul">
+<li>留话
+
+<ul class="org-ul">
+<li>May i leave a message?
+</li>
+
+<li>May i take a message?  我可以帮你留话吗？
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>Don't bother   不用麻烦了。
+</li>
+</ul>
+
+
+
+<ul class="org-ul">
+<li>This is he。  我就是。
+<ul class="org-ul">
+<li>Hello. Is John there. please.
+</li>
+<li>This is he. Who's calling, please.
+</li>
+<li>你好，请问约翰在哪儿吗？
+</li>
+<li>我就是，请问你是谁。
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+<ul class="org-ul">
+<li>等候
+<ul class="org-ul">
+<li>Hold on     仅用于电话用语。
+</li>
+<li>Just a minute
+</li>
+<li>Just a moment
+</li>
+<li>Wait a minute
+</li>
+<li>Wait a moment
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Lesson 10   Telephone Conversation II</h2>
+<div class="outline-text-2" id="text-10">
+</div><div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>A: Hello, Dr. Chen's clinic. May i help you?
+</li>
+<li>B: Yes, please. I'd like to make an appointment to see Dr. Chen.
+</li>
+<li>A: What's your name, please?
+</li>
+<li>B: My name is Micky Chen.
+</li>
+<li>A: Is four o'clock in the afternoon OK?
+</li>
+<li>B: That's fine. Thank you.
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-10-2">
+<ul class="org-ul">
+<li>A: I would like to make a long-distance call to California, please.
+</li>
+<li>B: Person-to-Person or Station-to-Station?
+</li>
+<li>A: Station-to-Station.
+</li>
+<li>B: What's the number, please?
+</li>
+<li>A: Area code four one five, seven eight nine-zero two seven seven.
+</li>
+<li>B: One moment, please.
+</li>
+<li>A: Thank you.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-10-3">
+<ul class="org-ul">
+<li>an apple a day, keeps the doctor away.
+<ul class="org-ul">
+<li>一天一个苹果，让医生远离自己。
+</li>
+</ul>
+</li>
+
+<li>date ，男女之间的约会。   用on
+</li>
+
+<li>person-to-person 比较贵。   叫人的
+</li>
+
+<li>station-to-station  比较便宜。    叫号的。
+</li>
+
+<li>one moment   ＝ hold on
+</li>
+
+<li>I'd like to ＋ 动词原型。。。。 我想要
+</li>
+
+<li>in person.   亲自。   I‘ll write a letter in person。
+</li>
+
+<li>May I help you.
+
+<ul class="org-ul">
+<li>May I help you.
+</li>
+
+<li>Can I help you.
+</li>
+
+<li>Can I be of any service to you.
+</li>
+
+<li>Can I be of any help to you.
+</li>
+
+<li>What can I do for you.
+</li>
+</ul>
+</li>
+
+<li>例子
+
+<ul class="org-ul">
+<li>What can I do for you.
+</li>
+
+<li>I'm just looking around.  我只是随便转转。
+</li>
+
+<li>take your time. sir.   先生，您慢慢来。
+</li>
+</ul>
+</li>
+
+<li>比较
+
+<ul class="org-ul">
+<li>I Would like to &#x2026; 我想要    语气较委婉（对于I want to 来说）
+</li>
+
+<li>I like to     我喜欢
+</li>
+
+<li>I wwant to  我要。。
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Lesson 11  Telephone Conversation III</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Dialogue A</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li>A: Hello, room service.
+</li>
+<li>B: This is room 369. I'd like to order some food, please.
+</li>
+<li>A: I'm sorry. But the chicken is closed.
+</li>
+<li>B: What do you have?
+</li>
+<li>A: We have only sandwiches and drinks.
+</li>
+<li>B: That'll be fine. I's starving.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> Dialogue B</h3>
+<div class="outline-text-3" id="text-11-2">
+<ul class="org-ul">
+<li>A: Hello, front desk. Can I help you?
+</li>
+<li>B: Can you give a morning call, please?
+</li>
+<li>A: Sure. What time do you want to get up?
+</li>
+<li>B: Please call me at six o'clock a.m.
+</li>
+<li>A: No problem.
+</li>
+<li>B: Thank you.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-3" class="outline-3">
+<h3 id="sec-11-3"><span class="section-number-3">11.3</span> 笔记</h3>
+<div class="outline-text-3" id="text-11-3">
+<ul class="org-ul">
+<li>I'm sorry, but the kitchen's closed.
+but 是连词，不用翻译出来。
+
+<ul class="org-ul">
+<li>Execuse me, but do you have the time.
+
+<ul class="org-ul">
+<li>意思是： 现在几点钟。
+</li>
+
+<li>如果上句中，没有 the 。 就是问 你是否有时间， 有空。
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+<li>wakeup 或者 wake-up 是形容词。
+起床的。。
+<ul class="org-ul">
+<li>wakeup call ,  wake-up call 叫人起床的电话，不限时间。
+</li>
+<li>morning call 早上叫人的电话
+</li>
+</ul>
+</li>
+<li>May i take your order now.
+<ul class="org-ul">
+<li>我可不可以接受您的点菜呢？
+</li>
+</ul>
+</li>
+
+<li>I'm starving = I'm very hungry.
+
+<ul class="org-ul">
+<li>I'm starving to death.
+</li>
+
+<li>I could eat a horse / cow.
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>get up 起床
+<ul class="org-ul">
+<li>go to bed 睡觉
+</li>
+<li>go to the bed 走到床边
+</li>
+</ul>
+</li>
+<li>打电话给人
+<ul class="org-ul">
+<li>call ＋ sb 美式用法
+</li>
+<li>give + sb + a call 美式
+</li>
+<li>ring + sb up 英式
+</li>
+<li>give + sb ＋ a ring 英式
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

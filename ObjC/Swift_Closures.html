@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Swift 闭包</title>
+<!-- 2014-12-24 Wed 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Swift 闭包</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 闭包</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 对于闭包的理解</a></li>
+<li><a href="#sec-1-2">1.2. 闭包表达式语法</a></li>
+<li><a href="#sec-1-3">1.3. 参数名简写</a></li>
+<li><a href="#sec-1-4">1.4. 一种说明</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1. 简明扼要的闭包表达式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 闭包</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 对于闭包的理解</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+当需要把一个函数（A）作为另一个函数（B）的参数时，
+又不想不单独创建一个需要作为参数的函数，
+而是直接把函数A的主体直接作为放到B函数中。
+A函数就被称为闭包函数。
+这样A函数就没有函数名，只有函数主题。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 闭包表达式语法</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+闭合表达式语法具有以下一般构造形式：
+{ (parameters) -&gt; return type in
+    statements
+}
+</p>
+
+<ul class="org-ul">
+<li>闭包表达式语法可以使用常量参数、变量参数和 inout 类型作为参数，但皆不可提供默认值。 如果你需要使用一个可变的参数，可将可变参数放在最后，元组类型也可以作为参数和返回值使用。
+</li>
+
+<li>闭包的函数体部分由关键字 in 引入。 该关键字表示闭包的参数和返回值类型定义已经完成，闭包函数体即将开始。
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 参数名简写</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+对于闭包函数的每个参数，可以使用$0, $1, $2来替代
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 一种说明</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+<a href="http://www.devtalking.com/articles/closure-expressions-in-swift/">闭包</a>
+</p>
+
+<p>
+闭包在Swift中非常有用。通俗的解释就是一个Int类型里存储着一个整数，一个String类型包含着一串字符，同样，闭包是一个包含着函数的类型。有了闭包，你就可以处理很多在一些古老的语言中不能处理的事情。这是因为闭包使用的多样性，比如你可以将闭包赋值给一个变量，你也可以将闭包作为一个函数的参数，你甚至可以将闭包作为一个函数的返回值。它的强大之处可见一斑。
+</p>
+
+<p>
+在Swift的很多文档教材中都说函数是“一等公民”，起初我还不是很理解“一等公民”是什么意思，但当我理解了闭包以及它的强大功能后，我恍然大悟、茅塞顿开、醍醐灌顶。原来闭包的这些特性就是“一等公民”的特性啊！参见维基百科First-class citizen。
+</p>
+
+<p>
+Swift中的闭包类似Objective-C中的Block。其实，如果你想在Swift中实现Objective-C里的Block功能，你可以直接使用闭包来代替。Block和闭包的区别只是语法的不同而已，而且闭包的可读性比较强。
+</p>
+
+<p>
+函数是闭包吗？
+</p>
+
+<p>
+虽然你还没有意识到，但我们确实已经在Swift中这么用了。Swift中的函数就是闭包，在Apple的官方文档中有这样的描述：
+</p>
+
+<p>
+闭包有三种形式：
+</p>
+<ol class="org-ol">
+<li>全局函数是一个有名字但不会捕获任何值的闭包。
+</li>
+<li>嵌套函数是一个有名字并可以捕获到其封闭函数域内的值的闭包。
+</li>
+<li>闭包表达式是一个利用轻量级语法所写的，可以捕获其上下文中变量或常量值的匿名闭包。
+</li>
+</ol>
+
+<p>
+今天，我们要讨论的是第三种形式，尤其讨论它是如何将繁复的、可读性比较差的业务逻辑代码压缩成高可读性、简明明了的形式。
+</p>
+
+<p>
+大家还记得数组的map方法么？它的参数就是一个闭包，它会将数组里的每一个元素放在闭包中进行处理，然后返回一个新的数组，甚至是与原数组不同元素类型的新数组。
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">//</span><span style="color: #ff2600;">map&#20989;&#25968;&#30340;&#21407;&#22411;&#22914;&#19979;&#65306;</span>
+
+<span style="color: #00f900;">func</span> <span style="color: #c15bf1; background-color: #f7e3c0;">map</span>&lt;U&gt;(transform: (T) -&gt; U) -&gt; [U]
+</pre>
+</div>
+<p>
+我们可以看到该函数使用了泛型。(T) -&gt; U是一个泛型闭包，它的意思就是类型T将会在闭包中进行逻辑处理，然后返回U类型。最后map函数会返回一个U类型的数组。
+</p>
+
+<p>
+用一个例子来说明。今天我办生日聚会，要迎接很多人，并且为每个人都准备了一句欢迎词。我们要怎么做呢？首先我们将迎接的人放进一个数组名叫guestList，然后用一个名叫greetPeople的函数为每个人生成欢迎词：
+</p>
+
+
+
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">func</span> <span style="color: #c15bf1; background-color: #f7e3c0;">greetPeople</span>(person: String) -&gt; String
+{
+    <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"Hello, \(person)!"</span>
+}
+
+
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">guestList</span> = [<span style="color: #ff40ff;">"Chris"</span>, <span style="color: #ff40ff;">"Jill"</span>, <span style="color: #ff40ff;">"Tim"</span>]
+let fullGreetings = guestList.map(greetPeople)
+</pre>
+</div>
+
+<p>
+然后将greetPeople函数作为guestList数组的map函数的参数传入，并返回一个新的数组fullGreetings，这个数组就包含了每个人的欢迎词。
+</p>
+
+<p>
+如果我们想展示一下每个人的欢迎词，我们甚至可以这样写：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C">fullGreetings.map(println)
+</pre>
+</div>
+
+<p>
+这时也许有人要质疑了，println函数不是没有返回值么？那么map函数会返回什么呢？其实每一个没有返回值的函数，都会返回一个空的元组（tuple），所以说上述代码的返回值其实是Array&lt;()&gt;。
+</p>
+
+<p>
+上面的例子中我们就是将一个全局函数greetPeople作为一个闭包来使用的。
+</p>
+</div>
+
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 简明扼要的闭包表达式</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+其实Swift已经为我们提供了很多简化的语法，可以让我们保证代码的高可读性和维护性。还用上面的例子来说明，对于greetPeople这个全局函数来说，其实只需要使用一次，所以我们没必要单独定义这个函数。我们可以直接使用闭包表达式来处理：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">fullGreetings</span> = guestList.map({(person: String) -&gt; String in <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"Hello, \(person)!"</span>})
+</pre>
+</div>
+
+<p>
+闭包表达式其实是函数的字面值，官方一般称之为匿名函数。一般当我们需要使用函数快速的实现一个简短的处理逻辑并且只使用一次的时候，我们可以省去函数名，使用简化的语法。上面的代码中可以看到关键字in之前是闭包表达式的参数和返回值，in之后是闭包表达式实际处理逻辑的代码区域。
+</p>
+
+<p>
+下面我们将使用Swift更多的特性来进一步简化闭包表达式。
+</p>
+
+<ul class="org-ul">
+<li>我们知道Swift中有类型推断的特性，所以我们可以取掉参数类型：
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">fullGreetings</span> = guestList.map({(person) -&gt; String in <span style="color: #00fcff; background-color: #000000;">return</span> <span style="color: #ff40ff;">"Hello, \(person)!"</span> })
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>像我们示例中的这种单一闭包表达式，编译器可以根据in之前的返回值类型和return之后的返回数据类型自动判断，所以我们可以省略返回值和return关键字：
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">fullGreetings</span> = guestList.map({<span style="color: #00f900;">person</span> <span style="color: #fefb00; background-color: #000000;">in</span> <span style="color: #ff40ff;">"Hello, \(person)!"</span> })
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>其实在Swift中还提供了参数的简写方式：$0代表第一个参数、$1代表第二个参数以此类推。所以我们又可以将参数名称省略：
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">fullGreetings</span> = guestList.map({ <span style="color: #ff40ff;">"Hello, \($0)!"</span> })
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>当函数的最后一个参数是闭包时，可以将闭包写在()之外，这也是Swift的一个特性，所以我们还可以继续简化：
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">fullGreetings</span> = guestList.map(){ <span style="color: #ff40ff;">"Hello, \($0)!"</span> }
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>当函数有且仅有一个参数，并该参数是闭包时，不但可以将闭包写在()外，还可以省略()：
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">fullGreetings</span> = guestList.map{ <span style="color: #ff40ff;">"Hello, \($0)!"</span> }
+</pre>
+</div>
+
+<p>
+到目前为止，示例中的闭包表达式已经被我们根据Swift的特性，简化为简明扼要、高可读性的闭包表达式了，是不是很酷呢！</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

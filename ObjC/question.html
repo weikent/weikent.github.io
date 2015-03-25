@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>在网上查找的问题</title>
+<!-- 2014-12-24 Wed 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">在网上查找的问题</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. question 1 :Cast of 'int' to 'id' is disallowed with ARC</a>
+<ul>
+<li><a href="#sec-1-1">1.1. question</a></li>
+<li><a href="#sec-1-2">1.2. answer</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. question 2 : how to use a tableView</a>
+<ul>
+<li><a href="#sec-2-1">2.1. question: how to use a tableView</a></li>
+<li><a href="#sec-2-2">2.2. answer:</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. question 3: socket 传送的内容必须以\r\n结尾？</a></li>
+<li><a href="#sec-4">4. question 4: No architectures to compile for (ONLY<sub>ACTIVE</sub><sub>ARCH</sub>=YES, active arch=arm64, VALID<sub>ARCHS</sub>=armv7 armv7s).</a>
+<ul>
+<li><a href="#sec-4-1">4.1. answer:</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. 如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git     提示出错信息：fatal: remote origin already exists.</a>
+<ul>
+<li><a href="#sec-5-1">5.1. answer</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Byte* 与 char*的区别</a></li>
+<li><a href="#sec-7">7. UIPageViewController 的切换类型</a>
+<ul>
+<li><a href="#sec-7-1">7.1. Page Curl</a></li>
+<li><a href="#sec-7-2">7.2. Scroll</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. NSTimer</a></li>
+<li><a href="#sec-9">9. UIActionSheet and UIPopOverController</a>
+<ul>
+<li><a href="#sec-9-1">9.1. UIActionSheet is used for iphone and ipad.</a></li>
+<li><a href="#sec-9-2">9.2. UIPopOverController is used for ipad only.</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. class<sub>addProperty</sub> 可以动态增加类的属性</a></li>
+<li><a href="#sec-11">11. @property的特性</a>
+<ul>
+<li><a href="#sec-11-1">11.1. 原子性</a>
+<ul>
+<li><a href="#sec-11-1-1">11.1.1. atomic（默认）：atomic意为操作是原子的，意味着只有一个线程访问实例变量。atomic是线程安全的，至少在当前的存取器上是安全的。它是一个默认的特性，但是很少使用，因为比较影响效率，这跟ARM平台和内部锁机制有关。</a></li>
+<li><a href="#sec-11-1-2">11.1.2. nonatomic：nonatomic跟atomic刚好相反。表示非原子的，可以被多个线程访问。它的效率比atomic快。但不能保证在多线程环境下的安全性，在单线程和明确只有一个线程访问的情况下广泛使用。</a></li>
+</ul>
+</li>
+<li><a href="#sec-11-2">11.2. 存取器控制</a>
+<ul>
+<li><a href="#sec-11-2-1">11.2.1. readwrite（默认）：readwrite是默认值，表示该属性同时拥有setter和getter。</a></li>
+<li><a href="#sec-11-2-2">11.2.2. readonly： readonly表示只有getter没有setter。</a></li>
+</ul>
+</li>
+<li><a href="#sec-11-3">11.3. 内存管理</a>
+<ul>
+<li><a href="#sec-11-3-1">11.3.1. assign（默认）：assign用于值类型，如int、float、double和NSInteger，CGFloat等表示单纯的复制。还包括不存在所有权关系的对象，比如常见的delegate。</a></li>
+<li><a href="#sec-11-3-2">11.3.2. retian：在setter方法中，需要对传入的对象进行引用计数加1的操作。</a></li>
+<li><a href="#sec-11-3-3">11.3.3. strong：strong是在IOS引入ARC的时候引入的关键字，是retain的一个可选的替代。表示实例变量对传入的对象要有所有权关系，即强引用。strong跟retain的意思相同并产生相同的代码，但是语意上更好更能体现对象的关系。</a></li>
+<li><a href="#sec-11-3-4">11.3.4. weak：在setter方法中，需要对传入的对象不进行引用计数加1的操作。</a></li>
+<li><a href="#sec-11-3-5">11.3.5. copy：与strong类似，但区别在于实例变量是对传入对象的副本拥有所有权，而非对象本身。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-12">12. navigationcontroller 返回</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> question 1 :Cast of 'int' to 'id' is disallowed with ARC</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> question</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+各位大侠好，请教一个问题：
+我需要在代码中强制性地旋转到一个特定方向
+ios5以后不能直接使用setOrientation方法了,找了网上的贴子说可以通过下面的代码实现
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">if</span> ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        [[UIDevice currentDevice] performSelector:@selector(setOrientation:)
+                                       withObject:(<span style="color: #00f900;">id</span>)UIInterfaceOrientationLandscapeRight];
+    }
+</pre>
+</div>
+
+
+<p>
+由于使用了ARC，系统会提示
+Cast of 'int' to 'id' is disallowed with ARC
+尝试了一些修饰词都还是不行,请大侠指点
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> answer</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+还是cocoachina上高手多些，终于解决了,贴上来做个记号，一个叫maxwin的大帅解决的
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">if</span> ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+    <span style="color: #00f900;">SEL</span> <span style="color: #fefb00; background-color: #000000;">selector</span> = NSSelectorFromString(@<span style="color: #ff40ff;">"setOrientation:"</span>);
+    <span style="color: #00f900;">NSInvocation</span> *<span style="color: #fefb00; background-color: #000000;">invocation</span> = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+    [invocation setSelector:selector];
+    [invocation setTarget:[UIDevice currentDevice]];
+    <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">val</span> = UIInterfaceOrientationLandscapeRight;
+    [invocation setArgument:&amp;val atIndex:2];
+    [invocation invoke];
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> question 2 : how to use a tableView</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> question: how to use a tableView</h3>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> answer:</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+If you create the table view programmatically, and you're just using the default UITableViewCell, then you should register the class (in ViewDidLoad is a good place). You can alse do this for a custom class, but only if you create the cell (and its subviews) in code (use registerNib:forCellWithReuseIdentifier: if the cell is made in a xib file).
+</p>
+
+<ul class="org-ul">
+<li>use main.storyboard to create a UITableViewController.
+</li>
+<li>set its Custom Class in Identity Inspector.
+</li>
+<li>in its m file, viewDidLoad or other place.
+[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"firstViewCell"];
+</li>
+<li>in its m file, - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"firstViewCell" forIndexPath:indexPath];
+</li>
+<li>must all is @"firstViewCell"
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> question 3: socket 传送的内容必须以\r\n结尾？</h2>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> question 4: No architectures to compile for (ONLY<sub>ACTIVE</sub><sub>ARCH</sub>=YES, active arch=arm64, VALID<sub>ARCHS</sub>=armv7 armv7s).</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> answer:</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Build Active Architecture Only = No
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 如果输入$ git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git     提示出错信息：fatal: remote origin already exists.</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> answer</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+1、先输入$ git remote rm origin
+</p>
+
+<p>
+2、再输入$ git remote add origin git@github.com:djqiang/gitdemo.git 就不会报错了！
+</p>
+
+<p>
+3、如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section 'remote.origin'. 我们需要修改gitconfig文件的内容
+</p>
+
+<p>
+4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit<sub>ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc</sub>
+</p>
+
+<p>
+5、找到一个名为gitconfig的文件，打开它把里面的[remote "origin"]那一行删掉就好了！
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Byte* 与 char*的区别</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+在做Socket这个工程的时候，把NSData转成 char *
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">char</span> * <span style="color: #fefb00; background-color: #000000;">buf</span> = (<span style="color: #00f900;">char</span>*)malloc(1000);
+snprintf(buffer, [string length] + 1, <span style="color: #ff40ff;">"%s\n"</span>, (<span style="color: #00f900;">unsigned</span> <span style="color: #00f900;">char</span>*)[string bytes]);
+</pre>
+</div>
+<p>
+最后发现不是Byte* 与 char* 的区别，而是不应该使用snprintf来拷贝。而应该使用memcpy
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> UIPageViewController 的切换类型</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Page Curl</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+这个里面   不会   显示UIPageControl
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Scroll</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+这个里面   会     显示UIPageControl
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> NSTimer</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+完整的停止Timer的方式是这个，
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C">[_timer invalidate];
+self.timer = nil;<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#19968;&#23450;&#35201;&#21046;&#20026;nil</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> UIActionSheet and UIPopOverController</h2>
+<div class="outline-text-2" id="text-9">
+</div><div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> UIActionSheet is used for iphone and ipad.</h3>
+</div>
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> UIPopOverController is used for ipad only.</h3>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> class<sub>addProperty</sub> 可以动态增加类的属性</h2>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> @property的特性</h2>
+<div class="outline-text-2" id="text-11">
+</div><div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> 原子性</h3>
+<div class="outline-text-3" id="text-11-1">
+</div><div id="outline-container-sec-11-1-1" class="outline-4">
+<h4 id="sec-11-1-1"><span class="section-number-4">11.1.1</span> atomic（默认）：atomic意为操作是原子的，意味着只有一个线程访问实例变量。atomic是线程安全的，至少在当前的存取器上是安全的。它是一个默认的特性，但是很少使用，因为比较影响效率，这跟ARM平台和内部锁机制有关。</h4>
+</div>
+<div id="outline-container-sec-11-1-2" class="outline-4">
+<h4 id="sec-11-1-2"><span class="section-number-4">11.1.2</span> nonatomic：nonatomic跟atomic刚好相反。表示非原子的，可以被多个线程访问。它的效率比atomic快。但不能保证在多线程环境下的安全性，在单线程和明确只有一个线程访问的情况下广泛使用。</h4>
+</div>
+</div>
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> 存取器控制</h3>
+<div class="outline-text-3" id="text-11-2">
+</div><div id="outline-container-sec-11-2-1" class="outline-4">
+<h4 id="sec-11-2-1"><span class="section-number-4">11.2.1</span> readwrite（默认）：readwrite是默认值，表示该属性同时拥有setter和getter。</h4>
+</div>
+<div id="outline-container-sec-11-2-2" class="outline-4">
+<h4 id="sec-11-2-2"><span class="section-number-4">11.2.2</span> readonly： readonly表示只有getter没有setter。</h4>
+</div>
+</div>
+
+<div id="outline-container-sec-11-3" class="outline-3">
+<h3 id="sec-11-3"><span class="section-number-3">11.3</span> 内存管理</h3>
+<div class="outline-text-3" id="text-11-3">
+</div><div id="outline-container-sec-11-3-1" class="outline-4">
+<h4 id="sec-11-3-1"><span class="section-number-4">11.3.1</span> assign（默认）：assign用于值类型，如int、float、double和NSInteger，CGFloat等表示单纯的复制。还包括不存在所有权关系的对象，比如常见的delegate。</h4>
+</div>
+<div id="outline-container-sec-11-3-2" class="outline-4">
+<h4 id="sec-11-3-2"><span class="section-number-4">11.3.2</span> retian：在setter方法中，需要对传入的对象进行引用计数加1的操作。</h4>
+<div class="outline-text-4" id="text-11-3-2">
+<p>
+简单来说，就是对传入的对象拥有所有权，只要对该对象拥有所有权，该对象就不会被释放。如下代码所示：
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-11-3-3" class="outline-4">
+<h4 id="sec-11-3-3"><span class="section-number-4">11.3.3</span> strong：strong是在IOS引入ARC的时候引入的关键字，是retain的一个可选的替代。表示实例变量对传入的对象要有所有权关系，即强引用。strong跟retain的意思相同并产生相同的代码，但是语意上更好更能体现对象的关系。</h4>
+</div>
+<div id="outline-container-sec-11-3-4" class="outline-4">
+<h4 id="sec-11-3-4"><span class="section-number-4">11.3.4</span> weak：在setter方法中，需要对传入的对象不进行引用计数加1的操作。</h4>
+<div class="outline-text-4" id="text-11-3-4">
+<p>
+简单来说，就是对传入的对象没有所有权，当该对象引用计数为0时，即该对象被释放后，用weak声明的实例变量指向nil，即实例变量的值为0。
+</p>
+
+<p>
+注：weak关键字是IOS5引入的，IOS5之前是不能使用该关键字的。delegate 和 Outlet 一般用weak来声明。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-3-5" class="outline-4">
+<h4 id="sec-11-3-5"><span class="section-number-4">11.3.5</span> copy：与strong类似，但区别在于实例变量是对传入对象的副本拥有所有权，而非对象本身。</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> navigationcontroller 返回</h2>
+<div class="outline-text-2" id="text-12">
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#36820;&#22238;&#21040;&#19978;&#19968;&#20010;&#35270;&#22270;&#65292;&#27604;&#22914;&#29992;&#25143;&#21333;&#20987;&#23548;&#33322;&#26639;&#30340;Back&#25353;&#38062;</span>
+[[<span style="color: #00fcff; background-color: #000000;">self</span> navigationController] popViewControllerAnimated:<span style="color: #8cf900; background-color: #5a529c;">YES</span>]
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#36820;&#22238;&#21040;&#26681;&#35270;&#22270;</span>
+[[<span style="color: #00fcff; background-color: #000000;">self</span> navigationController] popToRootViewControllerAnimated:<span style="color: #8cf900; background-color: #5a529c;">YES</span>];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#36820;&#22238;&#21040;&#20219;&#24847;&#35270;&#22270;</span>
+[[<span style="color: #00fcff; background-color: #000000;">self</span> navigationController] popToViewController:destiationViewController animated:<span style="color: #8cf900; background-color: #5a529c;">YES</span>];
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,2628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>C 笔记</title>
+<!-- 2014-12-24 Wed 15:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">C 笔记</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. include"" 与 include&lt;&gt; 的区别</a></li>
+<li><a href="#sec-2">2. include &lt;iostream&gt; 与 include &lt;iostream.h&gt;的区别</a></li>
+<li><a href="#sec-3">3. Socket 编程</a>
+<ul>
+<li><a href="#sec-3-1">3.1. sock_stream 和 SOCK_DGRAM</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. Tcp 和 udp的区别</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. 第一件事就是用socket()建立一个socket</a></li>
+<li><a href="#sec-3-3">3.3. 第二件事是把socket绑定到某个端口上。bind()函数</a>
+<ul>
+<li><a href="#sec-3-3-1">3.3.1. sockfd是从socket()调用得到的文件描述句柄。</a></li>
+<li><a href="#sec-3-3-2">3.3.2. name是一个指向sockaddr类型结构的一个指针。</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-4">3.4. 如果是服务器就可以listen()了，如果是客户端就可以connect()了。</a>
+<ul>
+<li><a href="#sec-3-4-1">3.4.1. 服务器listen()</a></li>
+<li><a href="#sec-3-4-2">3.4.2. 客户端connect()</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-5">3.5. 当客户端发起链接的时候，服务器端可以accept()</a></li>
+<li><a href="#sec-3-6">3.6. accept()之后，可以用send() recv()或者write() read()来发送和接受信息。</a>
+<ul>
+<li><a href="#sec-3-6-1">3.6.1. send()和recv()</a></li>
+<li><a href="#sec-3-6-2">3.6.2. write() 和 read()</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-7">3.7. close() and shutdown()</a></li>
+<li><a href="#sec-3-8">3.8. 其他函数 获取站点名称获取地址，根据地址获取名称</a>
+<ul>
+<li><a href="#sec-3-8-1">3.8.1. getpeerbyname</a></li>
+<li><a href="#sec-3-8-2">3.8.2. gethostname</a></li>
+<li><a href="#sec-3-8-3">3.8.3. gethostbyname</a></li>
+<li><a href="#sec-3-8-4">3.8.4. gethostbyaddr</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-9">3.9. select函数说明</a></li>
+<li><a href="#sec-3-10">3.10. 设置套结字描述符的非阻塞模式（nonblocking）</a></li>
+<li><a href="#sec-3-11">3.11. fcntl 和 select函数的结合</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. gdb 调试工具</a></li>
+<li><a href="#sec-5">5. C语言防止头文件重复调用</a></li>
+<li><a href="#sec-6">6. C语言防止变量被重复定义</a>
+<ul>
+<li><a href="#sec-6-1">6.1. 解决办法</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. C语言指针</a>
+<ul>
+<li><a href="#sec-7-1">7.1. 定义指针</a></li>
+<li><a href="#sec-7-2">7.2. 指针的运算</a>
+<ul>
+<li><a href="#sec-7-2-1">7.2.1. &amp; (address-of operator)</a></li>
+<li><a href="#sec-7-2-2">7.2.2. * (Dereference operator)</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-3">7.3. 指针数组</a></li>
+<li><a href="#sec-7-4">7.4. 数组指针</a></li>
+<li><a href="#sec-7-5">7.5. 字符串指针</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8. C语言引用传递</a></li>
+<li><a href="#sec-9">9. 堆和栈</a></li>
+<li><a href="#sec-10">10. C语言多线程</a>
+<ul>
+<li><a href="#sec-10-1">10.1. 创建线程</a></li>
+<li><a href="#sec-10-2">10.2. 等待线程结束</a></li>
+<li><a href="#sec-10-3">10.3. 结束线程</a></li>
+<li><a href="#sec-10-4">10.4. 线程的互斥锁</a>
+<ul>
+<li><a href="#sec-10-4-1">10.4.1. pthread_mutex_init() 用来生成一个互斥锁</a></li>
+<li><a href="#sec-10-4-2">10.4.2. pthread_mutexattr_init() 初始化互斥锁属性对象</a></li>
+<li><a href="#sec-10-4-3">10.4.3. pthread_mutexattr_setpshared() 用来设置互斥锁的属性</a></li>
+<li><a href="#sec-10-4-4">10.4.4. pthread_mutexattr_settype()用来设置互斥锁的类型</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-5">10.5. 线程的启动顺序</a>
+<ul>
+<li><a href="#sec-10-5-1">10.5.1. ubuntu上</a></li>
+<li><a href="#sec-10-5-2">10.5.2. mac上</a></li>
+<li><a href="#sec-10-5-3">10.5.3. 后来又发现并不是这样的。线程的执行顺序应该是取决于操作系统。可以说没有什么规律可言。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-11">11. pthread_cond 线程条件变量</a>
+<ul>
+<li><a href="#sec-11-1">11.1. pthread_detach</a></li>
+</ul>
+</li>
+<li><a href="#sec-12">12. Makefile</a>
+<ul>
+<li><a href="#sec-12-1">12.1. Makefile的规则</a></li>
+<li><a href="#sec-12-2">12.2. make是如何工作的</a></li>
+<li><a href="#sec-12-3">12.3. makefile中使用变量</a></li>
+<li><a href="#sec-12-4">12.4. make的自动推导</a></li>
+<li><a href="#sec-12-5">12.5. makefile的文件搜寻</a></li>
+<li><a href="#sec-12-6">12.6. 伪目标</a>
+<ul>
+<li><a href="#sec-12-6-1">12.6.1. 伪目标其它功能</a></li>
+</ul>
+</li>
+<li><a href="#sec-12-7">12.7. 静态模式</a></li>
+<li><a href="#sec-12-8">12.8. makefile的函数</a>
+<ul>
+<li><a href="#sec-12-8-1">12.8.1. 字符串处理函数</a></li>
+<li><a href="#sec-12-8-2">12.8.2. 文件名处理函数</a></li>
+<li><a href="#sec-12-8-3">12.8.3. 其它函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-13">13. access 函数</a></li>
+<li><a href="#sec-14">14. strtok 函数</a></li>
+<li><a href="#sec-15">15. signal和sigaction</a></li>
+<li><a href="#sec-16">16. C语言的内存</a>
+<ul>
+<li><a href="#sec-16-1">16.1. 栈区</a></li>
+<li><a href="#sec-16-2">16.2. 堆</a></li>
+<li><a href="#sec-16-3">16.3. 全局区     这些空间在程序编译时就分配好了。</a>
+<ul>
+<li><a href="#sec-16-3-1">16.3.1. 初始化的全局和静态变量在一片区域</a></li>
+<li><a href="#sec-16-3-2">16.3.2. 未初始化的全局和静态变量在相邻的另一片区域</a></li>
+</ul>
+</li>
+<li><a href="#sec-16-4">16.4. 常量区</a></li>
+<li><a href="#sec-16-5">16.5. 程序代码区</a></li>
+<li><a href="#sec-16-6">16.6. 一个例子</a></li>
+<li><a href="#sec-16-7">16.7. linux 中的size命令</a>
+<ul>
+<li><a href="#sec-16-7-1">16.7.1. BSS 段</a></li>
+<li><a href="#sec-16-7-2">16.7.2. data 段</a></li>
+<li><a href="#sec-16-7-3">16.7.3. text 段</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-17">17. end</a></li>
+<li><a href="#sec-18">18. 生成动态连接库</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> include"" 与 include&lt;&gt; 的区别</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>"" 是以当前路径为相对路径引用头文件<br  />
+</li>
+<li>&lt;&gt; 是以系统环境变量路径引用头文件<br  />
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> include &lt;iostream&gt; 与 include &lt;iostream.h&gt;的区别</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在C语言中不存在iostream.h这个头文件，<br  />
+在C++语言中，include &lt;iostream.h&gt;是不正确的写法，即不是C++标准库的写法。<br  />
+C++标准库中的写法是include &lt;iostream&gt;    using namespace std;<br  />
+进化过程也许是 C&#x2014;&gt;C++&#x2014;&gt;C++标准  也许是退化过程<br  />
+</p>
+
+<p>
+@&lt;font color="#ff0000"&gt;以下内容引用自网络@&lt;/font&gt;<br  />
+</p>
+
+<p>
+C++标准库很大。非常大。难以置信的大。怎么个大法？这么说吧：在C++标准中，关于标准库的规格说明占了密密麻麻300多页，这还不包括标准C库，后者只是 "作为参考"（老实说，原文就是用的这个词）包含在C++库中。<br  />
+</p>
+
+<p>
+当然，并非总是越大越好，但在现在的情况下，确实越大越好，因为大的库会包含大量的功能。标准库中的功能越多，开发自己的应用程序时能借助的功能就越多。C++库并非提供了一切（很明显的是，没有提供并发和图形用户接口的支持），但确实提供了很多。几乎任何事你都可以求助于它。<br  />
+</p>
+
+<p>
+在归纳标准库中有些什么之前，需要介绍一下它是如何组织的。因为标准库中东西如此之多，你（或象你一样的其他什么人）所选择的类名或函数名就很有可能和标准库中的某个名字相同。为了避免这种情况所造成的名字冲突，实际上标准库中的一切都被放在名字空间std中（参见条款28）。但这带来了一个新问题。无数现有的C++代码都依赖于使用了多年的伪标准库中的功能，例如，声明在&lt;iostream.h&gt;，&lt;complex.h&gt;，&lt;limits.h&gt;等头文件中的功能。现有软件没有针对使用名字空间而进行设计，如果用std来包装标准库导致现有代码不能用，将是一种可耻行为。（这种釜底抽薪的做法会让现有代码的程序员说出比 "可耻" 更难听的话）<br  />
+</p>
+
+<p>
+慑于被激怒的程序员会产生的破坏力，标准委员会决定为包装了std的那部分标准库构件创建新的头文件名。生成新头文件的方法仅仅是将现有C++头文件名中的 .h 去掉，方法本身不重要，正如最后产生的结果不一致也并不重要一样。所以&lt;iostream.h&gt;变成了&lt;iostream&gt;，&lt;complex.h&gt;变成了&lt;complex&gt;，等等。对于C头文件，采用同样的方法，但在每个名字前还要添加一个c。所以C的&lt;string.h&gt;变成了&lt;cstring&gt;，&lt;stdio.h&gt;变成了&lt;cstdio&gt;，等等。最后一点是，旧的C++头文件是官方所反对使用的（即，明确列出不再支持），但旧的C头文件则没有（以保持对C的兼容性）。实际上，编译器制造商不会停止对客户现有软件提供支持，所以可以预计，旧的C++头文件在未来几年内还是会被支持。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Socket 编程</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> sock_stream 和 SOCK_DGRAM</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+sock_stream   是有保障的（即能保证数据正确传送到对方）面向连接的SOCKET，多用于资料（如文件）传送。<br  />
+sock_dgram   是无保障的面向消息的socket　，　主要用于在网络上发广播信息。<br  />
+SOCK_STREAM是基于TCP的，数据传输比较有保障。SOCK_DGRAM是基于UDP的，专门用于局域网，基于广播<br  />
+SOCK_DGRAM 是数据流,一般是tcp/ip协议的编程,SOCK_DGRAM分是数据抱,是udp协议网络编程<br  />
+</p>
+</div>
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Tcp 和 udp的区别</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>基于连接与无连接<br  />
+</li>
+<li>对系统资源的要求(tcp较多，udp少)<br  />
+</li>
+<li>udp程序结构简单<br  />
+</li>
+<li>流模式与数据报模式<br  />
+<ul class="org-ul">
+<li>tcp保证数据正确性，udp可能丢包<br  />
+</li>
+<li>tcp保证数据顺序，udp不保证<br  />
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="sec-3-1-1-1" name="sec-3-1-1-1"></a>具体编程时的区别<br  /><div class="outline-text-5" id="text-3-1-1-1">
+<ol class="org-ol">
+<li>socket()的参数不同<br  />
+</li>
+<li>udp server不需要调用listen和accept<br  />
+</li>
+<li>udp收发数据用sendto/recvfrom函数<br  />
+</li>
+<li>tcp：地址信息在connect/accept时确定<br  />
+</li>
+<li>udp：在sendto/recvfrom函数中每次均需指定地址信息<br  />
+</li>
+<li>udp： shutdown函数无效<br  />
+</li>
+</ol>
+</div>
+</li></ol>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 第一件事就是用socket()建立一个socket</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span>
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">socket</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">af</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">type</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">protocol</span>)
+</pre>
+</div>
+<ul class="org-ul">
+<li>'int af'代表地址族或者称为socket所代表的域，通常有两个选项：<br  />
+<ul class="org-ul">
+<li>AF_UNIX - 只在单机上使用。<br  />
+</li>
+<li>AF_INET - 可以在单机或其他使用DARPA协议(UDP/TCP/IP)的异种机通信。<br  />
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>'int type'代表你所使用的连接类型，通常也有两种情况：<br  />
+<ul class="org-ul">
+<li>SOCK_DGRAM - 用来建立没有连接的sockets，不能保证数据传输的可靠性。<br  />
+</li>
+<li>SOCK_STREAM - 用来建立面向连接的sockets，可以进行可靠无误的的数据传输<br  />
+
+<p>
+在本文中，我们着重使用AF_INET地址族和SOCK_STREAM连接类型。 <br  />
+</p>
+</li>
+</ul>
+</li>
+
+<li>'int protocol'通常设定为0。这样的目的是使系统选择默认的由协议族和连接类型所确定的协议。<br  />
+</li>
+</ul>
+
+<p>
+这个函数的返回值是一个文件描述句柄，如果在此期间发生错误则返回-1并且设定了相应的errno。<br  />
+</p>
+
+<p>
+所以一般创建一个socket就用<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span> <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">soon to be socket file descriptor </span><span style="color: #ff922e;">*/</span> 
+
+sockfd = socket(AF_INET, SOCK_STREAM, 0) 
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">error checking here </span><span style="color: #ff922e;">*/</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> 第二件事是把socket绑定到某个端口上。bind()函数</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">bind</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> *<span style="color: #fefb00; background-color: #000000;">name</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">namelen</span>)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> sockfd是从socket()调用得到的文件描述句柄。</h4>
+</div>
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> name是一个指向sockaddr类型结构的一个指针。</h4>
+<div class="outline-text-4" id="text-3-3-2">
+</div><ol class="org-ol"><li><a id="sec-3-3-2-1" name="sec-3-3-2-1"></a>如果地址族被设定为AF_UNIX<br  /><div class="outline-text-5" id="text-3-3-2-1">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> { 
+<span style="color: #00f900;">u_short</span> <span style="color: #fefb00; background-color: #000000;">sa_family</span>; 
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">sa_data</span>[14]; 
+};
+</pre>
+</div>
+<p>
+name.sa_family应当被设定为AF_UNIX。<br  />
+name.sa_data应当包含最长为14个字节的文件名，这个文件名用来分配给socket。<br  />
+namelen给出了文件名的具体长度。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys.socket.h&gt;</span> 
+
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> <span style="color: #fefb00; background-color: #000000;">name</span>; 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>; 
+
+name.sa_family = AF_UNIX; 
+strcpy(name.sa_data, <span style="color: #ff40ff;">"/tmp/whatever"</span>); 
+
+sockfd = socket(AF_UNIX, SOCK_STREAM, 0) 
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">error checking code here </span><span style="color: #ff922e;">*/</span> 
+
+bind(sockfd, &amp;name, strlen(name.sa_data) + <span style="color: #00fcff; background-color: #000000;">sizeof</span>(name.sa_family) 
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">error checking code here </span><span style="color: #ff922e;">*/</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="sec-3-3-2-2" name="sec-3-3-2-2"></a>如果地址族被设定为AF_INET<br  /><div class="outline-text-5" id="text-3-3-2-2">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> { 
+    <span style="color: #00f900;">short</span> <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sin_family</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Address family </span><span style="color: #ff922e;">*/</span> 
+    <span style="color: #00f900;">unsigned</span> <span style="color: #00f900;">short</span> <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sin_port</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Port number </span><span style="color: #ff922e;">*/</span> 
+    <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">in_addr</span> <span style="color: #fefb00; background-color: #000000;">sin_addr</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Internet address </span><span style="color: #ff922e;">*/</span> 
+    <span style="color: #00f900;">unsigned</span> <span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">sin_zero</span>[8]; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Same size as struct sockaddr </span><span style="color: #ff922e;">*/</span> 
+};
+</pre>
+</div>
+<ul class="org-ul">
+<li>sin_family指代协议族，在socket编程中只能是AF_INET<br  />
+</li>
+<li>sin_port存储端口号（使用网络字节顺序），在linux下，端口号的范围0~65535,同时0~1024范围的端口号已经被系统使用或保留。<br  />
+</li>
+<li>sin_addr存储IP地址，使用in_addr这个数据结构<br  />
+</li>
+<li>sin_zero是为了让sockaddr与sockaddr_in两个数据结构保持大小相同而保留的空字节。<br  />
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">mysock</span>;
+bzero((<span style="color: #00f900;">char</span>*)&amp;mysock,<span style="color: #00fcff; background-color: #000000;">sizeof</span>(mysock));
+mysock.sa_family=AF_INET;
+mysock.sin_port=htons(1234);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">1234&#26159;&#31471;&#21475;&#21495;</span>
+mysock.sin_addr.s_addr=inet_addr(<span style="color: #ff40ff;">"192.168.0.1"</span>);
+</pre>
+</div>
+
+<p>
+具体实例<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdio.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;errno.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #fefb00; background-color: #000000;">port</span> = 23; 
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">my_addr</span>; 
+
+<span style="color: #00fcff; background-color: #000000;">if</span>((sockfd=socket(AF_INET, SOCK_STREAM, 0)) == -1) 
+{ 
+printf(<span style="color: #ff40ff;">"Socket Error, %d\n"</span>, errno); 
+exit(1); 
+} 
+
+my_addr.sin_family = AF_INET; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">host byte order </span><span style="color: #ff922e;">*/</span> 
+my_addr.sin_port = htons(port); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">see man htons for more information </span>
+<span style="color: #ff922e;">*/</span> 
+my_addr.sin_addr.s_addr = htonl(INADDR_ANY); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">get our address </span><span style="color: #ff922e;">*/</span> 
+bzero(&amp;(my_addr.sin_zero), 8); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">zero out the rest of the space </span><span style="color: #ff922e;">*/</span> 
+
+<span style="color: #00fcff; background-color: #000000;">if</span>((bind(sockfd, (<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> *)&amp;my_addr, <span style="color: #00fcff; background-color: #000000;">sizeof</span>(<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span>))
+ == -1) 
+{ 
+printf(<span style="color: #ff40ff;">"Bind Error, %d\n"</span>, errno); 
+close(sockfd); 
+exit(1); 
+}
+</pre>
+</div>
+
+<p>
+@&lt;font color="#ff0000"&gt;bind()就是把一个指定的端口分配给要bind的socket。 以后就可以用这个端口来“听“网络的请求。bind()用于server端，一般端口都是well known，以便于提供服务。 端口分配后，其他socket不能再用这个端口。相当于告诉client端"要请求服务，往这个端口发"。 client端不用bind，每建一个socket系统会分配一个临时的端口，用完后再释放。谁叫它是client.@&lt;/font&gt;<br  />
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> 如果是服务器就可以listen()了，如果是客户端就可以connect()了。</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><div id="outline-container-sec-3-4-1" class="outline-4">
+<h4 id="sec-3-4-1"><span class="section-number-4">3.4.1</span> 服务器listen()</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+当我们需要建立一个服务器的时候，我们需要有一种手段来监听输入的请求，而listen()函数正是提供这个功能。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">listen</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">backlog</span>);
+</pre>
+</div>
+
+<p>
+参数backlog是指一次可以监听多少个连接<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">socket(); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">to create out socket file descriptor </span><span style="color: #ff922e;">*/</span> 
+bind(); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">to give our socket a name </span><span style="color: #ff922e;">*/</span> 
+listen(); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">listen for connection </span><span style="color: #ff922e;">*/</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-4-2" class="outline-4">
+<h4 id="sec-3-4-2"><span class="section-number-4">3.4.2</span> 客户端connect()</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+使用connect()函数可以和服务器建立链接。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">connect</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> *<span style="color: #fefb00; background-color: #000000;">serv_addr</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">addrlen</span>);
+</pre>
+</div>
+<ul class="org-ul">
+<li>sockfd是我们建立的文件描述句柄，<br  />
+</li>
+<li>serv_addr是一个sockaddr结构，包含目的的地址和端口号，<br  />
+</li>
+<li>addrlen 被设定为sockaddr结构的大小。<br  />
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;string.h&gt;</span>  
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span>  
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span>  
+
+<span style="color: #bdcfe4;">#define</span> <span style="color: #fefb00; background-color: #000000;">DEST_IP</span> <span style="color: #ff40ff;">"132.241.5.10"</span> 
+<span style="color: #bdcfe4;">#define</span> <span style="color: #fefb00; background-color: #000000;">DEST_PORT</span> 23 
+
+<span style="color: #c15bf1; background-color: #f7e3c0;">main</span>() 
+{ 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>; 
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">dest_addr</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">will hold the destination addr </span><span style="color: #ff922e;">*/</span> 
+
+sockfd = socket(AF_INET, SOCK_STREAM, 0); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">do some error checking! *</span>
+<span style="color: #ff2600;">/ </span>
+
+<span style="color: #ff2600;">dest_addr.sin_family = AF_INET; /* host byte order </span><span style="color: #ff922e;">*/</span> 
+dest_addr.sin_port = htons(DEST_PORT); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">short, network byte order </span><span style="color: #ff922e;">*/</span>
+
+dest_addr.sin_addr.s_addr = inet_addr(DEST_IP); 
+bzero(&amp;(dest_addr.sin_zero), 8); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">zero the rest of the struct </span><span style="color: #ff922e;">*/</span> 
+
+connect(sockfd, (<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> *)&amp;dest_addr, <span style="color: #00fcff; background-color: #000000;">sizeof</span>(<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span>)
+); 
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">error checking code here </span><span style="color: #ff922e;">*/</span> 
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">more code  </span>
+<span style="color: #ff2600;">. </span>
+<span style="color: #ff2600;">. </span>
+<span style="color: #ff2600;">. </span>
+<span style="color: #ff922e;">*/</span> 
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> 当客户端发起链接的时候，服务器端可以accept()</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+当有人试图从服务器打开的端口登陆进来时服务器应该响应他，这个时候就要用到accept()函数了<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">accept</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">addr</span>, <span style="color: #00f900;">int</span> *<span style="color: #fefb00; background-color: #000000;">addrlen</span>);
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;string.h&gt;</span>  
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span>  
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span>  
+
+<span style="color: #bdcfe4;">#define</span> <span style="color: #fefb00; background-color: #000000;">MYPORT</span> 1500 <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">the port users will be connecting to </span><span style="color: #ff922e;">*/</span> 
+<span style="color: #bdcfe4;">#define</span> <span style="color: #fefb00; background-color: #000000;">BACKLOG</span> 5 <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">how many pending connections queue will hold </span><span style="color: #ff922e;">*/</span> 
+
+<span style="color: #c15bf1; background-color: #f7e3c0;">main</span>() 
+{ 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #fefb00; background-color: #000000;">new_fd</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">listen on sock_fd, new connection on new_fd </span><span style="color: #ff922e;">*/</span> 
+
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">my_addr</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">my address information </span><span style="color: #ff922e;">*/</span> 
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">their_addr</span>; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">connector's address information </span><span style="color: #ff922e;">*/</span> 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sin_size</span>; 
+
+sockfd = socket(AF_INET, SOCK_STREAM, 0); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">do some error checking! *</span>
+<span style="color: #ff2600;">/ </span>
+
+<span style="color: #ff2600;">my_addr.sin_family = AF_INET; /* host byte order </span><span style="color: #ff922e;">*/</span> 
+my_addr.sin_port = htons(MYPORT); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">short, network byte order </span><span style="color: #ff922e;">*/</span> 
+my_addr.sin_addr.s_addr = INADDR_ANY; <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">auto-fill with my IP </span><span style="color: #ff922e;">*/</span> 
+bzero(&amp;(my_addr.sin_zero), 8); <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">zero the rest of the struct </span><span style="color: #ff922e;">*/</span> 
+
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">did you remember your error checking? </span><span style="color: #ff922e;">*/</span> 
+bind(sockfd, (<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> *)&amp;my_addr, <span style="color: #00fcff; background-color: #000000;">sizeof</span>(<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span>)); 
+
+listen(sockfd, BACKLOG); 
+
+sin_size = <span style="color: #00fcff; background-color: #000000;">sizeof</span>(<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span>); 
+new_fd = accept(sockfd, &amp;their_addr, &amp;sin_size);
+</pre>
+</div>
+
+<p>
+这里我们要注意的是：我们用new_fd来完成所有的接收和发送的操作。如果在只有一个连接的情况下你可以关闭原来的sockfd用来防止更多的输入请求。 <br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> accept()之后，可以用send() recv()或者write() read()来发送和接受信息。</h3>
+<div class="outline-text-3" id="text-3-6">
+</div><div id="outline-container-sec-3-6-1" class="outline-4">
+<h4 id="sec-3-6-1"><span class="section-number-4">3.6.1</span> send()和recv()</h4>
+<div class="outline-text-4" id="text-3-6-1">
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span> 
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">send</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00fcff; background-color: #000000;">const</span> <span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">msg</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">len</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">flags</span>); 
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">recv</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">buf</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">len</span>, <span style="color: #00f900;">unsigned</span> <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">flags</span>); 
+
+send(): 
+sockfd - socket file descriptor 
+msg - message to send 
+len - size of message to send 
+flags - read <span style="color: #ff40ff;">'man send'</span> <span style="color: #00fcff; background-color: #000000;">for</span> more info, set <span style="color: #00f900;">it</span> <span style="color: #fefb00; background-color: #000000;">to</span> 0 <span style="color: #00fcff; background-color: #000000;">for</span> now :) 
+
+recv(): 
+sockfd - socket file descriptor 
+buf - data to receive 
+len - size of buf 
+flags - same as flags in send() 
+
+send() &#20363;&#31243;: 
+- ------ 
+
+<span style="color: #00f900;">char</span> *msg = <span style="color: #ff40ff;">"Hey there people"</span>; 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">len</span>, <span style="color: #fefb00; background-color: #000000;">send_msg</span>; 
+
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">code to create(), bind(), listen() and accept() </span><span style="color: #ff922e;">*/</span>  
+
+len = strlen(msg); 
+bytes_sent = send(sockfd, msg, len, 0); 
+
+- ------ 
+recv() &#20363;&#31243;: 
+- ------ 
+
+<span style="color: #00f900;">char</span> *buf; 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">len</span>, <span style="color: #fefb00; background-color: #000000;">recv_msg</span>; 
+
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">code to create(), bind(), listen() and accept() </span><span style="color: #ff922e;">*/</span> 
+
+len = strlen(buf); 
+recv_msg = recv(sockfd, buf, len, 0);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6-2" class="outline-4">
+<h4 id="sec-3-6-2"><span class="section-number-4">3.6.2</span> write() 和 read()</h4>
+<div class="outline-text-4" id="text-3-6-2">
+<p>
+必须头：<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/uio.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;unistd.h&gt;</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>关于write()<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #00f900;">ssize_t</span> <span style="color: #c15bf1; background-color: #f7e3c0;">write</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">d</span>,<span style="color: #00fcff; background-color: #000000;">const</span> <span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">buf</span>,<span style="color: #00f900;">size_t</span> <span style="color: #fefb00; background-color: #000000;">nbytes</span>);
+</pre>
+</div>
+
+<p>
+调用成功返回成功写入的字节数，调用失败则返回-1。参数1为对象的句柄；参数2是写入的内容；参数3是前<br  />
+者的大小。<br  />
+</p>
+
+<ul class="org-ul">
+<li>关于read()<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #00f900;">ssize_t</span> <span style="color: #c15bf1; background-color: #f7e3c0;">read</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">d</span>,<span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">buf</span>,<span style="color: #00f900;">size_t</span> <span style="color: #fefb00; background-color: #000000;">nbytes</span>);
+</pre>
+</div>
+
+<p>
+正常调用返回成功读入的字节数，当读到句柄对象的底部时返回0，调用失败返回-1。参数1为对象句柄；参<br  />
+数2是读入容器的地址；参数3是前者的大小。<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> close() and shutdown()</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+传输结束时，应当关闭连接。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdio.h&gt;</span> 
+
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">all you code </span><span style="color: #ff922e;">*/</span> 
+
+close(sockfd);
+</pre>
+</div>
+
+<p>
+更保险的方法是用shutdown()来关闭连接。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">shutdown</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">how</span>)
+</pre>
+</div>
+
+
+<p>
+参数how的选择：<br  />
+1 - 不允许接收更多的数据<br  />
+2 - 不允许发送更多的数据<br  />
+3 - 不允许接收和发送更多的数据(和close()一样)<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> 其他函数 获取站点名称获取地址，根据地址获取名称</h3>
+<div class="outline-text-3" id="text-3-8">
+</div><div id="outline-container-sec-3-8-1" class="outline-4">
+<h4 id="sec-3-8-1"><span class="section-number-4">3.8.1</span> getpeerbyname</h4>
+<div class="outline-text-4" id="text-3-8-1">
+<p>
+服务器端得到与其链接的客户端信息。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span> 
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">getpeername</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">sockfd</span>, <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span> *<span style="color: #fefb00; background-color: #000000;">addr</span>, <span style="color: #00f900;">int</span> *<span style="color: #fefb00; background-color: #000000;">addrlen</span>); 
+
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">name</span>;
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">namelen</span> = <span style="color: #00fcff; background-color: #000000;">sizeof</span>(name);
+.
+.
+.
+<span style="color: #00fcff; background-color: #000000;">if</span>(getpeername(0,(<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span>*)&amp;name, &amp;namelen)&lt;0){
+  syslog(LOG_ERR,<span style="color: #ff40ff;">"getpeername: %m"</span>);
+  exit(1);
+} <span style="color: #00fcff; background-color: #000000;">else</span>
+  syslog(LOG_INFO,<span style="color: #ff40ff;">"Connection from %s"</span>,inet_ntoa(name.sin_addr));
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-2" class="outline-4">
+<h4 id="sec-3-8-2"><span class="section-number-4">3.8.2</span> gethostname</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<p>
+返回本地主机的标准主机名。<br  />
+#include &lt;Winsock2.h&gt;<br  />
+int PASCAL FAR gethostname(char FAR *name, int namelen);<br  />
+name：   一个指向将要存放主机名的缓冲区指针。<br  />
+namelen：缓冲区的长度。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdio.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;unistd.h&gt;</span>
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">main</span>()
+{
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">name</span>[65];
+gethostname(name, <span style="color: #00fcff; background-color: #000000;">sizeof</span>(name));
+printf(<span style="color: #ff40ff;">"hostname = %s\n"</span>, name);
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-3" class="outline-4">
+<h4 id="sec-3-8-3"><span class="section-number-4">3.8.3</span> gethostbyname</h4>
+<div class="outline-text-4" id="text-3-8-3">
+<p>
+返回对应于给定主机名的包含主机名字和地址信息的hostent结构指针<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;winsock2.h&gt;</span>
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">hostent</span> <span style="color: #00f900;">FAR</span> *<span style="color: #c15bf1; background-color: #f7e3c0;">PASCAL</span> FAR gethostbyname(<span style="color: #00fcff; background-color: #000000;">const</span> <span style="color: #00f900;">char</span>
+<span style="color: #fefb00; background-color: #000000;">FAR</span> * name);
+name&#65306;&#25351;&#21521;&#20027;&#26426;&#21517;&#30340;&#25351;&#38024;&#12290;
+&#36820;&#22238;&#31867;&#22411;
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">hostent</span>
+{
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">FAR</span> * h_name;
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">FAR</span> * FAR * h_aliases;
+<span style="color: #00f900;">short</span> <span style="color: #fefb00; background-color: #000000;">h_addrtype</span>;
+<span style="color: #00f900;">short</span> <span style="color: #fefb00; background-color: #000000;">h_length</span>;
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">FAR</span> * FAR * h_addr_list;
+};
+Linux&#29256;
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;netdb.h&gt;</span>
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">hostent</span> *<span style="color: #c15bf1; background-color: #f7e3c0;">gethostbyname</span>(<span style="color: #00fcff; background-color: #000000;">const</span> <span style="color: #00f900;">char</span> * <span style="color: #fefb00; background-color: #000000;">hostname</span>);
+&#36820;&#22238;&#65306;&#38750;&#31354;&#25351;&#38024;&#8212;&#8212;&#25104;&#21151;&#65292;&#31354;&#25351;&#38024;&#8212;&#8212;&#20986;&#38169;&#65292;&#21516;&#26102;&#35774;&#32622;h_errno
+</pre>
+</div>
+<ul class="org-ul">
+<li>h_name 正规的主机名字（PC）。<br  />
+</li>
+<li>h_aliases 一个以空指针结尾的可选主机名队列。<br  />
+</li>
+<li>h_addrtype 返回地址的类型，对于Windows Sockets，这个域总是PF_INET。<br  />
+</li>
+<li>h_legnth 每个地址的长度（字节数），对应于PF_INET这个域应该为4。<br  />
+</li>
+<li>h_addr_list 应该以空指针结尾的主机地址的列表，返回的地址是以网络顺序排列的<br  />
+</li>
+</ul>
+<p>
+为了保证其他旧的软件的兼容性，h_addr_list&lt;sup&gt;&lt;a id="fnr.1" name="fnr.1" class="footref" href="#fn.1"&gt;1&lt;/a&gt;&lt;/sup&gt;被定义为宏h_addr。<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-4" class="outline-4">
+<h4 id="sec-3-8-4"><span class="section-number-4">3.8.4</span> gethostbyaddr</h4>
+<div class="outline-text-4" id="text-3-8-4">
+<p>
+返回对应于给定地址的主机信息。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;winsock.h&gt;</span>
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">hostent</span> <span style="color: #00f900;">FAR</span> *<span style="color: #c15bf1; background-color: #f7e3c0;">PASCAL</span> FAR gethostbyaddr(<span style="color: #00fcff; background-color: #000000;">const</span> <span style="color: #00f900;">char</span>
+<span style="color: #fefb00; background-color: #000000;">FAR</span> * addr, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">len</span>, <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">type</span>);
+addr&#65306;&#25351;&#21521;&#32593;&#32476;&#23383;&#33410;&#39034;&#24207;&#22320;&#22336;&#30340;&#25351;&#38024;&#12290;
+len&#65306; &#22320;&#22336;&#30340;&#38271;&#24230;&#65292;&#22312;AF_INET&#31867;&#22411;&#22320;&#22336;&#20013;&#20026;4&#12290;
+type&#65306;&#22320;&#22336;&#31867;&#22411;&#65292;&#24212;&#20026;AF_INET&#12290;
+&#27880;&#37322;
+gethostbyaddr()&#36820;&#22238;&#23545;&#24212;&#20110;&#32473;&#23450;&#22320;&#22336;&#30340;&#21253;&#21547;&#20027;&#26426;&#21517;&#23383;&#21644;&#22320;&#22336;&#20449;&#24687;&#30340;hostent&#32467;&#26500;&#25351;&#38024;&#12290;&#32467;&#26500;&#30340;&#22768;&#26126;&#22914;&#19979;&#65306;
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">hostent</span> {
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">FAR</span> * h_name;
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">FAR</span> * FAR * h_aliases;
+<span style="color: #00f900;">short</span> <span style="color: #fefb00; background-color: #000000;">h_addrtype</span>;
+<span style="color: #00f900;">short</span> <span style="color: #fefb00; background-color: #000000;">h_length</span>;
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">FAR</span> * FAR * h_addr_list;
+};
+&#32467;&#26500;&#30340;&#25104;&#21592;&#26377;
+&#25104;&#21592; &#29992;&#36884;
+<span style="color: #00f900;">h_name</span> <span style="color: #fefb00; background-color: #000000;">&#27491;&#35268;&#30340;&#20027;&#26426;&#21517;&#23383;</span>&#65288;PC&#65289;&#12290;
+h_aliases &#19968;&#20010;&#20197;&#31354;&#25351;&#38024;&#32467;&#23614;&#30340;&#21487;&#36873;&#20027;&#26426;&#21517;&#38431;&#21015;&#12290;
+h_addrtype &#36820;&#22238;&#22320;&#22336;&#30340;&#31867;&#22411;&#65292;&#23545;&#20110;Windows Sockets&#65292;&#36825;&#20010;&#22495;&#24635;&#26159;PF_INET&#12290;
+h_legnth &#27599;&#20010;&#22320;&#22336;&#30340;&#38271;&#24230;&#65288;&#23383;&#33410;&#25968;&#65289;&#65292;&#23545;&#24212;&#20110;PF_INET&#36825;&#20010;&#22495;&#24212;&#35813;&#20026;4&#12290;
+h_addr_list &#24212;&#35813;&#20197;&#31354;&#25351;&#38024;&#32467;&#23614;&#30340;&#20027;&#26426;&#22320;&#22336;&#30340;&#21015;&#34920;&#65292;&#36820;&#22238;&#30340;&#22320;&#22336;&#26159;&#20197;&#32593;&#32476;&#39034;&#24207;&#25490;&#21015;&#30340;
+&#20026;&#20102;&#20445;&#35777;&#20854;&#20182;&#26087;&#30340;&#36719;&#20214;&#30340;&#20860;&#23481;&#24615;&#65292;h_addr_list[0]&#34987;&#23450;&#20041;&#20026;&#23439;h_addr&#12290;
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>h_name 正规的主机名字（PC）。<br  />
+</li>
+<li>h_aliases 一个以空指针结尾的可选主机名队列。<br  />
+</li>
+<li>h_addrtype 返回地址的类型，对于Windows Sockets，这个域总是PF_INET。<br  />
+</li>
+<li>h_legnth 每个地址的长度（字节数），对应于PF_INET这个域应该为4。<br  />
+</li>
+<li>h_addr_list 应该以空指针结尾的主机地址的列表，返回的地址是以网络顺序排列的<br  />
+</li>
+</ul>
+<p>
+为了保证其他旧的软件的兼容性，h_addr_list&lt;sup&gt;&lt;a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1"&gt;1&lt;/a&gt;&lt;/sup&gt;被定义为宏h_addr。<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-9" class="outline-3">
+<h3 id="sec-3-9"><span class="section-number-3">3.9</span> select函数说明</h3>
+<div class="outline-text-3" id="text-3-9">
+<p>
+个人认为select函数的作用是循环检查几个文件描述符（套结字描述符）中是否有可以进行读、写，或者出现异常的描述符。<br  />
+它并不代表blocking 或者 nonblocking。<br  />
+blcoking是由函数调用所产生的。<br  />
+一般情况下，在使用select之前，需要把一个描述符设置成nonblocking的模式，使描述符在执行读、写或是连接的时候，不会发生程序的blocking。而是使程序的blcoking发生在select函数的调用的时候。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">select</span> <span style="color: #c15bf1; background-color: #f7e3c0;">&#20989;&#25968;</span>&#65306;
+select(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">__nfds</span>, fd_set *<span style="color: #00fcff; background-color: #000000;">restrict</span> __readfds, fd_set *<span style="color: #00fcff; background-color: #000000;">restrict</span> __writefds, fd_set *<span style="color: #00fcff; background-color: #000000;">restrict</span> __exceptfds, <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">timeval</span> *<span style="color: #00fcff; background-color: #000000;">restrict</span> <span style="color: #fefb00; background-color: #000000;">__timeout</span>)
+&#36820;&#22238; 0 : &#22312;timeout&#32467;&#26463;&#26102;&#65292;&#27809;&#26377;&#20219;&#20309;&#25551;&#36848;&#31526;&#23601;&#32490;&#65292;&#21363;&#27809;&#26377;&#20219;&#20309;&#25551;&#36848;&#31526;&#21487;&#35835;&#20889;&#12290;
+&#36820;&#22238; -1: &#20986;&#38169;
+&#36820;&#22238;&gt;0 : &#34920;&#31034;&#23601;&#32490;&#30340;&#25551;&#36848;&#31526;&#30340;&#24635;&#25968;&#12290;
+
+
+FD_ZERO (fd_set *set); <span style="color: #00f900;">&#23558;&#19968;&#20010;&#25991;&#20214;&#25551;&#36848;&#31526;&#38598;&#21512;&#28165;&#38646;</span>
+<span style="color: #c15bf1; background-color: #f7e3c0;">FD_SET</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">fd</span>, <span style="color: #00f900;">fd_set</span> *<span style="color: #fefb00; background-color: #000000;">set</span>); <span style="color: #00f900;">&#23558;&#25991;&#20214;&#25551;&#36848;&#31526;fd&#21152;&#20837;&#21040;&#38598;&#21512;set&#20013;</span>
+<span style="color: #c15bf1; background-color: #f7e3c0;">FD_CLR</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">fd</span>, <span style="color: #00f900;">fd_set</span> *<span style="color: #fefb00; background-color: #000000;">set</span>); <span style="color: #00f900;">&#23558;&#25991;&#20214;&#25551;&#36848;&#31526;fd&#20174;&#38598;&#21512;set&#20013;&#21024;&#38500;</span>
+<span style="color: #c15bf1; background-color: #f7e3c0;">FD_ISSET</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">fd</span>, <span style="color: #00f900;">fd_set</span> *<span style="color: #fefb00; background-color: #000000;">set</span>); &#21028;&#26029;&#25991;&#20214;&#25551;&#36848;&#31526;fd&#26159;&#21542;&#23384;&#22312;&#20110;&#38598;&#21512;set&#20013;&#12290;
+</pre>
+</div>
+
+<p>
+n<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-10" class="outline-3">
+<h3 id="sec-3-10"><span class="section-number-3">3.10</span> 设置套结字描述符的非阻塞模式（nonblocking）</h3>
+<div class="outline-text-3" id="text-3-10">
+<p>
+使用fcntl()函数。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #bdcfe4;"># include</span> <span style="color: #ff40ff;">&lt;unistd.h&gt;</span>
+<span style="color: #bdcfe4;"># include</span> <span style="color: #ff40ff;">&lt;fcntl.h&gt;</span>
+
+
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">fcntl</span>(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">fd</span>,   <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25991;&#20214;&#25551;&#36848;&#31526;</span>
+            <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">cmd</span> , <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#19981;&#21516;&#30340;&#21629;&#20196;</span>
+             <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">flock</span> *<span style="color: #fefb00; background-color: #000000;">lock</span>) <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#35774;&#32622;&#35760;&#24405;&#38145;&#30340;&#20855;&#20307;&#29366;&#24577;</span>
+
+sockfd = socket(AF_INET, SOCK_STREAM, 0);
+fcntl(sockfd, F_SETFL, O_NONBLOCK);
+</pre>
+</div>
+
+<p>
+此函数功能强大的多，先写这么多。<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-11" class="outline-3">
+<h3 id="sec-3-11"><span class="section-number-3">3.11</span> fcntl 和 select函数的结合</h3>
+<div class="outline-text-3" id="text-3-11">
+<p>
+先用fcntl设置套结字的nonblocking模式，再用select循环检测套结字的可读写状态。<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> gdb 调试工具</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="http://blog.csdn.net/liigo/archive/2006/01/17/582231.aspx">GDB 十分钟教程</a><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> C语言防止头文件重复调用</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="http://www.cnblogs.com/IamEasy_Man/archive/2009/10/21/1587658.html">关于防止头文件重复调用和变量重复定义的网页说明</a><br  />
+</p>
+
+
+<p>
+使用条件编译，在所有头文件中都如下编写<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #bdcfe4;">#if</span><span style="color: #bdcfe4;">n</span><span style="color: #bdcfe4;">def</span> _HEADERNAME_H
+<span style="color: #bdcfe4;">#define</span> <span style="color: #fefb00; background-color: #000000;">_HEADERNAME_H</span>
+<span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#22836;&#25991;&#20214;&#20869;&#23481;</span>
+
+<span style="color: #bdcfe4;">#endif</span>
+</pre>
+</div>
+
+<p>
+这样多重包含的危险就被消除了。当头文件第一次被包含时，它被正常处理，符号_HEADERNAME_H被定义为1， 如果头文件再次被包含，通过条件编译，它的内容被忽略。符号_HEADERNAME_H按照被包含头文件的文件名进行取名，以避免由于其他头文件使用相同的符号而引起的冲突。<br  />
+</p>
+
+<p>
+但是，预处理器仍将整个头文件读入，即使这个头文件所有内容被忽略，由于这种处理将托慢编译速度，如有可能，应该避免出现多重包含。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> C语言防止变量被重复定义</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+因为工程中的每个C文件都是独立的解释，即使在头文件中有#ifndef #define #endif之类的预定义，但不同的C文件引用的H文件中有重名变量，由于C文件独立解释，所以每个C文件都生成单独的O文件，再链接的时候，因为每个.O文件中都包含同一个重名变量，重名变量就会出现重复定义错误。<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 解决办法</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>在C文件中声明变量<br  />
+</li>
+<li>然后建立一个头文件（.h文件）在所有的变量声明前都加上extern<br  />
+</li>
+<li>但不用对变量进行初始化<br  />
+</li>
+<li>然后在其他需要使用全局变量的.c文件中都包含此.h文件。<br  />
+</li>
+<li>在编译器会为.c生成目标文件，然后链接时，如果该.c文件使用了全局变量，连接器就会连接到此.c文件。<br  />
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> C语言指针</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+指针即地址，指针变量即存地址的变量。<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> 定义指针</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+int <b>ptr1;<br  />
+int</b> ptr2;<br  />
+两种方式都对，@&lt;font color="#ff0000"&gt;所以‘*’并不是和int结合来指定int类型的指针@&lt;/font&gt;<br  />
+</p>
+
+<p>
+第一种方式可以避免误解<br  />
+int* ptr1, ptr2;<br  />
+这样的定义方式，容易把ptr2也误认为是指针<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> 指针的运算</h3>
+<div class="outline-text-3" id="text-7-2">
+</div><div id="outline-container-sec-7-2-1" class="outline-4">
+<h4 id="sec-7-2-1"><span class="section-number-4">7.2.1</span> &amp; (address-of operator)</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p>
+取指针的地址<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-2-2" class="outline-4">
+<h4 id="sec-7-2-2"><span class="section-number-4">7.2.2</span> * (Dereference operator)</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<p>
+*在定义时用来说明一个变量是指针，<br  />
+而在定义一个指针之后，*表示取指针所指向的对象（变量）<br  />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> 指针数组</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+元素类型是指针的数组<br  />
+int *p[];<br  />
+char *p[];<br  />
+都是定义了一个数组，数组的元素是指针。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> 数组指针</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+指向数组的指针<br  />
+int (*p)[];<br  />
+char (*p)[];<br  />
+都是定义了一个指针p，p指向一个数组。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">int</span> (*<span style="color: #fefb00; background-color: #000000;">p</span>)[4];  <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#23450;&#20041;&#19968;&#20010;&#25351;&#21521;&#25968;&#32452;&#30340;&#25351;&#38024;&#12290;</span>
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">arr</span>[4] = {1,2,3,4};   <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#23450;&#20041;&#19968;&#20010;&#25968;&#32452;&#65292;&#24182;&#36171;&#20540;&#12290;</span>
+p = &amp;arr;   <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#32473;&#25351;&#38024;p&#36171;&#20540;&#12290;</span>
+
+
+<span style="color: #00f900;">int</span> (*<span style="color: #fefb00; background-color: #000000;">p2</span>)[4];
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">arr2</span>[2][4] = {{1,2,3,4},{5,6,7,8}};
+p2 = arr2;
+
+@&lt;font color=<span style="color: #ff40ff;">"#ff0000"</span>&gt;&#27880;&#24847;&#65306;@&lt;/font&gt; 
+- p&#21644;p2&#37117;&#26159;&#25351;&#21521;&#25968;&#32452;&#30340;&#25351;&#38024;&#65292;&#32780;&#25968;&#32452;&#21487;&#20197;&#29992;&#20854;&#39318;&#22320;&#22336;&#34920;&#31034;&#65292;&#21363;&#21487;&#20197;&#29702;&#35299;&#20026;p&#21644;p2&#26159;&#19968;&#20010;&#25351;&#21521;&#25351;&#38024;&#30340;&#25351;&#38024;&#12290;
+- arr&#26159;&#19968;&#20010;&#25968;&#32452;&#65292;&#21487;&#20197;&#29702;&#35299;&#20026;&#19968;&#20010;&#25351;&#38024;&#12290;&#25152;&#20197;arr&#21644;p&#30340;&#31867;&#22411;&#19981;&#19968;&#26679;&#12290;&#19981;&#21487;&#20197;&#30452;&#25509;&#36171;&#20540;&#12290;&#38656;&#35201;&#29992;&#21462;&#22320;&#22336;&#36816;&#31639;&#31526;&#21462;&#24471;arr&#30340;&#22320;&#22336;&#65292;&#20877;&#36171;&#20540;&#32473;p&#12290;
+- arr2&#26159;&#19968;&#20010;&#20108;&#32500;&#25968;&#32452;&#65292;&#20108;&#32500;&#25968;&#32452;&#21487;&#20197;&#29702;&#35299;&#20026;&#19968;&#20010;&#25351;&#21521;&#25351;&#38024;&#30340;&#25351;&#38024;&#65292;&#25152;&#20197;arr2&#21644;p2&#30340;&#31867;&#22411;&#19968;&#26679;&#65292;&#21487;&#20197;&#30452;&#25509;&#36171;&#20540;&#12290;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5"><span class="section-number-3">7.5</span> 字符串指针</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+char *p = "hello";<br  />
+p 是一个字符串指针变量。<br  />
+&amp;p表示p这个变量在内存中的地址，<br  />
+p表示p这个变量所存儲的地址，即"hello"这个字符串常量的首地址。<br  />
+*p表示p这个变量所存储的地址所存储的内容。此例中是'h'。   *(p+1) 是'o'。<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> C语言引用传递</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+在C中，没有类似C++的引用传递。但可以用指针的方式来改变函数参数的值。<br  />
+即要把一个变量的地址作为函数的参数传递过去。使用此地址来修改地址所指向的指。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">//</span><span style="color: #ff2600;">This program is to test whether a function can change the parameter's </span>
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">value in .c files.</span>
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">also provides how we can change the value(use pointer!). YES, use pointer!</span>
+<span style="color: #bdcfe4;">#include</span><span style="color: #ff40ff;">&lt;stdio.h&gt;</span>
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">changeInt</span>(<span style="color: #00f900;">int</span> *<span style="color: #fefb00; background-color: #000000;">a</span>)
+{
+*a=3;
+}
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">changeChar</span>(<span style="color: #00f900;">char</span>** <span style="color: #fefb00; background-color: #000000;">c</span>)
+{
+*c=<span style="color: #ff40ff;">"changed!"</span>;
+}
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">main</span>()
+{
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">a</span>=0;
+<span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">c</span>=<span style="color: #ff40ff;">"hello"</span>;
+changeChar(&amp;c);
+printf(<span style="color: #ff40ff;">"%s\n"</span>,c);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">print 'changed!'</span>
+changeInt(&amp;a);
+printf(<span style="color: #ff40ff;">"%d\n"</span>,a);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">out: 3</span>
+}
+</pre>
+</div>
+
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Swap function </span><span style="color: #ff922e;">*/</span>
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">swap</span>(<span style="color: #00f900;">int</span>* <span style="color: #fefb00; background-color: #000000;">a</span>,<span style="color: #00f900;">int</span>* <span style="color: #fefb00; background-color: #000000;">b</span>)
+{
+*a=*a-*b;
+*b=*b+*a;
+*a=*b-*a;
+}
+<span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Main function </span><span style="color: #ff922e;">*/</span>
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">main</span>()
+{
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">i</span>=3,<span style="color: #fefb00; background-color: #000000;">j</span>=1;
+swap(&amp;i,&amp;j); <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#22914;&#26524;&#25968;&#32452;&#30340;&#35805; &#21017;&#21487;&#29992;&#36825;&#31181;&#24418;&#24335;&#65306;swap(&amp;(a[i]),&amp;(a[i+1]));</span>
+printf(<span style="color: #ff40ff;">"j:%d "</span>,j);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">3</span>
+printf(<span style="color: #ff40ff;">"i:%d\n"</span>,i);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">i</span>
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> 堆和栈</h2>
+<div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>栈：由编译器自动分配释放。<br  />
+</li>
+<li>堆：有程序员分配释放。<br  />
+</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> C语言多线程</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+线程相对与进程来说，比较节省资源。<br  />
+</p>
+
+<p>
+编译多线程程序的时候，要指定 '-lpthread' 参数， 用来调用静态链接库。因为pthread不是linux的默认库。<br  />
+</p>
+
+<p>
+引用头文件 pthread.h。<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> 创建线程</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+pthread.h: extern int pthread_create (pthread_t* __newthread,const pthread_attr_t* __attr,void*,void* __arg)<br  />
+</p>
+<ul class="org-ul">
+<li>第一个参数是指向线程标识符的指针<br  />
+标识符是pthread_t 类型，定义在/usr/include/bits/pthreadtypes.h中。<br  />
+typedef unsigned long int pthread_t<br  />
+</li>
+<li>第二个参数是用来设置线程的属性<br  />
+</li>
+<li>第三个参数是线程的执行函数的起始地址<br  />
+</li>
+<li>第四个参数是线程的执行函数的参数<br  />
+<ul class="org-ul">
+<li>当参数是一个的时候，直接定义变量并传递给线程执行函数<br  />
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;iostream&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;pthread.h&gt;</span>
+using <span style="color: #00f900;">namespace</span> <span style="color: #fefb00; background-color: #000000;">std</span>;
+<span style="color: #00f900;">pthread_t</span> <span style="color: #fefb00; background-color: #000000;">thread</span>;
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">fn</span>(<span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">arg</span>)
+{
+    <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">i</span> = *(<span style="color: #00f900;">int</span> *)arg;
+    cout&lt;&lt;<span style="color: #ff40ff;">"i = "</span>&lt;&lt;i&lt;&lt;endl;
+    <span style="color: #00fcff; background-color: #000000;">return</span> ((<span style="color: #00f900;">void</span> *)0);
+}
+<span style="color: #00f900;">int</span> <span style="color: #c15bf1; background-color: #f7e3c0;">main</span>()
+{
+    <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">err1</span>;
+    <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">i</span>=10;
+   err1 = pthread_create(&amp;thread, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>, fn, &amp;i);
+    pthread_join(thread, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>);
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>当参数多余一个的时候，就要定义一个结构来包含所有的参数，并传递给线程执行函数<br  />
+</li>
+</ul>
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C">&#39318;&#20808;&#23450;&#20041;&#19968;&#20010;&#32467;&#26500;&#20307;&#65306;
+
+<span style="color: #00fcff; background-color: #000000;">struct</span>  <span style="color: #00f900;">parameter</span>
+
+{
+
+  <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">size</span>,
+
+  <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">count</span>;
+
+&#12290;&#12290;&#12290;&#12290;&#12290;
+
+&#12290;&#12290;&#12290; 
+};
+
+&#28982;&#21518;&#22312;main&#20989;&#25968;&#23558;&#36825;&#20010;&#32467;&#26500;&#20307;&#25351;&#38024;&#65292;&#20316;&#20026;<span style="color: #00f900;">void</span>
+ *&#24418;&#21442;&#30340;&#23454;&#38469;&#21442;&#25968;&#20256;&#36882;
+
+<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">parameter</span> arg;
+
+
+&#36890;&#36807;&#22914;&#19979;&#30340;&#26041;&#24335;&#26469;&#35843;&#29992;&#20989;&#25968;&#65306;
+pthread_create(&amp;ntid, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>, fn,&amp; (arg));
+&#20989;&#25968;&#20013;&#38656;&#35201;&#23450;&#20041;&#19968;&#20010;parameter&#31867;&#22411;&#30340;&#32467;&#26500;&#25351;&#38024;&#26469;&#24341;&#29992;&#36825;&#20010;&#21442;&#25968; 
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">fn</span>(<span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">arg</span>)
+{
+    <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">i</span> = *(<span style="color: #00f900;">int</span> *)arg;
+    cout&lt;&lt;<span style="color: #ff40ff;">"i = "</span>&lt;&lt;i&lt;&lt;endl;
+    <span style="color: #00fcff; background-color: #000000;">return</span> ((<span style="color: #00f900;">void</span> *)0);
+}
+
+
+<span style="color: #00f900;">void</span> <span style="color: #c15bf1; background-color: #f7e3c0;">thr_fn</span>(<span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">arg</span>)
+{
+       <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">parameter</span> *<span style="color: #fefb00; background-color: #000000;">pstru</span>;
+       pstru = ( <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">parameter</span> *) arg;
+       &#28982;&#21518;&#22312;&#36825;&#20010;&#20989;&#25968;&#20013;&#23601;&#21487;&#20197;&#20351;&#29992;&#25351;&#38024;&#26469;&#20351;&#29992;&#30456;&#24212;&#30340;&#21464;&#37327;&#30340;&#20540;&#20102;&#12290;
+}
+</pre>
+</div>
+
+
+<p>
+此创建线程的函数，返回0表示创建成功，非0表示失败。<br  />
+常见的错误<br  />
+</p>
+<ul class="org-ul">
+<li>EAGAIN ： 系统限制创建新的线程。<br  />
+</li>
+<li>EINVAL ： 表示设置的线程属性为非法。<br  />
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> 等待线程结束</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+一个线程可以等待另一个线程结束<br  />
+int pthread_join __P ((pthread_t __th, void **__thread_return));<br  />
+</p>
+<ul class="org-ul">
+<li>第一个参数是被等待的线程标识符<br  />
+</li>
+<li>第二个参数是用户定义的指针，它可以用来存放被等待线程的返回值（当线程结束的时候返回返回值）<br  />
+</li>
+</ul>
+
+<p>
+当调用pthread_join的时候，线程将被阻塞，直到被等待的线程结束为止。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdio.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;pthread.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #00f900;">pthread_t</span>       <span style="color: #fefb00; background-color: #000000;">tid1</span>, <span style="color: #fefb00; background-color: #000000;">tid2</span>; 
+<span style="color: #00f900;">void</span>            *<span style="color: #fefb00; background-color: #000000;">tret</span>;  <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#32447;&#31243;&#30340;&#36820;&#22238;&#20540;&#65292;&#35980;&#20284;&#21487;&#20197;&#26159;&#20219;&#20309;&#31867;&#22411;&#65292;&#20808;&#29992;void&#26469;&#34920;&#31034;&#65292;&#20043;&#21518;&#20877;&#24378;&#21046;&#36716;&#25442;&#31867;&#22411;</span>
+
+
+
+<span style="color: #00f900;">void</span> *
+<span style="color: #c15bf1; background-color: #f7e3c0;">thr_fn1</span>(<span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">arg</span>)
+{
+        sleep(1);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#30561;&#30496;&#19968;&#31186;&#65292;&#31561;&#24453;TID2&#32467;&#26463;&#12290;</span>
+        pthread_join(tid2, &amp;tret);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">tid1&#19968;&#30452;&#38459;&#36187;&#65292;&#31561;&#21040;tid2&#30340;&#36864;&#20986;&#65292;&#33719;&#24471;TID2&#30340;&#36864;&#20986;&#30721;</span>
+         printf(<span style="color: #ff40ff;">"thread 2 exit code %d\n"</span>, (<span style="color: #00f900;">int</span>)tret); <span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#27492;&#22788;&#24378;&#21046;&#36716;&#25442;&#32447;&#31243;&#36820;&#22238;&#20540;&#20026;int&#22411;</span>
+    printf(<span style="color: #ff40ff;">"thread 1 returning\n"</span>);
+    <span style="color: #00fcff; background-color: #000000;">return</span>((<span style="color: #00f900;">void</span> *)2);
+}
+
+<span style="color: #00f900;">void</span> *
+<span style="color: #c15bf1; background-color: #f7e3c0;">thr_fn2</span>(<span style="color: #00f900;">void</span> *<span style="color: #fefb00; background-color: #000000;">arg</span>)
+{      
+    printf(<span style="color: #ff40ff;">"thread 2 exiting\n"</span>);
+     pthread_exit((<span style="color: #00f900;">void</span> *)3);
+}
+
+<span style="color: #00f900;">int</span>
+<span style="color: #c15bf1; background-color: #f7e3c0;">main</span>(<span style="color: #00f900;">void</span>)
+{
+    <span style="color: #00f900;">int</span>            <span style="color: #fefb00; background-color: #000000;">err</span>;
+
+    err = pthread_create(&amp;tid1, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>, thr_fn1, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>);
+    <span style="color: #00fcff; background-color: #000000;">if</span> (err != 0)
+        printf(<span style="color: #ff40ff;">"can't create thread 1\n"</span>);
+    err = pthread_create(&amp;tid2, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>, thr_fn2, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>);
+    <span style="color: #00fcff; background-color: #000000;">if</span> (err != 0)
+        printf(<span style="color: #ff40ff;">"can't create thread 2\n"</span>);
+    err = pthread_join(tid1, &amp;tret);<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#31069;&#32447;&#31243;&#19968;&#30452;&#38459;&#36187;&#65292;&#31561;&#24453;TID1&#30340;&#36820;&#22238;&#12290;</span>
+    <span style="color: #00fcff; background-color: #000000;">if</span> (err != 0)
+        printf(<span style="color: #ff40ff;">"can't join with thread 1\n"</span>);
+    printf(<span style="color: #ff40ff;">"thread 1 exit code %d\n"</span>, (<span style="color: #00f900;">int</span>)tret);
+      <span style="color: #ff922e;">//</span><span style="color: #ff2600;">err = pthread_join(tid2, &amp;tret);</span>
+    <span style="color: #ff922e;">//</span><span style="color: #ff2600;">if (err != 0)</span>
+    <span style="color: #ff922e;">//    </span><span style="color: #ff2600;">printf("can't join with thread 2\n");</span>
+<span style="color: #ff922e;">//    </span><span style="color: #ff2600;">printf("thread 2 exit code %d\n", (int)tret);</span>
+    exit(0);
+}
+
+
+
+
+&#21629;&#20196;&#65306;&#65283;gcc -lthread myfile11-3.c
+
+        &#65306;&#65283;./a.out
+
+&#36816;&#34892;&#32467;&#26524;&#65306;
+
+thread 2 exiting
+thread 2 exit code 3
+thread 1 returning
+thread 1 exit code 2
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> 结束线程</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+void pthread_exit(void *__retval)<br  />
+当参数retval不是null的时候。这个值就被传递给thread_return。<br  />
+同时一个线程不能被多个线程等待，否则第一个接收到信号的线程返回成功，其余线程返回错误代码ESRCH。<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> 线程的互斥锁</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+当2个或多个线程需要访问同一个变量（资源）的时候，会造成变量的值（或是函数返回结果）的不确定性。甚至是灾难性的。<br  />
+</p>
+</div>
+<div id="outline-container-sec-10-4-1" class="outline-4">
+<h4 id="sec-10-4-1"><span class="section-number-4">10.4.1</span> pthread_mutex_init() 用来生成一个互斥锁</h4>
+<div class="outline-text-4" id="text-10-4-1">
+<p>
+pthread_mutex_init(pthread_mutex_t *__mutex, const pthread_mutexattr_t *__mutexattr)<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-2" class="outline-4">
+<h4 id="sec-10-4-2"><span class="section-number-4">10.4.2</span> pthread_mutexattr_init() 初始化互斥锁属性对象</h4>
+<div class="outline-text-4" id="text-10-4-2">
+<p>
+pthread_mutexattr_init(pthread_mutexattr_t *__attr)<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4-3" class="outline-4">
+<h4 id="sec-10-4-3"><span class="section-number-4">10.4.3</span> pthread_mutexattr_setpshared() 用来设置互斥锁的属性</h4>
+<div class="outline-text-4" id="text-10-4-3">
+<p>
+pthread_mutexattr_setpshared(pthread_mutexattr_t *__attr, int __pshared)<br  />
+</p>
+<ul class="org-ul">
+<li>PTHREAD_PROCESS_PRIVATE ：用来不同进程间的线程同步<br  />
+</li>
+<li>PTHREAD_PROCESS_SHARED : 用来同步本进程间的不同线程 （此为默认值）<br  />
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-10-4-4" class="outline-4">
+<h4 id="sec-10-4-4"><span class="section-number-4">10.4.4</span> pthread_mutexattr_settype()用来设置互斥锁的类型</h4>
+<div class="outline-text-4" id="text-10-4-4">
+<p>
+pthread_mutexattr_settype(pthread_mutexattr_t *__attr, int __kind)<br  />
+</p>
+<ul class="org-ul">
+<li>PTHREAD_MUTEX_NORMAL<br  />
+</li>
+<li>PTHREAD_MUTEX_ERRORCHECK<br  />
+</li>
+<li>PTHREAD_MUTEX_RECURSIVE<br  />
+</li>
+<li>PTHREAD_MUTEX_DEFAULT （默认值）<br  />
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5"><span class="section-number-3">10.5</span> 线程的启动顺序</h3>
+<div class="outline-text-3" id="text-10-5">
+</div><div id="outline-container-sec-10-5-1" class="outline-4">
+<h4 id="sec-10-5-1"><span class="section-number-4">10.5.1</span> ubuntu上</h4>
+<div class="outline-text-4" id="text-10-5-1">
+<p>
+在ubuntu上，一个线程创建之后，马上执行。<br  />
+如果同时创建了多个线程，则多个线程在创建完成之后，都是马上执行。<br  />
+但会根据系统时间片分配的原因，不能保证先创建的线程执行完成之后才开始执行后创建的线程。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-5-2" class="outline-4">
+<h4 id="sec-10-5-2"><span class="section-number-4">10.5.2</span> mac上</h4>
+<div class="outline-text-4" id="text-10-5-2">
+<p>
+在mac上，如果多个创建线程的语句（pthread_create)之间没有间隔，即类似sleep之类的语句，那么这些线程会按照先创建，后执行的方式来执行这些线程。<br  />
+</p>
+
+<p>
+如果这些语句之间有sleep之类的语句，那么这些线程会按照先创建 先执行的顺序来执行。<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-5-3" class="outline-4">
+<h4 id="sec-10-5-3"><span class="section-number-4">10.5.3</span> 后来又发现并不是这样的。线程的执行顺序应该是取决于操作系统。可以说没有什么规律可言。</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> pthread_cond 线程条件变量</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+原文：<br  />
+<a href="http://apps.hi.baidu.com/share/detail/19786281">http://apps.hi.baidu.com/share/detail/19786281</a><br  />
+<a href="http://hi.baidu.com/boobleoo0/blog/item/5f935039a37c58f8b311c77f.html">http://hi.baidu.com/boobleoo0/blog/item/5f935039a37c58f8b311c77f.html</a> <br  />
+<a href="http://topic.csdn.net/u/20110105/16/12717238-9816-4571-a03d-e8b603724946.html">http://topic.csdn.net/u/20110105/16/12717238-9816-4571-a03d-e8b603724946.html</a> <br  />
+   pthread_cond_wait() 用于阻塞当前线程，等待别的线程使用pthread_cond_signal()或pthread_cond_broadcast来唤醒它。 pthread_cond_wait() 必须与pthread_mutex 配套使用。pthread_cond_wait()函数一进入wait状态就会自动release mutex。当其他线程通过pthread_cond_signal()或pthread_cond_broadcast，把该线程唤醒，使pthread_cond_wait()通过（返回）时，该线程又自动获得该mutex。<br  />
+  pthread_cond_signal函数的作用是发送一个信号给另外一个正在处于阻塞等待状态的线程,使其脱离阻塞状态,继续执行.如果没有线程处在阻塞等待状态,pthread_cond_signal也会成功返回。<br  />
+  使用pthread_cond_signal一般不会有“惊群现象”产生，他最多只给一个线程发信号。假如有多个线程正在阻塞等待着这个条件变量的话，那 么是根据各等待线程优先级的高低确定哪个线程接收到信号开始继续执行。如果各线程优先级相同，则根据等待时间的长短来确定哪个线程获得信号。但无论如何一 个pthread_cond_signal调用最多发信一次。<br  />
+  但是pthread_cond_signal在多处理器上可能同时唤醒多个线程，当你只能让一个线程处理某个任务时，其它被唤醒的线程就需要继续 wait，而且规范要求pthread_cond_signal至少唤醒一个pthread_cond_wait上的线程，其实有些实现为了简单在单处理器上也会唤醒多个线程.<br  />
+   另外，某些应用，如线程池，pthread_cond_broadcast唤醒全部线程，但我们通常只需要一部分线程去做执行任务，所以其它的线程需要继续wait.所以强烈推荐对pthread_cond_wait() 使用while循环来做条件判断.<br  />
+</p>
+</div>
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> pthread_detach</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+创建一个线程默认的状态是joinable, 如果一个线程结束运行但没有被join,则它的状态类似于进程中的Zombie Process,即还有一部分资源没有被回收（退出状态码），所以创建线程者应该调用pthread_join来等待线程运行结束，并可得到线程的退出代 码，回收其资源（类似于wait,waitpid) 　　但是调用pthread_join(pthread_id)后，如果该线程没有运行结束，调用 者会被阻塞，在有些情况下我们并不希望如此，比如在Web服务器中当主线程为每个新来的链接创建一个子线程进行处理的时候，主线程并不希望因为调用 pthread_join而阻塞（因为还要继续处理之后到来的链接），这时可以在子线程中加入代码 <br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C">pthread_detach(pthread_self()) &#12288;&#12288;
+</pre>
+</div>
+<p>
+或者父线程调用<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C">pthread_detach(thread_id)&#65288;&#38750;&#38459;&#22622;&#65292;&#21487;&#31435;&#21363;&#36820;&#22238;&#65289;
+</pre>
+</div>
+
+<p>
+这将该子线程的状态设置为detached,则该线程运行结束后会自动释放所有资源。<br  />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> Makefile</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+<a href="http://blog.csdn.net/liang13664759/article/details/1771246">跟我一起学makefile</a><br  />
+</p>
+</div>
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1"><span class="section-number-3">12.1</span> Makefile的规则</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+tartget:prerequisites&#x2026;<br  />
+(tab)command<br  />
+</p>
+
+<p>
+&#x2026;<br  />
+&#x2026;<br  />
+</p>
+
+<ul class="org-ul">
+<li>target 是一个目标文件，可以是Object File, 也可以是一个可执行文件，也可以是一个标签（label）,即伪目标。<br  />
+</li>
+<li>prerequisites 是要生成那个target所需要的文件或是目标。<br  />
+</li>
+<li>command 是make需要执行的命令。（任意的shell命令）。一般是生成target所需要执行的命令。<br  />
+</li>
+</ul>
+
+<p>
+这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件， 其生成规则定义在command中，说白一点，就是prerequisites中如果有一个以上文件比target文件要新的话，command所定义的命令就会被执行。<br  />
+</p>
+
+
+<p>
+此规则可以重复多次，第一个是最终目标，它的依赖文件可以是另一次的目标文件。一直到某个目标文件的依赖文件是.c/.h文件为止。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #8cf900; background-color: #5a529c;">edit</span>:main.o a.o b.o c.o d.o
+cc -o edit main.o a.o b.o c.o d.o
+
+main.o:main.c main.h
+cc -c main.o main.c
+
+a.o:a.c a.h
+cc -c a.o a.c
+
+....
+<span style="color: #bdcfe4;">#&#29983;&#25104;edit&#36825;&#20010;&#21487;&#25191;&#34892;&#25991;&#20214;</span>&#65292;&#38656;&#35201;main.o a.o b.o c.o d.o&#36825;&#20123;&#25991;&#20214;&#12290;&#20294;&#26159;&#36825;&#20123;&#25991;&#20214;&#20063;&#38656;&#35201;&#20381;&#36182;&#20854;&#23427;&#25991;&#20214;&#25165;&#21487;&#20197;&#29983;&#25104;&#65292;&#21363;&#29983;&#25104;main.o&#38656;&#35201;main.c&#12289;&#29983;&#25104;a.o&#38656;&#35201;a.c&#12289;&#29983;&#25104;b.o&#38656;&#35201;b.c...
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2"><span class="section-number-3">12.2</span> make是如何工作的</h3>
+<div class="outline-text-3" id="text-12-2">
+<ol class="org-ol">
+<li>make会在当前目录下找名字叫“Makefile”或“makefile”的文件。<br  />
+</li>
+<li>如果找到，它会找文件中的第一个目标文件（target），在上面的例子中，他会找到“edit”这个文件，并把这个文件作为最终的目标文件。<br  />
+</li>
+<li>如果edit文件不存在，或是edit所依赖的后面的 .o 文件的文件修改时间要比edit这个文件新，那么，他就会执行后面所定义的命令来生成edit这个文件。<br  />
+</li>
+<li>如果edit所依赖的.o文件也不存在，那么make会在当前文件中找目标为.o文件的依赖性，如果找到则再根据那一个规则生成.o文件。（这有点像一个堆栈的过程）<br  />
+</li>
+<li>当然，你的C文件和H文件是存在的啦，于是make会生成 .o 文件，然后再用 .o 文件生命make的终极任务，也就是执行文件edit了。<br  />
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-12-3" class="outline-3">
+<h3 id="sec-12-3"><span class="section-number-3">12.3</span> makefile中使用变量</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+在makefile中可以使用变量，使变量等于某个target的prerequisites，或者等于某个命令的参数。然后就可以使用这个变量来代替这此文件或参数。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C">objects = main.o a.o b.o c.o
+edit:$(objects)
+cc -o edit $(objects)
+
+<span style="color: #bdcfe4;">#  $</span>(objects) &#23601;&#21487;&#20197;&#20195;&#26367;main.o a.o b.o c.o
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-12-4" class="outline-3">
+<h3 id="sec-12-4"><span class="section-number-3">12.4</span> make的自动推导</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+在生某个.o文件的时候，make命令可以自动推导出文件以及文件的依赖关系，和生成.o文件的命令。<br  />
+所以在生成.o文件的时候，只需要指出生成此.o文件的.h文件即可。<br  />
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C">main.<span style="color: #8cf900; background-color: #5a529c;">o</span>:main.c main.h **.h
+cc -c main.o main.c **.h
+
+&#21487;&#20197;&#20889;&#25104;
+main.o:main.h ***.h
+
+&#21363;&#21487;&#12290;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-5" class="outline-3">
+<h3 id="sec-12-5"><span class="section-number-3">12.5</span> makefile的文件搜寻</h3>
+<div class="outline-text-3" id="text-12-5">
+<ul class="org-ul">
+<li>定义makefile的特殊变量<br  />
+</li>
+</ul>
+<p>
+makefile默认搜寻路径是当前路径。<br  />
+如果使用makefile的特殊变量 VPATH 就可以指定其它搜索路径，当在当前路径找不到头文件时，可以在VPATH指定的路径中去查找。<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C">VPATH = src:../headers
+</pre>
+</div>
+
+<p>
+这个定义指定了两个目录， src 和 ../headers  中间是用":"冒号分隔的。<br  />
+</p>
+
+<ul class="org-ul">
+<li>另一个是使用make的关键字<br  />
+</li>
+</ul>
+<p>
+vpath<br  />
+此为小写。<br  />
+语法如下:<br  />
+</p>
+<ul class="org-ul">
+<li>vpath &lt;pattern&gt; &lt;directories&gt;<br  />
+为符合模式&lt;pattern&gt;的文件指定搜索目录&lt;directories&gt;。<br  />
+</li>
+<li>vpath &lt;pattern&gt;<br  />
+为符合模式&lt;pattern&gt;的文件清除搜索目录。<br  />
+</li>
+<li>vpath<br  />
+清除所有已被设置好的文件搜索目录。<br  />
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-C">vpath %h ../headers
+&#27880;&#65306; <span style="color: #ff40ff;">"%"</span> &#26159;&#36890;&#37197;&#31526;&#65292; &#26159;&#21305;&#37197;&#38646;&#20010;&#25110;&#33509;&#24178;&#20010;&#23383;&#31526;&#12290;
+%.h &#34920;&#31034;&#20197;.h&#32467;&#23614;&#30340;&#25991;&#20214;
+
+&#19978;&#38754;&#35821;&#21477;&#34920;&#31034;&#65306;&#22312;../headers &#30446;&#24405;&#20013;&#25628;&#32034;&#25152;&#26377;&#20197;.h&#32467;&#23614;&#30340;&#25991;&#20214;&#12290;
+
+
+
+vpath %.c foo
+vpath %.c blish
+vpath %.c bar
+&#34920;&#31034;&#65306;.c &#32467;&#23614;&#30340;&#25991;&#20214;&#65292; &#20808;&#22312;foo&#30446;&#24405;&#65292;&#28982;&#21518;&#22312;blish&#30446;&#24405;&#65292;&#26368;&#21518;&#26159;bar&#30446;&#24405;&#12290;
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-12-6" class="outline-3">
+<h3 id="sec-12-6"><span class="section-number-3">12.6</span> 伪目标</h3>
+<div class="outline-text-3" id="text-12-6">
+<p>
+伪目标不是一个文件，只是一个标签。<br  />
+make不能决非定它是不是要执行，所以需要显示的指明这个“目标”才能让其生效。<br  />
+@&lt;font color="#ff0000"&gt;伪目标不能和文件名重名@&lt;/font&gt;<br  />
+</p>
+
+<p>
+为了避免和文件名重名，可以使用一个特殊的标记".PHONY"来显示指明一个目标为"伪目标",向make说明，一管是否有这个文件， 这个目标就是伪目标。<br  />
+.PHONY:clean<br  />
+clean:<br  />
+(tab)rm *.o<br  />
+</p>
+</div>
+
+
+<div id="outline-container-sec-12-6-1" class="outline-4">
+<h4 id="sec-12-6-1"><span class="section-number-4">12.6.1</span> 伪目标其它功能</h4>
+<div class="outline-text-4" id="text-12-6-1">
+<p>
+伪目标一般没有依赖的文件。但是，我们也可以为伪目标指定所依赖的文件。伪目标同样可以作为“默认目标”，只要将其放在第一个。一个示例就是，如果你的Makefile需要一口气生成若干个可执行文件，但你只想简单地敲一个make完事，并且，所有的目标文件都写在一个Makefile中，那么你可以使用“伪目标”这个特性：<br  />
+</p>
+
+<p>
+all : prog1 prog2 prog3<br  />
+.PHONY : all<br  />
+</p>
+
+<p>
+prog1 : prog1.o utils.o<br  />
+cc -o prog1 prog1.o utils.o<br  />
+</p>
+
+<p>
+prog2 : prog2.o<br  />
+cc -o prog2 prog2.o<br  />
+</p>
+
+<p>
+prog3 : prog3.o sort.o utils.o<br  />
+cc -o prog3 prog3.o sort.o utils.o<br  />
+</p>
+
+<p>
+我们知道，Makefile中的第一个目标会被作为其默认目标。我们声明了一个“all”的伪目标，其依赖于其它三个目标。由于伪目标的特性是，总是被执行的，所以其依赖的那三个目标就总是不如“all”这个目标新。所以，其它三个目标的规则总是会被决议。也就达到了我们一口气生成多个目标的目的。“.PHONY : all”声明了“all”这个目标为“伪目标”。<br  />
+</p>
+
+<p>
+随便提一句，从上面的例子我们可以看出，目标也可以成为依赖。所以，伪目标同样也可成为依赖。看下面的例子：<br  />
+</p>
+
+<p>
+.PHONY: cleanall cleanobj cleandiff<br  />
+</p>
+
+<p>
+cleanall : cleanobj cleandiff<br  />
+rm program<br  />
+</p>
+
+<p>
+cleanobj :<br  />
+rm *.o<br  />
+</p>
+
+<p>
+cleandiff :<br  />
+rm *.diff<br  />
+</p>
+
+<p>
+“make clean”将清除所有要被清除的文件。“cleanobj”和“cleandiff”这两个伪目标有点像“子程序”的意思。我们可以输入“make cleanall”和“make cleanobj”和“make cleandiff”命令来达到清除不同种类文件的目的。<br  />
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-12-7" class="outline-3">
+<h3 id="sec-12-7"><span class="section-number-3">12.7</span> 静态模式</h3>
+<div class="outline-text-3" id="text-12-7">
+<p>
+静态模式可以更加容易地定义多目标的规则，可以让我们的规则变得更加的有弹性和灵活。我们还是先来看一下语法：<br  />
+</p>
+
+<p>
+&lt;targets &#x2026;&gt;: &lt;target-pattern&gt;: &lt;prereq-patterns &#x2026;&gt;<br  />
+&lt;commands&gt;<br  />
+&#x2026;<br  />
+</p>
+
+
+<p>
+targets定义了一系列的目标文件，可以有通配符。是目标的一个集合。<br  />
+</p>
+
+<p>
+target-parrtern是指明了targets的模式，也就是的目标集模式。<br  />
+</p>
+
+<p>
+prereq-parrterns是目标的依赖模式，它对target-parrtern形成的模式再进行一次依赖目标的定义。<br  />
+</p>
+
+<p>
+这样描述这三个东西，可能还是没有说清楚，还是举个例子来说明一下吧。如果我们的&lt;target-parrtern&gt;定义成“%.o”，意思是我们的&lt;target&gt;集合中都是以“.o”结尾的，而如果我们的&lt;prereq-parrterns&gt;定义成“%.c”，意思是对&lt;target-parrtern&gt;所形成的目标集进行二次定义，其计算方法是，取&lt;target-parrtern&gt;模式中的“%”（也就是去掉了[.o]这个结尾），并为其加上[.c]这个结尾，形成的新集合。<br  />
+</p>
+
+<p>
+所以，我们的“目标模式”或是“依赖模式”中都应该有“%”这个字符，如果你的文件名中有“%”那么你可以使用反斜杠“/”进行转义，来标明真实的“%”字符。<br  />
+</p>
+
+<p>
+看一个例子：<br  />
+</p>
+
+<p>
+objects = foo.o bar.o<br  />
+</p>
+
+<p>
+all: $(objects)<br  />
+</p>
+
+<p>
+$(objects): %.o: %.c<br  />
+$(CC) -c $(CFLAGS) $&lt; -o $@<br  />
+</p>
+
+
+<p>
+上面的例子中，指明了我们的目标从$object中获取，“%.o”表明要所有以“.o”结尾的目标，也就是“foo.o bar.o”，也就是变量$object集合的模式，而依赖模式“%.c”则取模式“%.o”的“%”，也就是“foo bar”，并为其加下“.c”的后缀，于是，我们的依赖目标就是“foo.c bar.c”。而命令中的“$&lt;”和“$@”则是自动化变量，“$&lt;”表示所有的依赖目标集（也就是“foo.c bar.c”），“$@”表示目标集（也就是“foo.o bar.o”）。于是，上面的规则展开后等价于下面的规则：<br  />
+</p>
+
+<p>
+foo.o : foo.c<br  />
+$(CC) -c $(CFLAGS) foo.c -o foo.o<br  />
+bar.o : bar.c<br  />
+$(CC) -c $(CFLAGS) bar.c -o bar.o<br  />
+</p>
+
+<p>
+试想，如果我们的“%.o”有几百个，那种我们只要用这种很简单的“静态模式规则”就可以写完一堆规则，实在是太有效率了。“静态模式规则”的用法很灵活，如果用得好，那会一个很强大的功能。再看一个例子：<br  />
+</p>
+
+
+<p>
+files = foo.elc bar.o lose.o<br  />
+</p>
+
+<p>
+$(filter %.o,$(files)): %.o: %.c<br  />
+$(CC) -c $(CFLAGS) $&lt; -o $@<br  />
+$(filter %.elc,$(files)): %.elc: %.el<br  />
+emacs -f batch-byte-compile $&lt;<br  />
+</p>
+
+
+<p>
+$(filter %.o,$(files))表示调用Makefile的filter函数，过滤“$filter”集，只要其中模式为“%.o”的内容。其的它内容，我就不用多说了吧。这个例字展示了Makefile中更大的弹性。<br  />
+</p>
+
+
+
+<p>
+@&lt;font color="#ff0000"&gt;$&lt;: 表示所有的依赖目标集<br  />
+$@表示所有的目标集<br  />
+都是自动化变量@&lt;/font&gt;<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-8" class="outline-3">
+<h3 id="sec-12-8"><span class="section-number-3">12.8</span> makefile的函数</h3>
+<div class="outline-text-3" id="text-12-8">
+<p>
+Makefile  常用函数表<br  />
+</p>
+</div>
+
+<div id="outline-container-sec-12-8-1" class="outline-4">
+<h4 id="sec-12-8-1"><span class="section-number-4">12.8.1</span> 字符串处理函数</h4>
+<div class="outline-text-4" id="text-12-8-1">
+<ol class="org-ol">
+<li>$(subst FROM,TO,TEXT)<br  />
+
+<p>
+函数名称：字符串替换函数—subst。<br  />
+</p>
+
+<p>
+函数功能：把字串“TEXT”中的“FROM”字符替换为“TO”。<br  />
+</p>
+
+<p>
+返回值：替换后的新字符串。<br  />
+</p>
+</li>
+
+<li>$(patsubst PATTERN,REPLACEMENT,TEXT)<br  />
+
+<p>
+函数名称：模式替换函数—patsubst。<br  />
+函数功能：搜索“TEXT”中以空格分开的单词，将否符合模式“TATTERN”替换为“REPLACEMENT”。参数“PATTERN”中可以使用模式通配符“%”来代表一个单词中的若干字符。如果参数“REPLACEMENT”中也包含一个“%”，那么“REPLACEMENT”中的“%”将是“TATTERN”中的那个“%”所代表的字符串。在“TATTERN”和“REPLACEMENT”中，只有第一个“%”被作为模式字符来处理，后续的作为字符本上来处理。在两个参数中当使用第一个“%”本是字符本身时，可使用反斜杠“\”对它进行转义处理。<br  />
+返回值：替换后的新字符串。<br  />
+函数说明：参数“TEXT”单词之间的多个空格在处理时被合并为一个空格，但前导和结尾空格忽略。<br  />
+</p>
+</li>
+<li>$(strip STRINT)<br  />
+
+<p>
+函数名称：去空格函数—strip。<br  />
+函数功能：去掉字串（若干单词，使用若干空字符分割）“STRINT”开头和结尾的空字符，并将其中多个连续空字符合并为一个空字符。<br  />
+返回值：无前导和结尾空字符、使用单一空格分割的多单词字符串。<br  />
+函数说明：空字符包括空格、[Tab]等不可显示字符。<br  />
+</p>
+</li>
+
+<li>$(findstring FIND,IN)<br  />
+</li>
+</ol>
+<p>
+函数名称：查找字符串函数—findstring。<br  />
+函数功能：搜索字串“IN”，查找“FIND”字串。<br  />
+返回值：如果在“IN”之中存在“FIND”，则返回“FIND”，否则返回空。<br  />
+函数说明：字串“IN”之中可以包含空格、[Tab]。搜索需要是严格的文本匹配。<br  />
+</p>
+
+<ol class="org-ol">
+<li>$(filter PATTERN…,TEXT)<br  />
+</li>
+</ol>
+<p>
+函数名称：过滤函数—filter。<br  />
+函数功能：过滤掉字串“TEXT”中所有不符合模式“PATTERN”的单词，保留所有符合此模式的单词。可以使用多个模式。模式中一般需要包含模式字符“%”。存在多个模式时，模式表达式之间使用空格分割。<br  />
+返回值：空格分割的“TEXT”字串中所有符合模式“PATTERN”的字串。<br  />
+函数说明：“filter”函数可以用来去除一个变量中的某些字符串，我们下边的例子中就是用到了此函数。<br  />
+</p>
+
+<p>
+6.$(filter-out PATTERN&#x2026;,TEXT)<br  />
+函数名称：反过滤函数—filter-out。<br  />
+函数功能：和“filter”函数实现的功能相反。过滤掉字串“TEXT”中所有符合模式“PATTERN”的单词，保留所有不符合此模式的单词。可以有多个模式。存在多个模式时，模式表达式之间使用空格分割。。<br  />
+返回值：空格分割的“TEXT”字串中所有不符合模式“PATTERN”的字串。<br  />
+函数说明：“filter-out”函数也可以用来去除一个变量中的某些字符串，（实现和“filter”函数相反）。<br  />
+</p>
+
+<p>
+7.$(sort LIST)<br  />
+函数名称：排序函数—sort。<br  />
+函数功能：给字串“LIST”中的单词以首字母为准进行排序（升序），并取掉重复的单词。<br  />
+返回值：空格分割的没有重复单词的字串。<br  />
+函数说明：两个功能，排序和去字串中的重复单词。可以单独使用其中一个功能。<br  />
+</p>
+
+<p>
+8.$(word N,TEXT)<br  />
+函数名称：取单词函数—word。<br  />
+函数功能：取字串“TEXT”中第“N”个单词（“N”的值从1开始）。<br  />
+返回值：返回字串“TEXT”中第“N”个单词。<br  />
+函数说明：如果“N”值大于字串“TEXT”中单词的数目，返回空字符串。如果“N”为0，出错！<br  />
+</p>
+
+<p>
+9.$(wordlist S,E,TEXT)<br  />
+函数名称：取字串函数—wordlist。<br  />
+函数功能：从字串“TEXT”中取出从“S”开始到“E”的单词串。“S”和“E”表示单词在字串中位置的数字。<br  />
+返回值：字串“TEXT”中从第“S”到“E”（包括“E”）的单词字串。<br  />
+函数说明：“S”和“E”都是从1开始的数字。<br  />
+当“S”比“TEXT”中的字数大时，返回空。如果“E”大于“TEXT”字数，返回从“S”开始，到“TEXT”结束的单词串。如果“S”大于“E”，返回空。<br  />
+</p>
+
+<p>
+10.$(words TEXT)<br  />
+函数名称：统计单词数目函数—words。<br  />
+函数功能：字算字串“TEXT”中单词的数目。<br  />
+返回值：“TEXT”字串中的单词数。<br  />
+</p>
+
+<p>
+11.$(firstword NAMES…)<br  />
+函数名称：取首单词函数—firstword。<br  />
+函数功能：取字串“NAMES…”中的第一个单词。<br  />
+返回值：字串“NAMES…”的第一个单词。<br  />
+函数说明：“NAMES”被认为是使用空格分割的多个单词（名字）的序列。函数忽略“NAMES…”中除第一个单词以外的所有的单词。<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-8-2" class="outline-4">
+<h4 id="sec-12-8-2"><span class="section-number-4">12.8.2</span> 文件名处理函数</h4>
+<div class="outline-text-4" id="text-12-8-2">
+<p>
+1.$(dir NAMES…)<br  />
+函数名称：取目录函数—dir。<br  />
+函数功能：从文件名序列“NAMES…”中取出各个文件名目录部分。文件名的目录部分就是包含在文件名中的最后一个斜线（“/”）（包括斜线）之前的部分。<br  />
+返回值：空格分割的文件名序列“NAMES…”中每一个文件的目录部分。<br  />
+函数说明：如果文件名中没有斜线，认为此文件为当前目录（“./”）下的文件。<br  />
+</p>
+
+<p>
+2.$(notdir NAMES…)<br  />
+函数名称：取文件名函数——notdir。<br  />
+函数功能：从文件名序列“NAMES…”中取出非目录部分。目录部分是指最后一个斜线（“/”）（包括斜线）之前的部分。删除所有文件名中的目录部分，只保留非目录部分。<br  />
+返回值：文件名序列“NAMES…”中每一个文件的非目录部分。<br  />
+函数说明：如果“NAMES…”中存在不包含斜线的文件名，则不改变这个文件名。以反斜线结尾的文件名，是用空串代替，因此当“NAMES…”中存在多个这样的文件名时，返回结果中分割各个文件名的空格数目将不确定！这是此函数的一个缺陷。<br  />
+</p>
+
+<p>
+3.$(suffix NAMES…)<br  />
+函数名称：取后缀函数—suffix。<br  />
+函数功能：从文件名序列“NAMES…”中取出各个文件名的后缀。后缀是文件名中最后一个以点“.”开始的（包含点号）部分，如果文件名中不包含一个点号，则为空。<br  />
+返回值：以空格分割的文件名序列“NAMES…”中每一个文件的后缀序列。<br  />
+函数说明：“NAMES…”是多个文件名时，返回值是多个以空格分割的单词序列。如果文件名没有后缀部分，则返回空。<br  />
+</p>
+
+<p>
+4.$(basename NAMES…)<br  />
+函数名称：取前缀函数—basename。<br  />
+函数功能：从文件名序列“NAMES…”中取出各个文件名的前缀部分（点号之后的部分）。前缀部分指的是文件名中最后一个点号之前的部分。<br  />
+返回值：空格分割的文件名序列“NAMES…”中各个文件的前缀序列。如果文件没有前缀，则返回空字串。<br  />
+函数说明：如果“NAMES…”中包含没有后缀的文件名，此文件名不改变。如果一个文件名中存在多个点号，则返回值为此文件名的最后一个点号之前的文件名部分。<br  />
+</p>
+
+<p>
+5.$(addsuffix SUFFIX,NAMES…)<br  />
+函数名称：加后缀函数—addsuffix。<br  />
+函数功能：为“NAMES…”中的每一个文件名添加后缀“SUFFIX”。参数“NAMES…”为空格分割的文件名序列，将“SUFFIX”追加到此序列的每一个文件名的末尾。<br  />
+返回值：以单空格分割的添加了后缀“SUFFIX”的文件名序列。<br  />
+</p>
+
+<p>
+6.$(addprefix PREFIX,NAMES…)<br  />
+函数名称：加前缀函数—addprefix。<br  />
+函数功能：为“NAMES…”中的每一个文件名添加前缀“PREFIX”。参数“NAMES…”是空格分割的文件名序列，将“SUFFIX”添加到此序列的每一个文件名之前。<br  />
+返回值：以单空格分割的添加了前缀“PREFIX”的文件名序列。<br  />
+</p>
+
+<p>
+7.$(join LIST1,LIST2)<br  />
+函数名称：单词连接函数——join。<br  />
+函数功能：将字串“LIST1”和字串“LIST2”各单词进行对应连接。就是将“LIST2”中的第一个单词追加“LIST1”第一个单词字后合并为一个单词；将“LIST2”中的第二个单词追加到“LIST1”的第一个单词之后并合并为一个单词，……依次列推。<br  />
+返回值：单空格分割的合并后的字（文件名）序列。<br  />
+函数说明：如果“LIST1”和“LIST2”中的字数目不一致时，两者中多余部分将被作为返回序列的一部分。<br  />
+</p>
+
+<p>
+8.$(wildcard PATTERN)<br  />
+函数名称：获取匹配模式文件名函数—wildcard<br  />
+函数功能：列出当前目录下所有符合模式“PATTERN”格式的文件名。<br  />
+返回值：空格分割的、存在当前目录下的所有符合模式“PATTERN”的文件名。<br  />
+函数说明：“PATTERN”使用shell可识别的通配符，包括“?”（单字符）、“*”（多字符）等。<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-8-3" class="outline-4">
+<h4 id="sec-12-8-3"><span class="section-number-4">12.8.3</span> 其它函数</h4>
+<div class="outline-text-4" id="text-12-8-3">
+<p>
+1.$(foreach VAR,LIST,TEXT)<br  />
+函数功能：函数“foreach”不同于其它函数。它是一个循环函数。类似于Linux的shell中的循环（for语句）。这个函数的工作过程是这样<br  />
+的：如果必要（存在变量或者函数的引用），首先展开变量“VAR”和“LIST”；而表达式“TEXT”中的变量引用不被展开。执行时把“LIST”中使<br  />
+用空格分割的单词依次取出赋值给变量“VAR”，然后执行“TEXT”表达式。重复直到“LIST”的最后一个单词（为空时结束）。“TEXT”中的变量<br  />
+或者函数引用在执行时才被展开，因此如果在“TEXT”中存在对“VAR”的引用，那么“VAR”的值在每一次展开式将会到的不同的值。<br  />
+返回值：空格分割的多次表达式“TEXT”的计算的结果。<br  />
+</p>
+
+<p>
+2.$(if CONDITION,THEN-PART[,ELSE-PART])<br  />
+函数功能：函数“if”提供了一个在函数上下文中实现条件判断的功能。就像make所支持的条件语句—ifeq。第一个参数“CONDITION”，在函<br  />
+数执行时忽略其前导和结尾空字符并展开。“CONDITION”的展开结果非空，则条件为真，就将第二个参数“THEN_PATR”作为函数的计算表达<br  />
+式，函数的返回值就是第二表达式的计算结果；“CONDITION”的展开结果为空，将第三个参数<br  />
+“ELSE-PART”作为函数的表达式，返回结果为第三个表达式的计算结果。<br  />
+返回值：根据条件决定函数的返回值是第一个或者第二个参数表达式的计算结果。当不存在第三个参数“ELSE-PART”，并且“CONDITION”展开为空，函数返回空。<br  />
+函数说明：函数的条件表达式“CONDITION”决定了，函数的返回值只能是“THEN-PART”或者“ELSE-PART”两个之一的计算结果。<br  />
+</p>
+
+<p>
+3.$(call VARIABLE,PARAM,PARAM,&#x2026;)<br  />
+函数功能：“call”函数是唯一一个可以创建定制参数化的函数的引用函数。我们可以将一个变量定义为一个复杂的表达式，用“call”函数根据不同的参数对它进行展开来获得不同的结果。<br  />
+在执行时，将它的参数“PARAM”依次赋值给临时变量“$(1)”、“$(2)”（这些临时变量定义在“VARIABLE”的值中，参考下边的例<br  />
+子）……<br  />
+call函数对参数的数目没有限制，也可以没有参数值，没有参数值的“call”没有任何实际存在的意义。执行时变量“VARIABLE”被展开为在函数<br  />
+上下文有效的临时变量，变量定义中的“$(1)”作为第一个参数，并将函数参数值中的第一个参数赋值给它；变量中的“$(2)”一样被赋值为函数的第二个<br  />
+参数值；依此类推（变量$(0)代表变量“VARIABLE”本身）。之后对变量“VARIABLE” 表达式的计算值。<br  />
+返回值：参数值“PARAM”依次替换“$(1)”、“$(2)”…… 之后变量“VARIABLE”定义的表达式的计算值。<br  />
+函数说明：1.<br  />
+函数中“VARIBLE”是一个变量名，而不是对变量的引用。因此，通常“call”函数中的“VARIABLE”中不包含“$”（当然，除了此变量名是<br  />
+一个计算的变量名）。2.<br  />
+当变量“VARIBLE”是一个make内嵌的函数名时（如“if”、“foreach”、“strip”等），对“PARAM”参数的使用需要注意，因<br  />
+为不合适或者不正确的参数将会导致函数的返回值难以预料。3. 函数中多个“PARAM”之间使用逗号分割。4.<br  />
+变量“VARIABLE”在定义时不能定义为直接展开式！只能定义为递归展开式。<br  />
+</p>
+
+<p>
+4.value函数<br  />
+$(value VARIABLE)<br  />
+函数功能：不对变量“VARIBLE”进行任何展开操作，直接返回变量“VARIBALE”代表的值。这里“VARIABLE”是一个变量名，一般不包含“$”（当然，除了计算的变量名），<br  />
+返回值：变量“VARIBALE”所定义文本值（不展开其中的变量或者函数应用）。<br  />
+</p>
+
+<p>
+5.eval函数<br  />
+函数功能：函数“eval”是一个比较特殊的函数。使用它我们可以在我们的Makefile中构造一个可变的规则结构关系（依赖关系链），其中可以使用其<br  />
+它变量和函数。函数“eval”对它的参数进行展开，展开的结果作为Makefile的一部分，make可以对展开内容进行语法解析。展开的结果可以包含<br  />
+一个新变量、目标、隐含规则或者是明确规则等。也就是说此函数的功能主要是：根据其参数的关系、结构，对它们进行替换展开。<br  />
+返回值：函数“eval”的返回值时空，也可以说没有返回值。<br  />
+函数说明：“eval”函数执行时会对它的参数进行两次展开。第一次展开过程发是由函数本身完成的，第二次是函数展开后的结果被作为Makefile内容<br  />
+时由make解析时展开的。明确这一点对于使用“eval”函数非常重要。在理解了函数“eval”二次展开的过程后。实际使用时，当函数的展开结果中存<br  />
+在引用（格式为：$(x)）时，那么在函数的参数中应该使用“$$”来代替“$”。因为这一点，所以通常它的参数中会使用函数“value”来取一个变量<br  />
+的文本值。<br  />
+</p>
+
+<p>
+6.origin函数<br  />
+$(origin VARIABLE)<br  />
+函数功能：函数“origin”查询参数“VARIABLE”（通常是一个变量名）的出处。<br  />
+函数说明：“VARIABLE”是一个变量名而不是一个变量的引用。因此通常它不包含“$”（当然，计算的变量名例外）。<br  />
+返回值：返回“VARIABLE”的定义方式。用字符串表示。<br  />
+. undefined<br  />
+变量“VARIABLE”没有被定义。<br  />
+. default<br  />
+变量“VARIABLE”是一个默认定义（内嵌变量）。如“CC”、“MAKE”、“RM”等变量。如果在Makefile中重新定义这些变量，函数返回值将相应发生变化。<br  />
+. environment<br  />
+变量“VARIABLE”是一个系统环境变量，并且make没有使用命令行选项“-e”（Makefile中不存在同名的变量定义，此变量没有被替代）。<br  />
+. environment override<br  />
+变量“VARIABLE”是一个系统环境变量，并且make使用了命令行选项“-e”。Makefile中存在一个同名的变量定义，使用“make -e”时环境变量值替代了文件中的变量定义。<br  />
+. file<br  />
+变量“VARIABLE”在某一个makefile文件中定义。<br  />
+. command line<br  />
+变量“VARIABLE”在命令行中定义。<br  />
+. override<br  />
+变量“VARIABLE”在makefile文件中定义并使用“override”指示符声明。<br  />
+. automatic<br  />
+变量“VARIABLE”是自动化变量。<br  />
+</p>
+
+<p>
+7.shell函数<br  />
+不同于除“wildcard”函数之外的其它函数。make可以使用它来和外部通信。<br  />
+函数功能：函数“shell”所实现的功能和shell中的引用（``）相同。实现了命令的扩展。意味着需要一个shell<br  />
+命令作为它的参数，而返回的结果是此命令在shell中的执行结果。make仅仅对它的回返结果进行处理；make将函数的返回结果中的所有换行符<br  />
+（“\n”）或者一对“\n\r”替换为单空格；并去掉末尾的回车符号（“\n”）或者“\n\r”。函数展开式时，它所调用的命令（它的参数）得到执<br  />
+行。除了对它的引用出现在规则的命令行中和递归的变量定义引用以外，其它决大多数情况下，make在读取Makefile时函数shell就被扩展。<br  />
+返回值：函数“shell”的参数在shell中的执行结果。<br  />
+函数说明：函数本身的返回值是其参数的执行结果，没有进行任何处理。对结果的处理是由make进行的。当对函数的引用出现在规则的命令行中，命令行在执行<br  />
+时函数引用才被展开。展开过程函数参数的执行时在另外一个shell进程中完成的，因此对于出现在规则命令行的多级“shell”函数引用需要谨慎处理，<br  />
+否则会影响效率（每一级的“shell”函数的参数都会有各自的shell进程）。<br  />
+</p>
+
+<p>
+8.error 函数<br  />
+$(error TEXT…)<br  />
+函数功能：产生致命错误，并提示“TEXT…”信息给用户，之后退出make的执行。需要说明的是：“error”函数是在函数展开式（函数被调用时）才<br  />
+提示信息并结束make进程。因此如果函数出现在命令中或者一个递归的变量定义中时，在读取Makefile时不会出现错误。而只有包含<br  />
+“error”函数引用的命令被执行，或者定义中引用此函数的递归变量被展开时，才会提示致命信息“TEXT…”同时make退出执行。<br  />
+返回值：空字符<br  />
+函数说明：“error”函数一般不出现在直接展开式的变量定义中，否则在make读取Makefile时将会提示致命错误。<br  />
+</p>
+
+<ol class="org-ol">
+<li>warning 函数<br  />
+</li>
+</ol>
+<p>
+$(warning TEXT…)<br  />
+函数功能：函数“warning”类似于函数“error”，区别在于它不会导致致命错误（make不退出），而只是提示“TEXT…”，make的执行过程继续。<br  />
+返回值：空字符<br  />
+函数说明：用法和“error”类似，展开过程相同。<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> access 函数</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+access()函数用来判断用户是否具有访问某个文件的权限(或判断某个文件是否存在).<br  />
+</p>
+
+<p>
+#include&lt;unistd.h&gt;<br  />
+</p>
+
+<p>
+int access(const char *pathname,int mode)<br  />
+</p>
+
+<p>
+参数:<br  />
+         pathname:表示要测试的文件的路径<br  />
+</p>
+
+<p>
+mode:表示测试的模式可能的值有:<br  />
+</p>
+
+<p>
+R_OK:是否具有读权限<br  />
+</p>
+
+<p>
+W_OK:是否具有可写权限<br  />
+</p>
+
+<p>
+X_OK:是否具有可执行权限<br  />
+</p>
+
+<p>
+F_OK:文件是否存在<br  />
+</p>
+
+<p>
+返回值:若测试成功则返回0,否则返回-1<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> strtok 函数</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+头文件：#include &lt;string.h&gt;<br  />
+</p>
+
+<p>
+定义函数：char * strtok(char *s, const char *delim);<br  />
+</p>
+
+<p>
+函数说明：strtok()用来将字符串分割成一个个片段. 参数s 指向欲分割的字符串, 参数delim 则为分割字符串,当strtok()在参数s 的字符串中发现到参数delim 的分割字符时则会将该字符改为\0 字符. 在第一次调用时,strtok()必需给予参数s 字符串, 往后的调用则将参数s 设置成NULL. 每次调用成功则返回下一个分割后的字符串指针.<br  />
+</p>
+
+<p>
+返回值：返回下一个分割后的字符串指针, 如果已无从分割则返回NULL.<br  />
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;string.h&gt;</span>
+<span style="color: #c15bf1; background-color: #f7e3c0;">main</span>()
+{
+    <span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">s</span>[] = <span style="color: #ff40ff;">"aaaa/bbbbb/cccc/dddd"</span>;
+
+    <span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">p</span>;
+    printf(<span style="color: #ff40ff;">"%s "</span>, strtok(s, <span style="color: #ff40ff;">"/"</span>));
+    printf(<span style="color: #ff40ff;">"--------------"</span>);
+    <span style="color: #00fcff; background-color: #000000;">while</span>((p = strtok(<span style="color: #8cf900; background-color: #5a529c;">NULL</span>, <span style="color: #ff40ff;">"/"</span>)))
+        printf(<span style="color: #ff40ff;">"%s "</span>, p);
+    printf(<span style="color: #ff40ff;">"\n"</span>);
+}
+
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#36755;&#20986;aaaa bbbb cccc dddd</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> signal和sigaction</h2>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> C语言的内存</h2>
+<div class="outline-text-2" id="text-16">
+
+<div class="figure">
+<p><img src="./Objective C中的Block – 程序员说.png" alt="Objective C中的Block – 程序员说.png" /><br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16-1" class="outline-3">
+<h3 id="sec-16-1"><span class="section-number-3">16.1</span> 栈区</h3>
+<div class="outline-text-3" id="text-16-1">
+<p>
+由编译器自动分配，自动释放。存放函数的参数，局部变量的值。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-16-2" class="outline-3">
+<h3 id="sec-16-2"><span class="section-number-3">16.2</span> 堆</h3>
+<div class="outline-text-3" id="text-16-2">
+<p>
+由程序员分配，并负责释放。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-16-3" class="outline-3">
+<h3 id="sec-16-3"><span class="section-number-3">16.3</span> 全局区     这些空间在程序编译时就分配好了。</h3>
+<div class="outline-text-3" id="text-16-3">
+<p>
+存放程序中的全局变量和静态变量。 程序退出后由系统释放。程序不退出就一直保存。<br  />
+</p>
+</div>
+<div id="outline-container-sec-16-3-1" class="outline-4">
+<h4 id="sec-16-3-1"><span class="section-number-4">16.3.1</span> 初始化的全局和静态变量在一片区域</h4>
+</div>
+<div id="outline-container-sec-16-3-2" class="outline-4">
+<h4 id="sec-16-3-2"><span class="section-number-4">16.3.2</span> 未初始化的全局和静态变量在相邻的另一片区域</h4>
+</div>
+</div>
+<div id="outline-container-sec-16-4" class="outline-3">
+<h3 id="sec-16-4"><span class="section-number-3">16.4</span> 常量区</h3>
+<div class="outline-text-3" id="text-16-4">
+<p>
+常量、字符串放在这个地方。<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-16-5" class="outline-3">
+<h3 id="sec-16-5"><span class="section-number-3">16.5</span> 程序代码区</h3>
+<div class="outline-text-3" id="text-16-5">
+<p>
+用来存放程序二进制代码的地方<br  />
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-16-6" class="outline-3">
+<h3 id="sec-16-6"><span class="section-number-3">16.6</span> 一个例子</h3>
+<div class="outline-text-3" id="text-16-6">
+<div class="org-src-container">
+
+<pre class="src src-C">&#36825;&#26159;&#19968;&#20010;&#21069;&#36744;&#20889;&#30340;&#65292;&#38750;&#24120;&#35814;&#32454; 
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">main.cpp </span>
+<span style="color: #00f900;">int</span> a = 0; &#20840;&#23616;&#21021;&#22987;&#21270;&#21306; 
+<span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">p1</span>;<span style="color: #00f900;">&#20840;&#23616;&#26410;&#21021;&#22987;&#21270;&#21306;</span>
+<span style="color: #c15bf1; background-color: #f7e3c0;">main</span>() 
+{ 
+<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">b</span>; &#26632; 
+<span style="color: #00f900;">char</span> <span style="color: #fefb00; background-color: #000000;">s</span>[] = <span style="color: #ff40ff;">"abc"</span>; &#26632; 
+<span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">p2</span>; &#26632; 
+<span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">p3</span> = <span style="color: #ff40ff;">"123456"</span>; 123456 &#22312;&#24120;&#37327;&#21306;&#65292; p3 &#22312;&#26632;&#19978;&#12290;
+<span style="color: #00fcff; background-color: #000000;">static</span> <span style="color: #00f900;">int</span> c =0 &#65307; &#20840;&#23616;&#65288;&#38745;&#24577;&#65289;&#21021;&#22987;&#21270;&#21306; 
+p1 = (<span style="color: #00f900;">char</span> *)malloc(10); 
+p2 = (<span style="color: #00f900;">char</span> *)malloc(20); 
+&#20998;&#37197;&#24471;&#26469;&#24471; 10 &#21644; 20 &#23383;&#33410;&#30340;&#21306;&#22495;&#23601;&#22312;&#22534;&#21306;&#12290; 
+strcpy(p1, <span style="color: #ff40ff;">"123456"</span>); 123456 &#25918;&#22312;&#24120;&#37327;&#21306;&#65292;&#32534;&#35793;&#22120;&#21487;&#33021;&#20250;&#23558;&#23427;&#19982; p3 &#25152;&#25351;&#21521;&#30340; <span style="color: #ff40ff;">"123456"</span> &#20248;&#21270;&#25104;&#19968;&#20010;&#22320;&#26041;&#12290; 
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-16-7" class="outline-3">
+<h3 id="sec-16-7"><span class="section-number-3">16.7</span> linux 中的size命令</h3>
+<div class="outline-text-3" id="text-16-7">
+<p>
+size命令列出的区域是在编译的时候就确定好的。<br  />
+size命令会列出<br  />
+</p>
+</div>
+<div id="outline-container-sec-16-7-1" class="outline-4">
+<h4 id="sec-16-7-1"><span class="section-number-4">16.7.1</span> BSS 段</h4>
+<div class="outline-text-4" id="text-16-7-1">
+<p>
+存放的是程序中没有初始化的全局和静态变量的空间<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-16-7-2" class="outline-4">
+<h4 id="sec-16-7-2"><span class="section-number-4">16.7.2</span> data 段</h4>
+<div class="outline-text-4" id="text-16-7-2">
+<p>
+存放的是程序中已经初始化的全局和静态变量的空间<br  />
+</p>
+</div>
+</div>
+<div id="outline-container-sec-16-7-3" class="outline-4">
+<h4 id="sec-16-7-3"><span class="section-number-4">16.7.3</span> text 段</h4>
+<div class="outline-text-4" id="text-16-7-3">
+<p>
+是用来存放程序代码 的空间<br  />
+</p>
+
+
+<p>
+BSS 段和data 段合在一起对应 全局区<br  />
+text 段 对应程序代码区<br  />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> end</h2>
+<div class="outline-text-2" id="text-17">
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> 生成动态连接库</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+gcc -shared -fPIC -o lib***.so a.c b.c c.c&#x2026;<br  />
+</p>
+
+<p>
+使用时可以在文件(d.c)中引用a.h/b.h/c.h即可直接使用<br  />
+</p>
+
+<p>
+在编译时 gcc -o d d.c -L. -l***   需要把lib***.so 拷贝到/usr/lib中<br  />
+</p>
+
+
+<p>
+-L; 编译时的动态链接库路径。<br  />
+&#x2013;rpath:程序运行时的动态连接库的路径。 需要配合-Wl使用   -Wl,&#x2013;rpath=path1:path2:path3&#x2026;<br  />
+-fPIC: 表示编译为位置独立的代码，不用此选项的话编译后的代码是位置相关的所以动态载入时是通过代码拷贝的方式来满足不同进程的需要，而不能达到真正代码段共享的目的。<br  />
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

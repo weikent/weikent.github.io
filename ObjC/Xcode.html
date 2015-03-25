@@ -1,0 +1,1590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>XCODE</title>
+<!-- 2014-12-24 Wed 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">XCODE</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 关于xib</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Xcode4.2</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Xcode 调试</a></li>
+<li><a href="#sec-3">3. ios 10.8 xcode 4.5 添加的view 默认是iphone样式。</a></li>
+<li><a href="#sec-4">4. ios6 之后添加了 auto layout 功能。 需要关闭的时候可以如下操作</a></li>
+<li><a href="#sec-5">5. 编程技巧</a>
+<ul>
+<li><a href="#sec-5-1">5.1. 点击界面空白出隐藏keyboard。 也可以做其他事情。</a></li>
+<li><a href="#sec-5-2">5.2. TextField 输入完毕后 隐藏 keyboard</a></li>
+<li><a href="#sec-5-3">5.3. 使控件不可用</a></li>
+<li><a href="#sec-5-4">5.4. xcode 调试 EXC<sub>BAD</sub><sub>ACCESS</sub></a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. 获取IOS设备的类型和系统版本</a></li>
+<li><a href="#sec-7">7. iOS学习笔记——字符串编码转换</a></li>
+<li><a href="#sec-8">8. 造成unrecognized selector sent to instance……程序崩溃原因分析</a></li>
+<li><a href="#sec-9">9. 如何将NSstring转欢成char (UTF8String, cString)</a></li>
+<li><a href="#sec-10">10. Cocoa Fundation内存释放原则</a></li>
+<li><a href="#sec-11">11. iOS中NSString引用计数内存管理机制分析</a></li>
+<li><a href="#sec-12">12. iOS中的堆(heap)和栈(stack)的理解</a></li>
+<li><a href="#sec-13">13. 删除视图中的子视图</a></li>
+<li><a href="#sec-14">14. iPhone 程式要間隔一段時間執行某個函式的方法</a></li>
+<li><a href="#sec-15">15. 设置UIPickerView默认选择</a></li>
+<li><a href="#sec-16">16. UIView</a>
+<ul>
+<li><a href="#sec-16-1">16.1. UIView层次管理 放到最上层 放到最下层</a></li>
+<li><a href="#sec-16-2">16.2. UIView如何管理子视图</a></li>
+</ul>
+</li>
+<li><a href="#sec-17">17. iOS Programming – 触摸事件处理</a></li>
+<li><a href="#sec-18">18. 遇到的问题</a>
+<ul>
+<li><a href="#sec-18-1">18.1. uinavigationController  pushviewController 的时候是不是需要把 push的viewcontroller给release掉。</a></li>
+<li><a href="#sec-18-2">18.2. incomplete implementation</a></li>
+</ul>
+</li>
+<li><a href="#sec-19">19. Xcode文件读写</a></li>
+<li><a href="#sec-20">20. 取得wifi名称</a></li>
+<li><a href="#sec-21">21. 多线程</a></li>
+<li><a href="#sec-22">22. NSDate</a>
+<ul>
+<li><a href="#sec-22-1">22.1. 得到当前日期的前一天或前几天是什么日期</a></li>
+<li><a href="#sec-22-2">22.2. 得到当前月份有几天</a></li>
+<li><a href="#sec-22-3">22.3. NSDate 与 NSString 互换</a></li>
+</ul>
+</li>
+<li><a href="#sec-23">23. Xcode 获取私有API</a></li>
+<li><a href="#sec-24">24. xcode的MapKit中，如何点击大头针的时候，出现自定义的“callout bubble”</a></li>
+<li><a href="#sec-25">25. xcode如何修改uitabbaritem的字体颜色</a></li>
+<li><a href="#sec-26">26. Xcode快捷键</a>
+<ul>
+<li><a href="#sec-26-1">26.1. 代码格式化</a></li>
+</ul>
+</li>
+<li><a href="#sec-27">27. 如何清除xcode里面的mobileprovision文件</a></li>
+<li><a href="#sec-28">28. GCD</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 关于xib</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+用xib文件添加视图的时候，在4.2版本的xcode中，程序会报错。需要把view按住control键拖到文件里面。生成一下自动代码，并删除自动代码之后就正常了。
+</p>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Xcode4.2</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Xcode4.2 中清理xib缓存
+</p>
+<ol class="org-ol">
+<li>option + product menu    -&gt;  Clean Build Folder
+</li>
+<li>iOS Simulator -&gt; Reset Content and settings
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Xcode 调试</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在project-setting中找到 “Run Static Analyzer” 键，然后把值修改为“YES”.这样在编码的时候，xcode就可以自动为我们检查内存泄露了
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> ios 10.8 xcode 4.5 添加的view 默认是iphone样式。</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+可以在选中view之后，选择attributes inspector &#x2013;&gt; size。 可以改变样式。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> ios6 之后添加了 auto layout 功能。 需要关闭的时候可以如下操作</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+使用Xcode 4.5 创建App时，Auto Layout功能在所有nib或Storyboard 文件中，默认是enable（开启的）
+需要关闭storyboard或xib界面文件的Use Auto Layout 选项，这是因为Auto Layout特性是iOS 6 新增加的，在之前的 5.0/5.1 Simulator模拟器中不支持。
+1 open user interface document
+2 choose view &#x2013;&gt; Utilities &#x2013;&gt; show file inspector &#x2013;&gt; interface Builder Document 下。 uncheck “use auto layout".
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 编程技巧</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 点击界面空白出隐藏keyboard。 也可以做其他事情。</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+
+<pre class="src src-objc">-(<span style="color: #00f900;">void</span>) <span style="color: #c15bf1; background-color: #f7e3c0;">touchesBegan</span>:(<span style="color: #00f900;">NSSet</span> *)<span style="color: #fefb00; background-color: #000000;">touches</span> <span style="color: #c15bf1; background-color: #f7e3c0;">withEvent</span>:(<span style="color: #00f900;">UIEvent</span> *)<span style="color: #fefb00; background-color: #000000;">event</span>
+{
+    [<span style="color: #00fcff; background-color: #000000;">super</span> touchesBegan:touches withEvent:event];
+
+    [name resignFirstResponder];
+    [password resignFirstResponder];
+
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> TextField 输入完毕后 隐藏 keyboard</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+实现textField 的 didEndonExit 事件。在方法里面写上 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">[textfiel resignFirstResponder];
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> 使控件不可用</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+设置控件的 userinterfaceEnabled
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc">[control setUserInteractionEnabled:<span style="color: #8cf900; background-color: #5a529c;">YES</span>];
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> xcode 调试 EXC<sub>BAD</sub><sub>ACCESS</sub></h3>
+<div class="outline-text-3" id="text-5-4">
+<ol class="org-ol">
+<li>第一种方法：在程序 crash 之后，在控制台输入 bt，就可以显示 crash 堆栈：
+</li>
+
+<li>为工程运行时加入 NSZombieEnabled、 MallocStackLogging环境变量，并设为启用。 produce&#x2013;&gt;edit schema&#x2013;&gt;run (environment variables)中
+</li>
+
+<li>MallocStackLogging 启用
+</li>
+
+<li>为工程运行时加入 NSZombieEnabled 环境变量，并设为启用。
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 获取IOS设备的类型和系统版本</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #ff922e;">//  </span><span style="color: #ff2600;">DeviceHelper.m   </span>
+<span style="color: #ff922e;">//  </span><span style="color: #ff2600;">DeviceUtil   </span>
+<span style="color: #ff922e;">//   </span>
+<span style="color: #ff922e;">//  </span><span style="color: #ff2600;">Created by LUOYL on 12-4-9.   </span>
+<span style="color: #ff922e;">//  </span><span style="color: #ff2600;">Copyright (c) 2012&#24180; http://luoyl.info. All rights reserved.   </span>
+<span style="color: #ff922e;">//   </span>
+
+<span style="color: #bdcfe4;">#import</span> <span style="color: #ff40ff;">"DeviceHelper.h"</span>   
+<span style="color: #bdcfe4;">#import</span> <span style="color: #ff40ff;">"sys/utsname.h"</span>   
+
+<span style="color: #00fcff; background-color: #000000;">@implementation</span> <span style="color: #00f900;">DeviceHelper</span>   
+
+<span style="color: #ff922e;">/*  </span>
+<span style="color: #ff2600;"> *&#21151;&#33021;&#65306;&#33719;&#21462;&#35774;&#22791;&#31867;&#22411;  </span>
+<span style="color: #ff2600;"> *  </span>
+<span style="color: #ff2600;"> *  AppleTV2,1    AppleTV(2G)  </span>
+<span style="color: #ff2600;"> *  i386          simulator  </span>
+<span style="color: #ff2600;"> *  </span>
+<span style="color: #ff2600;"> *  iPod1,1       iPodTouch(1G)  </span>
+<span style="color: #ff2600;"> *  iPod2,1       iPodTouch(2G)  </span>
+<span style="color: #ff2600;"> *  iPod3,1       iPodTouch(3G)  </span>
+<span style="color: #ff2600;"> *  iPod4,1       iPodTouch(4G)  </span>
+<span style="color: #ff2600;"> *  </span>
+<span style="color: #ff2600;"> *  iPhone1,1     iPhone  </span>
+<span style="color: #ff2600;"> *  iPhone1,2     iPhone 3G  </span>
+<span style="color: #ff2600;"> *  iPhone2,1     iPhone 3GS  </span>
+<span style="color: #ff2600;"> *  </span>
+<span style="color: #ff2600;"> *  iPhone3,1     iPhone 4  </span>
+<span style="color: #ff2600;"> *  iPhone3,3     iPhone4 CDMA&#29256;(iPhone4(vz))  </span>
+
+<span style="color: #ff2600;"> *  iPhone4,1     iPhone 4S  </span>
+<span style="color: #ff2600;"> *  </span>
+<span style="color: #ff2600;"> *  iPad1,1       iPad  </span>
+<span style="color: #ff2600;"> *  iPad2,1       iPad2 Wifi&#29256;  </span>
+<span style="color: #ff2600;"> *  iPad2,2       iPad2 GSM3G&#29256;  </span>
+<span style="color: #ff2600;"> *  iPad2,3       iPad2 CDMA3G&#29256;  </span>
+<span style="color: #ff2600;"> *  @return null  </span>
+<span style="color: #ff2600;"> */</span>  
++ (<span style="color: #00f900;">NSString</span> *)<span style="color: #c15bf1; background-color: #f7e3c0;">getDeviceVersion</span>   
+{   
+    <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">utsname</span> <span style="color: #00f900;">systemInfo</span>;   
+    uname(&amp;systemInfo);   
+    <span style="color: #ff922e;">//</span><span style="color: #ff2600;">get the device model and the system version   </span>
+    <span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">machine</span> =[<span style="color: #00f900;">NSString</span> stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];    
+    <span style="color: #00fcff; background-color: #000000;">return</span> machine;   
+}   
+
+<span style="color: #ff922e;">/** </span><span style="color: #ff2600;">&#33719;&#21462;IOS&#31995;&#32479;&#30340;&#29256;&#26412;&#21495; */</span>  
++ (<span style="color: #00f900;">NSString</span>*)<span style="color: #c15bf1; background-color: #f7e3c0;">getOSVersion</span>   
+{   
+    <span style="color: #00fcff; background-color: #000000;">return</span> [[<span style="color: #00f900;">UIDevice</span> currentDevice]systemVersion];   
+}   
+
+<span style="color: #ff922e;">/** </span><span style="color: #ff2600;">&#21028;&#26029;&#24403;&#21069;&#35774;&#22791;&#26159;&#21542;ipad */</span>  
++ (<span style="color: #00f900;">BOOL</span>)<span style="color: #c15bf1; background-color: #f7e3c0;">isIpad</span>   
+{   
+    <span style="color: #00fcff; background-color: #000000;">return</span> [<span style="color: #00f900;">UIDevice</span> currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;   
+}   
+
+<span style="color: #ff922e;">/** </span><span style="color: #ff2600;">&#21028;&#26029;&#24403;&#21069;&#35774;&#22791;&#26159;&#21542;iphone */</span>  
+
++ (<span style="color: #00f900;">BOOL</span>)<span style="color: #c15bf1; background-color: #f7e3c0;">isIphone</span>   
+{   
+    <span style="color: #00fcff; background-color: #000000;">return</span> [<span style="color: #00f900;">UIDevice</span> currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;   
+
+}   
+
+<span style="color: #ff922e;">/** </span><span style="color: #ff2600;">&#21028;&#26029;&#24403;&#21069;&#31995;&#32479;&#26159;&#21542;&#26377;&#25668;&#20687;&#22836; */</span>  
++ (<span style="color: #00f900;">BOOL</span>)<span style="color: #c15bf1; background-color: #f7e3c0;">hasCamera</span>   
+{   
+    <span style="color: #00fcff; background-color: #000000;">return</span> [<span style="color: #00f900;">UIImagePickerController</span> isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];   
+}   
+
+<span style="color: #00fcff; background-color: #000000;">@end</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> iOS学习笔记——字符串编码转换</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+我们知道，使用NSURLConnection的代理方法下载网页，存到一个NSData中，
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">NSMutableData</span> *<span style="color: #fefb00; background-color: #000000;">pageData</span>;
+[pageData appendData:data];
+</pre>
+</div>
+
+<p>
+如果网页编码是UTF-8的，可以这么转换为字符串：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">pageSource</span> = [[<span style="color: #00f900;">NSString</span> alloc] initWithData:pageData encoding:NSUTF8StringEncoding];
+</pre>
+</div>
+
+<p>
+如果网页是gbk（或者gb2312），用UTF8转换的话，pageSource返回nil。这时需要使用gbk编码做转换，但是NSStringEncoding不含gbk，怎么办？用另一个方法处理一下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">NSStringEncoding</span> <span style="color: #fefb00; background-color: #000000;">gbkEncoding</span> = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+<span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">pageSource</span> = [[<span style="color: #00f900;">NSString</span> alloc] initWithData:pageData encoding:gbkEncoding];
+</pre>
+</div>
+
+<p>
+为什么可以这么处理？在NSString.h（按住command，双击NSStringEncoding即能查看），对NSStringEncoding的定义中，注释这么写着：
+</p>
+
+<p>
+Note that in addition to the values explicitly listed below, NSStringEncoding supports encodings provided by CFString.
+</p>
+
+<p>
+See CFStringEncodingExt.h for a list of these encodings.
+</p>
+
+<p>
+See CFString.h for functions which convert between NSStringEncoding and CFStringEncoding.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> 造成unrecognized selector sent to instance……程序崩溃原因分析</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+造成unrecognized selector sent to instance……，大部分情况下是因为对象被提前release了，在你心里不希望他release的情况下，指针还在，对象已经不在了。
+很多时候，是因为init初始化函数中，对属性赋值没有使用self.foo赋值，而是直接对foo赋值，导致属性对象没有retain(心里以为retain了)，而提前释放。
+</p>
+
+<p>
+属性必须用 self 
+属性必须用 self 属性必须用 self 属性必须用 self 属性必须用 self 属性必须用 self 属性必须用 self 属性必须用 self 属性必须用 self 属性必须用 self 
+<code>=====</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> 如何将NSstring转欢成char (UTF8String, cString)</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+如果是 .m文件，直接可以转换
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">s</span>;
+<span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">str</span>;
+s=[str UTF8String];
+
+str=[<span style="color: #00f900;">NSString</span> stringWithUTF8String:s];
+str=[<span style="color: #00f900;">NSString</span> stringWithFormat:@<span style="color: #ff40ff;">"%s"</span>,s];
+</pre>
+</div>
+
+<p>
+如果是.mm会提示出错,因为[str UTF8String]返回的是const char *
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Cocoa Fundation内存释放原则</h2>
+<div class="outline-text-2" id="text-10">
+<ol class="org-ol">
+<li>通过分配或复制创建的对象保持计数1
+</li>
+<li>假设任何别的方法获取的对象保持计数1,而且在自动释放池中. 要想在当前执行范围外使用该对象,就必须保持它
+</li>
+<li>向集合添加对象时它就被保持,从集合移除对象时就被释放.释放集合对象会释放该集合中的所有对象
+</li>
+<li>确保有多少alloc,copy,mutableCopy或retain消息就有多少release或autorelease消息发送给该对象. 换句话说,确保你的代码平衡
+</li>
+<li>在访问方法设置属性,先保持,再释放 (ztime: 现在有@propperty , @synthesize 两个指令自动创建此代码)
+</li>
+<li>用@"&#x2026;"结构创建的NSString对象是常量.发送release或retain并无效果
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> iOS中NSString引用计数内存管理机制分析</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+在 iOS 中引用计数是内存的管理方式，虽然在 iOS5 版本中，已经支持了自动引用计数管理模式，但理解它的运行方式有助于我们了解程序的运行原理，有助于 debug 程序。
+   操作系统的内存管理分成堆和栈。
+</p>
+
+<p>
+在堆中分配的内存，都试用引用计数模式；在栈中则不是。
+</p>
+
+<p>
+NSString 定义的对象是保存在栈中，所以它没有引用计算。看一些书上说它的引用计算会是 fffffffff 最大整数，测试的结果显示它是－ 1. 对该对象进行 retain 操作，不好改变它的 retainCount 值。
+</p>
+
+<p>
+MutableNSString 定义的对象，需要先分配堆中的内存空间，再初始化才能使用。它是采用引用计数管理内存的。对该对象做 retainCount 操作则每次增加一个。
+</p>
+
+<p>
+NSString: initWithString
+NSString: stringWithString
+是在栈上分配的空间。没有引用计数。
+NSString: initWithFormat
+NSString: stringWithFormat
+是在堆上分配的空间，有引用计数。
+</p>
+
+<p>
+不论在堆上还是在栈上分配空间的NSString， 在str = [str substringFromIndex:2];之后，都会在堆上分配一个新的空间。str会指向新的内存空间。有可能会造成内存泄露。所以应该 str1 = [str substringFromIndex:2]; [str release]; str = str1;
+</p>
+
+
+<p>
+// 下面的内容说的不正确。
+   其实，引用计数是对内存区域的空间管理方式，是应从内存块的视角去看的。任何对象都是指向它的指针，有多少个指针指向它，就有多少个引用计算。
+   如果没有任何指针指向该内存块了，很明显，该内存块就没有对象引用了，引用计算就是 0, 系统会人为该内存区域已经空闲，于是立即清理，也就是更新一下管理堆的链表中某个标示位。
+   // 到此为止
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> iOS中的堆(heap)和栈(stack)的理解</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+操作系统iOS 中应用程序使用的计算机内存不是统一分配空间，运行代码使用的空间在三个不同的内存区域，分成三个段：“text segment “，“stack segment ”，“heap segment ”。
+</p>
+
+
+<p>
+<img src="http://dl.iteye.com/upload/picture/pic/115454/2d89dcdc-0a17-3ac8-afbe-c2782f498cbe.gif" alt="2d89dcdc-0a17-3ac8-afbe-c2782f498cbe.gif" />
+<img src="d:/googlePic.png" alt="googlePic.png" />
+</p>
+
+
+<p>
+段“text segment ”是应用程序运行时应用程序代码存在的内存段。每一个指令，每一个单个函数、过程、方法和执行代码都存在这个内存段中直到应用程序退出。一般情况下，你不会真的不得不知道这个段的任何事情。
+当应用开始以后，函数main() 被调用，一些空间分配在”stack” 中。这是为应用分配的另一个段的内存空间，这是为了函数变量存储需要而分配的内存。每一次在应用中调用一个函数，“stack ”的一部分会被分配在”stack” 中，称之为”frame” 。新函数的本地变量分配在这里。
+正如名称所示，“stack ”是后进先出（LIFO ）结构。当函数调用其他的函数时，“stack frame ”会被创建；当其他函数退出后，这个“frame ”会自动被破坏。
+ “heap” 段也称为”data” 段，提供一个保存中介贯穿函数的执行过程，全局和静态变量保存在“heap ”中，直到应用退出。
+为了访问你创建在heap 中的数据，你最少要求有一个保存在stack 中的指针，因为你的CPU 通过stack 中的指针访问heap 中的数据。
+你可以认为stack 中的一个指针仅仅是一个整型变量，保存了heap 中特定内存地址的数据。实际上，它有一点点复杂，但这是它的基本结构。
+</p>
+
+<div> aaaaa </div>
+<font color="#0000FF">我的颜色为蓝色#0000FF</font>
+
+<p>
+简而言之，操作系统使用stack 段中的指针值访问heap 段中的对象。如果stack 对象的指针没有了，则heap 中的对象就不能访问。这也是内存泄露的原因。
+在iOS 操作系统的stack 段和heap 段中，你都可以创建数据对象。
+stack 对象的优点主要有两点，一是创建速度快，二是管理简单，它有严格的生命周期。stack 对象的缺点是它不灵活。创建时长度是多大就一直是多大，创建时是哪个函数创建的，它的owner 就一直是它。不像heap 对象那样有多个owner ，其实多个owner 等同于引用计数。只有heap 对象才是采用“引用计数”方法管理它。
+stack 对象的创建
+只要栈的剩余空间大于stack 对象申请创建的空间，操作系统就会为程序提供这段内存空间，否则将报异常提示栈溢出。
+heap 对象的创建
+操作系统对于内存heap 段是采用链表进行管理的。操作系统有一个记录空闲内存地址的链表，当收到程序的申请时，会遍历链表，寻找第一个空间大于所申请的heap 节点，然后将该节点从空闲节点链表中删除，并将该节点的空间分配给程序。
+例如：
+NSString 的对象就是stack 中的对象，NSMutableString 的对象就是heap 中的对象。前者创建时分配的内存长度固定且不可修改；后者是分配内存长度是可变的，可有多个owner, 适用于计数管理内存管理模式。
+两类对象的创建方法也不同，前者直接创建“NSString * str1=@"welcome"; “，而后者需要先分配再初始化“ NSMutableString * mstr1=[[NSMutableString alloc] initWithString:@"welcome"]; ”。
+</p>
+
+<p>
+(miki西游 @mikixiyou 原文链接: <a href="http://mikixiyou.iteye.com/blog/1595230">http://mikixiyou.iteye.com/blog/1595230</a> )
+</p>
+
+<p>
+再补充一点，这里说的是操作系统的堆和栈。
+在我们学习“数据结构”时，接触到的堆和栈的概念和这个操作系统中的堆和栈不是一回事的。
+操作系统的堆和栈是指对内存进行操作和管理的一些方式。
+“数据结构“的堆实际上指的就是（满足堆性质的）优先Queue 的一种数据结构，第1 个元素有最高的优先权；栈实际上就是满足先进后出的性质的数据或数据结构。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> 删除视图中的子视图</h2>
+<div class="outline-text-2" id="text-13">
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00fcff; background-color: #000000;">for</span> (<span style="color: #00f900;">UIView</span> *<span style="color: #fefb00; background-color: #000000;">oneView</span> <span style="color: #00fcff; background-color: #000000;">in</span> cell.subviews ) {
+    <span style="color: #00fcff; background-color: #000000;">if</span> ([oneView isKindOfClass:[<span style="color: #00f900;">UILabel</span> class]]) {
+        [oneView removeFromSuperview];
+    }
+}
+</pre>
+</div>
+<p>
+<code>=====</code>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14"><span class="section-number-2">14</span> iPhone 程式要間隔一段時間執行某個函式的方法</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+最基本的就是用NSTimer ..
+只是這個要建一個 NSTimer 再做一些設定..
+感覺有點麻煩..
+</p>
+
+<p>
+有看到另一種方法.
+[self performSelector:@selector(test:) withObject:nnil afterDelay:1.0];
+</p>
+
+
+
+<p>
+可以設定過幾秒後執行.
+要一直執行就在函式中也加上同樣命令.就會一直進去了.
+要停止的話就做判斷,條件達到的時候不會跑該命令就好.
+</p>
+
+<p>
+另外在cocos2D裡也有
+</p>
+
+
+
+<p>
+[self schedule:@selector(objMove:) interval:0.01f];
+的方式可以達成.
+不過這個跟 performSelector:(selector)&#x2026; 方法有點不一樣.
+就是 schedule 比較像timer 會一直執行.. (其實裡面好像就是幫你處理timer的宣告..)
+所以要停止的話要用
+[self unschedule:@selector(objMove:)];
+</p>
+
+<p>
+來停止這個動作的繼續執行.
+<code>=====</code>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15"><span class="section-number-2">15</span> 设置UIPickerView默认选择</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+#+begin<sub>src</sub> objc
+[[self pickerView] selectRow:3 inComponent:0 animated:NO];
+#+end<sub>src</sub> objc
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16"><span class="section-number-2">16</span> UIView</h2>
+<div class="outline-text-2" id="text-16">
+</div><div id="outline-container-sec-16-1" class="outline-3">
+<h3 id="sec-16-1"><span class="section-number-3">16.1</span> UIView层次管理 放到最上层 放到最下层</h3>
+<div class="outline-text-3" id="text-16-1">
+<p>
+将一个UIView显示在最前面只需要调用其父视图的 bringSubviewToFront（）方法。
+将一个UIView层推送到背后只需要调用其父视图的 sendSubviewToBack（）方法。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-16-2" class="outline-3">
+<h3 id="sec-16-2"><span class="section-number-3">16.2</span> UIView如何管理子视图</h3>
+<div class="outline-text-3" id="text-16-2">
+<p>
+UIView提供了很多建立和管理视图的方法。
+</p>
+
+<ol class="org-ol">
+<li>添加视图
+
+<p>
+insertSubview:atIndex:   //放在子视图数组的具体索引位置
+</p>
+
+<p>
+insertSubview:aboveSubview:   //某个子视图前面
+</p>
+
+<p>
+insertSubview:aboveSubview:   //某个子视图前面
+</p>
+</li>
+
+<li>重新排序和删除子视图
+
+<p>
+[parentView exchangeSubviewAtIndex:i withSubviewAtIndex:j]//交换两个视图的位置
+</p>
+
+<p>
+bringSubviewToFront:和sendSubviewToBack://将子视图提前活置后
+</p>
+
+<p>
+[childView removeSuperview]//删除某个视图的子视图
+</p>
+</li>
+
+<li>视图回调
+
+<p>
+某个视图的层次一改变，该视图就会收到一次回调。
+</p>
+
+<ol class="org-ol">
+<li>调用addSubivew:成功后会给该视图发送didAddSubivew:回调，触发UIView的子类在心增视图时执行其他操作。
+</li>
+
+<li>ndidMoveToSuperview:会通知相关视图他们的上级视图已经变化。
+</li>
+
+<li>视图移动前会发出willMoveToSuperview:回调
+</li>
+
+<li>didMoveToWindow:回调和didMoveToSuperview:相似，从命名上能看出其区别。
+</li>
+
+<li>willMoveToWindow:在视图移动前发出的回调。
+</li>
+
+<li>willRemoveToSubview:回调通知父视图子视图即将被删除
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#24403;&#21152;&#20837;&#35270;&#22270;&#23436;&#25104;&#21518;&#35843;&#29992;</span>
+(<span style="color: #00f900;">void</span>)didAddSubview:(<span style="color: #00f900;">UIView</span> *)subview
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#24403;&#35270;&#22270;&#31227;&#21160;&#23436;&#25104;&#21518;&#35843;&#29992;</span>
+(<span style="color: #00f900;">void</span>)didMoveToSuperview
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#24403;&#35270;&#22270;&#31227;&#21160;&#21040;&#26032;&#30340;WINDOW&#21518;&#35843;&#29992;</span>
+(<span style="color: #00f900;">void</span>)didMoveToWindow
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#22312;&#21024;&#38500;&#35270;&#22270;&#20043;&#21518;&#35843;&#29992;</span>
+(<span style="color: #00f900;">void</span>)willRemoveSubview:(<span style="color: #00f900;">UIView</span> *)subview
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#24403;&#31227;&#21160;&#35270;&#22270;&#20043;&#21069;&#35843;&#29992;</span>
+(<span style="color: #00f900;">void</span>)didMoveToSuperview:(<span style="color: #00f900;">UIView</span> *)subview
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#24403;&#35270;&#22270;&#31227;&#21160;&#21040;WINDOW&#20043;&#21069;&#35843;&#29992;</span>
+(<span style="color: #00f900;">void</span>)didMoveToWindow
+</pre>
+</div>
+</li>
+</ol>
+</li>
+<li>管理视图
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#21152;&#19968;&#20010;&#35270;&#22270;&#21040;&#19968;&#20010;&#35270;&#22270;&#37324;&#38754;</span>
+<span style="color: #8cf900; background-color: #5a529c;">addSubview</span>:
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#23558;&#19968;&#20010;&#35270;&#22270;&#31227;&#21040;&#21069;&#38754;</span>
+<span style="color: #8cf900; background-color: #5a529c;">bringSubviewToFront</span>:
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#23558;&#19968;&#20010;&#35270;&#22270;&#25512;&#36865;&#21040;&#32972;&#21518;</span>
+<span style="color: #8cf900; background-color: #5a529c;">sendSubviewToBack</span>:
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25226;&#35270;&#22270;&#31227;&#38500;</span>
+<span style="color: #00f900;">removeFromSuperview</span>
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25554;&#20837;&#35270;&#22270; &#24182;&#25351;&#23450;&#32034;&#24341;</span>
+<span style="color: #fefb00; background-color: #000000;">insertSubview</span>:atIndex:
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25554;&#20837;&#35270;&#22270;&#22312;&#26576;&#20010;&#35270;&#22270;&#20043;&#19978;</span>
+insertSubview:aboveSubview:
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25554;&#20837;&#35270;&#22270;&#22312;&#26576;&#20010;&#35270;&#22270;&#20043;&#19979;</span>
+insertSubview:belowSubview:
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#20132;&#25442;&#20004;&#20010;&#20301;&#32622;&#32034;&#24341;&#30340;&#35270;&#22270;</span>
+exchangeSubviewAtIndex:withSubviewAtIndex:
+</pre>
+</div>
+</li>
+
+<li>找出所有父视图
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">// </span><span style="color: #ff2600;">Return an array of parent views from the window down to the view</span>
+<span style="color: #00f900;">NSArray</span> *<span style="color: #c15bf1; background-color: #f7e3c0;">pathToView</span>(<span style="color: #00f900;">UIView</span> *<span style="color: #fefb00; background-color: #000000;">aView</span>)
+{
+    <span style="color: #00f900;">NSMutableArray</span> *<span style="color: #fefb00; background-color: #000000;">array</span> = [NSMutableArray arrayWithObject:aView];
+    <span style="color: #00f900;">UIView</span> *<span style="color: #fefb00; background-color: #000000;">view</span> = aView;
+    <span style="color: #00f900;">UIWindow</span> *<span style="color: #fefb00; background-color: #000000;">window</span> = aView.window;
+    <span style="color: #00fcff; background-color: #000000;">while</span> (view != window)
+    {
+        view = [view superview];
+        [array insertObject:view atIndex:0];
+    }
+    <span style="color: #00fcff; background-color: #000000;">return</span> array;
+}
+</pre>
+</div>
+</li>
+
+<li>找出所有子视图
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">NSArray</span> *<span style="color: #c15bf1; background-color: #f7e3c0;">allSubviews</span>(<span style="color: #00f900;">UIView</span> *<span style="color: #fefb00; background-color: #000000;">aView</span>)
+{
+        <span style="color: #00f900;">NSArray</span> *<span style="color: #fefb00; background-color: #000000;">results</span> = [aView subviews];
+        <span style="color: #00fcff; background-color: #000000;">for</span> (UIView *eachView in [aView subviews])
+        {
+                <span style="color: #00f900;">NSArray</span> *<span style="color: #fefb00; background-color: #000000;">riz</span> = allSubviews(eachView);
+                <span style="color: #00fcff; background-color: #000000;">if</span> (riz) {
+                        results = [results arrayByAddingObjectsFromArray:riz];
+                }
+        }
+        <span style="color: #00fcff; background-color: #000000;">return</span> results;
+}
+</pre>
+</div>
+</li>
+
+<li>返回Application中的所有视图
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">// </span><span style="color: #ff2600;">Return all views throughout the application</span>
+<span style="color: #00f900;">NSArray</span> *<span style="color: #c15bf1; background-color: #f7e3c0;">allApplicationViews</span>()
+{
+    <span style="color: #00f900;">NSArray</span> *<span style="color: #fefb00; background-color: #000000;">results</span> = [[UIApplication sharedApplication] windows];
+    <span style="color: #00fcff; background-color: #000000;">for</span> (UIWindow *window in [[UIApplication sharedApplication] windows])
+        {
+                <span style="color: #00f900;">NSArray</span> *<span style="color: #fefb00; background-color: #000000;">riz</span> = allSubviews(window);
+        <span style="color: #00fcff; background-color: #000000;">if</span> (riz) results = [results arrayByAddingObjectsFromArray: riz];
+        }
+    <span style="color: #00fcff; background-color: #000000;">return</span> results;
+}
+</pre>
+</div>
+</li>
+
+<li>建立UIView
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">CGContextRef</span> <span style="color: #fefb00; background-color: #000000;">context</span> = UIGraphicsGetCurrentContext();
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#26631;&#35760;&#21160;&#30011;&#24320;&#22987;</span>
+[UIView beginAnimations:nil context:context];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#23450;&#20041;&#21160;&#30011;&#21152;&#36895;&#25110;&#20943;&#36895;&#30340;&#26041;&#24335;</span>
+[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#23450;&#20041;&#21160;&#30011;&#30340;&#26102;&#38271; 1&#31186;</span>
+[UIView setAnimationDuration:1.0];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#20013;&#38388;&#22788;&#29702; &#20301;&#32622;&#21464;&#21270;&#65292;&#22823;&#23567;&#21464;&#21270;&#65292;&#26059;&#36716;&#65292;&#31561;&#31561;&#30340;</span>
+[[self.view viewWithTag:999] setAlpha:1.0f];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#26631;&#24535;&#21160;&#30011;&#22359;&#32467;&#26463;</span>
+[UIView commitAnimations];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#36824;&#21487;&#20197;&#35774;&#32622;&#22238;&#35843;</span>
+[UIView setAnimationDelegate:self];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#35774;&#32622;&#22238;&#35843;&#35843;&#29992;&#30340;&#26041;&#27861;</span>
+[UIView setAnimationDidStopSelector:@selector(animationFinished:)];
+</pre>
+</div>
+</li>
+</ol>
+
+
+<p>
+UIView掌管直接屏幕绘图。他的drawRect:方法提供一种低级方式来直接绘制内容，允许使用Quartz 2D调用创建和显示任意元素，可将这两个元素结合起来共同构建具体、可操作的界面。
+</p>
+
+<p>
+当用户触摸屏幕时，Touchview类收集一系列点，在每个触摸移动之处，touchesMoved:WithEvent:方法调用setNeedsDisplay。这又会触发对drawRect:方法的调用，其中视图将这些点绘制成线段来创建一个可视屏幕路径。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17"><span class="section-number-2">17</span> iOS Programming – 触摸事件处理</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+</p>
+
+<p>
+当手指接触屏幕时，就会调用touchesBegan:withEvent方法；
+当手指在屏幕上移时，动就会调用touchesMoved:withEvent方法；
+当手指离开屏幕时，就会调用touchesEnded:withEvent方法；
+当触摸被取消（比如触摸过程中被来电打断），就会调用touchesCancelled:withEvent方法。而这几个方法被调用时，正好对应了UITouch类中phase属性的4个枚举值。
+</p>
+
+<p>
+[self.nextResponder touchesBegan:touches withEvent:event];
+可以把事件传递到下一个相应事件的view。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18"><span class="section-number-2">18</span> 遇到的问题</h2>
+<div class="outline-text-2" id="text-18">
+</div><div id="outline-container-sec-18-1" class="outline-3">
+<h3 id="sec-18-1"><span class="section-number-3">18.1</span> uinavigationController  pushviewController 的时候是不是需要把 push的viewcontroller给release掉。</h3>
+<div class="outline-text-3" id="text-18-1">
+<p>
+答案是需要。因为push会retain。
+但当时的情况是 release 这个push 的viewcontroller会导致exec<sub>bad</sub><sub>access错误。</sub>
+</p>
+
+<p>
+原因是在这个被push的viewcontroller中，有些不需要release的view或button、label之类的控件被release掉了。
+并且没有实现dealloc 方法。
+</p>
+
+<p>
+autorelease的不需要手动release。
+</p>
+
+<p>
+dealloc方法中要写上 [super dealloc]。会自动释放标记为autorelease的控件。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-18-2" class="outline-3">
+<h3 id="sec-18-2"><span class="section-number-3">18.2</span> incomplete implementation</h3>
+<div class="outline-text-3" id="text-18-2">
+<p>
+这个一般来说是在.h文件中声明了。却没有在.m文件中实现方法。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19"><span class="section-number-2">19</span> Xcode文件读写</h2>
+<div class="outline-text-2" id="text-19">
+<ol class="org-ol">
+<li>得到文件路径。
+</li>
+</ol>
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">NSArray</span> *<span style="color: #fefb00; background-color: #000000;">path</span> = NSSearchPathForDirectorisInDomains(NSDocumentDirectory, NSUserDomainMask, <span style="color: #8cf900; background-color: #5a529c;">YES</span>);
+<span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">PathDir</span> = [path objectAtIndex:0];
+
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">NSDocumentDirectory &#26159; NSSearchPathDirectory&#30340;&#26522;&#20030;&#12290;&#21487;&#20197;&#24471;&#21040;&#20854;&#20182;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
+
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#25991;&#20214;&#22841;&#36861;&#21152;&#25991;&#20214;&#21517;&#31216;&#12290;</span>
+<span style="color: #00f900;">NSString</span> *<span style="color: #fefb00; background-color: #000000;">pathFile</span> = [<span style="color: #00f900;">PathDir</span> stringByAppendingFormat:@<span style="color: #ff40ff;">"/DataFile.plist"</span>];
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#35760;&#24471;&#28155;&#21152; "/"</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20"><span class="section-number-2">20</span> 取得wifi名称</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+需要添加SystemConfiguration.framework
+#+begin<sub>src</sub> objc
+    CFArrayRef arrayRef = CNCopySupportedInterfaces();
+    NSArray *interfaces = (NSArray *)arrayRef;
+    NSLog(@"interfaces -&gt; %@",interfaces);
+</p>
+
+<p>
+NSLog(@"%lu",(unsigned long)interfaces.count);
+</p>
+
+<p>
+for (NSString *interfaceName in interfaces) {
+    NSLog(@"%@",interfaceName);
+    CFDictionaryRef dictRef = CNCopyCurrentNetworkInfo((CFStringRef)interfaceName);
+    NSLog(@"%@",dictRef);
+    if (dictRef != NULL) {
+        NSDictionary *networkInfo = (NSDictionary *)dictRef;
+        NSLog(@"network info -&gt; %@",networkInfo);
+        CFRelease(dictRef);
+    }
+}
+</p>
+
+<p>
+CFRelease(arrayRef);
+</p>
+
+<p>
+#+end<sub>src</sub> objc
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21"><span class="section-number-2">21</span> 多线程</h2>
+<div class="outline-text-2" id="text-21">
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">&#32447;&#31243;&#21019;&#24314;&#19982;&#21551;&#21160;</span>
+<span style="color: #fefb00; background-color: #000000;">NSThread&#30340;&#21019;&#24314;&#20027;&#35201;&#26377;&#20004;&#31181;&#30452;&#25509;&#26041;&#24335;</span>&#65306;
+[<span style="color: #00f900;">NSThread</span> detachNewThreadSelector:<span style="color: #00fcff; background-color: #000000;">@selector</span>(myThreadMainMethod:) toTarget:<span style="color: #00fcff; background-color: #000000;">self</span> withObject:<span style="color: #8cf900; background-color: #5a529c;">nil</span>];
+&#21644;
+<span style="color: #00f900;">NSThread</span>* <span style="color: #fefb00; background-color: #000000;">myThread</span> = [[<span style="color: #00f900;">NSThread</span> alloc] initWithTarget:<span style="color: #00fcff; background-color: #000000;">self</span>
+                                        selector:<span style="color: #00fcff; background-color: #000000;">@selector</span>(myThreadMainMethod:)
+                                        object:<span style="color: #8cf900; background-color: #5a529c;">nil</span>];
+[myThread start];
+
+&#36825;&#20004;&#31181;&#26041;&#24335;&#30340;&#21306;&#21035;&#26159;&#65306;&#21069;&#19968;&#31181;&#19968;&#35843;&#29992;&#23601;&#20250;&#31435;&#21363;&#21019;&#24314;&#19968;&#20010;&#32447;&#31243;&#26469;&#20570;&#20107;&#24773;&#65307;&#32780;&#21518;&#19968;&#31181;&#34429;&#28982;&#20320; alloc &#20102;&#20063; init&#20102;&#65292;&#20294;&#26159;&#35201;&#30452;&#21040;&#25105;&#20204;&#25163;&#21160;&#35843;&#29992; start &#21551;&#21160;&#32447;&#31243;&#26102;&#25165;&#20250;&#30495;&#27491;&#21435;&#21019;&#24314;&#32447;&#31243;&#12290;&#36825;&#31181;&#24310;&#36831;&#23454;&#29616;&#24605;&#24819;&#22312;&#24456;&#22810;&#36319;&#36164;&#28304;&#30456;&#20851;&#30340;&#22320;&#26041;&#37117;&#26377;&#29992;&#21040;&#12290;&#21518;&#19968;&#31181;&#26041;&#24335;&#25105;&#20204;&#36824;&#21487;&#20197;&#22312;&#21551;&#21160;&#32447;&#31243;&#20043;&#21069;&#65292;&#23545;&#32447;&#31243;&#36827;&#34892;&#37197;&#32622;&#65292;&#27604;&#22914;&#35774;&#32622; stack &#22823;&#23567;&#65292;&#32447;&#31243;&#20248;&#20808;&#32423;&#12290;
+
+&#36824;&#26377;&#19968;&#31181;&#38388;&#25509;&#30340;&#26041;&#24335;&#65292;&#26356;&#21152;&#26041;&#20415;&#65292;&#25105;&#20204;&#29978;&#33267;&#19981;&#38656;&#35201;&#26174;&#24335;&#32534;&#20889; NSThread &#30456;&#20851;&#20195;&#30721;&#12290;&#37027;&#23601;&#26159;&#21033;&#29992; NSObject &#30340;&#31867;&#26041;&#27861; performSelectorInBackground:withObject: &#26469;&#21019;&#24314;&#19968;&#20010;&#32447;&#31243;&#65306;
+[myObj performSelectorInBackground:<span style="color: #00fcff; background-color: #000000;">@selector</span>(myThreadMainMethod) withObject:<span style="color: #8cf900; background-color: #5a529c;">nil</span>];
+&#20854;&#25928;&#26524;&#19982; NSThread <span style="color: #00f900;">&#30340;</span> <span style="color: #fefb00; background-color: #000000;">detachNewThreadSelector</span>:toTarget:withObject: &#26159;&#19968;&#26679;&#30340;&#12290;
+</pre>
+</div>
+<p>
+线程停止 使用 [thread cancel];
+</p>
+
+<p>
+线程执行的效果，需要线程启动的函数执行完毕之后才能体现出来。如果线程启动一个while（1）循环，那么基本就废了，在界面就不能体现线程都效果了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22"><span class="section-number-2">22</span> NSDate</h2>
+<div class="outline-text-2" id="text-22">
+</div><div id="outline-container-sec-22-1" class="outline-3">
+<h3 id="sec-22-1"><span class="section-number-3">22.1</span> 得到当前日期的前一天或前几天是什么日期</h3>
+<div class="outline-text-3" id="text-22-1">
+<ul class="org-ul">
+<li>首先组织一个字符串20000101或20010101之类。
+</li>
+
+<li>用NSDateFormatter转换成NSDate格式
+</li>
+</ul>
+
+<p>
+#+begin<sub>src</sub> objc
+NSDateFormatter *formatter = [[NSDateFormatter alloc] init];  
+NSTimeZone *timeZone = [NSTimeZone localTimeZone];  
+  //得设置一下时区
+[formatter setTimeZone:timeZone];  
+[formatter setDateFormat : @"M/d/yyyy h:m a"];  
+</p>
+
+<p>
+NSString *stringTime = @"12/5/2011 3:4 am";  
+</p>
+
+<p>
+NSDate *dateTime = [formatter dateFromString:stringTime];   
+</p>
+
+<p>
+NSDate *preDate = [NSDate dateWithTimeInterval:-24*60*60*10 sinceDate:dateTime];
+//-24*60*60*10 是10天的秒数。所以preDate就是2011年11月5日的10天前的日期。
+#+end<sub>src</sub> objc
+</p>
+
+<ul class="org-ul">
+<li>也可以直接得到当前日期，
+</li>
+</ul>
+<p>
+#+begin<sub>src</sub> objc
+NSDate *date = [NSDate date];
+//可以得到当前日期。
+NSDate *preDate = [NSDate dateWithTimeInterval:-24*60*60*10 sinceDate:date];
+#+end<sub>src</sub> objc
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-22-2" class="outline-3">
+<h3 id="sec-22-2"><span class="section-number-3">22.2</span> 得到当前月份有几天</h3>
+<div class="outline-text-3" id="text-22-2">
+<p>
+#+begin<sub>src</sub> objc
+NSCalendar *calendar = [NSCalendar currentCalendar];
+unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
+</p>
+
+<p>
+NSDateComponents *components = [calendar components:unitFlags fromDate:[NSDate date]];
+</p>
+
+<p>
+NSInteger iCurYear = [components year];  //当前的年份
+</p>
+
+<p>
+NSInteger iCurMonth = [components month];  //当前的月份
+</p>
+
+<p>
+NSInteger iCurDay = [components day];  // 当前的号数
+</p>
+
+<p>
+#+end<sub>src</sub> objc
+</p>
+</div>
+</div>
+<div id="outline-container-sec-22-3" class="outline-3">
+<h3 id="sec-22-3"><span class="section-number-3">22.3</span> NSDate 与 NSString 互换</h3>
+<div class="outline-text-3" id="text-22-3">
+<p>
+#+begin<sub>src</sub> objc
+</p>
+
+<p>
+NSDateFormatter *formatter = [[NSDateFormatter alloc] init];  
+NSTimeZone *timeZone = [NSTimeZone localTimeZone];  
+</p>
+
+<p>
+[formatter setTimeZone:timeZone];  
+[formatter setDateFormat : @"M/d/yyyy h:m a"];  
+</p>
+
+<p>
+NSString *stringTime = @"12/5/2011 3:4 am";  
+</p>
+
+<p>
+NSDate *dateTime = [formatter dateFromString:stringTime];   
+</p>
+
+<p>
+NSLog(@"%@", dateTime);//打印2011-12-04 19:04:00 +0000，这里+0000表示时区  
+</p>
+
+<p>
+NSDate *dateNow = [NSDate date];  
+</p>
+
+<p>
+NSLog(@"%@", dateNow);//打印2011-08-17 08:26:57 +0000，这里+0000表示时区  
+</p>
+
+<p>
+[formatter setDateFormat : @"yyyy年M月d日 H点m分"];  
+</p>
+
+<p>
+    NSLog(@"%@", [formatter stringFromDate:dateNow]);//打印2011年8月17日 16点26分  
+#+end<sub>src</sub> objc
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23"><span class="section-number-2">23</span> Xcode 获取私有API</h2>
+<div class="outline-text-2" id="text-23">
+<ol class="org-ol">
+<li>首先要下载class-dump.
+</li>
+</ol>
+
+<p>
+class-dump下载地址<a href="http://www.codethecode.com/projects/class-dump/">http://www.codethecode.com/projects/class-dump/</a>
+</p>
+
+<ol class="org-ol">
+<li>然后下载DumpFrameworks.pl
+</li>
+</ol>
+
+<p>
+DumpFrameworks.pl的下载地址：<a href="https://github.com/shuhongwu/HackSpringDemo/blob/master/DumpFrameworks.pl">https://github.com/shuhongwu/HackSpringDemo/blob/master/DumpFrameworks.pl</a>
+</p>
+
+<ol class="org-ol">
+<li>把class-dump放到$PATH路径下
+</li>
+
+<li>DumpFrameworks.pl中的ios库的路径有可能不对，需要手动修改。
+</li>
+
+<li>然后执行DumpFrameworks.pl即可，头文件会放到 $HOME/Headers 目录下
+</li>
+
+<li>将想用的头文件，组成xxx.framework/Headers的样式。导入工程。
+</li>
+</ol>
+
+<p>
+但是bulidsetting 设置framework的search path 时要设置真实的私有库路径，因为我们要用它的可执行文件，只有头文件是不行的。
+</p>
+
+<p>
+例如：/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/PrivateFrameworks
+</p>
+
+<p>
+这样就可以调用ios的私有库了
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24"><span class="section-number-2">24</span> xcode的MapKit中，如何点击大头针的时候，出现自定义的“callout bubble”</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+大头针是一个MKAnnotationView ( MKPinAnnotationView)
+callout bubble 也是一个MKAnnotationView
+</p>
+
+
+<p>
+MKAnnotationView都有一个annotation
+大概的方法是，
+</p>
+
+
+<ol class="org-ol">
+<li>先创建MKAnnotation的子类
+<div class="org-src-container">
+
+<pre class="src src-Obj-c">@interface customMKAnnotation : NSObject
+然后声明“customMKAnnotation 遵守 MKAnnotation协议
+变为
+@interfact customMKAnnotation : NSObject &lt; MKAnnotation&gt;
+</pre>
+</div>
+</li>
+</ol>
+<p>
+此 子类 中一般定义一个type变量，
+</p>
+
+<ol class="org-ol">
+<li>创建自定义的MKAnnotationView的子类。
+</li>
+</ol>
+
+<p>
+然后在主程序中定义一个customMKAnnotation的实例，type值为“1”
+</p>
+
+<p>
+在程序运行时，往mapView中添加普通的customMKAnnotation实例（type值为“2”）。
+</p>
+
+<p>
+点击这些type值为“2”的annotation，会触发didSelectAnnotationView方法。在此函数中根据点击的annotation的坐标，把此坐标赋值给type值为“1”的实例。并添加此实例到mapView中。
+</p>
+
+<p>
+添加annotation到mapview中会触发viewForAnnotation方法。在此函数中，根据type的值来区别，是创建普通的MKAnnotationView还是特殊的。
+</p>
+
+
+
+<p>
+写了半天，还是没办法把语言组织清楚。疯了，还在看代码把，回头把代码上传到git。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25"><span class="section-number-2">25</span> xcode如何修改uitabbaritem的字体颜色</h2>
+<div class="outline-text-2" id="text-25">
+<div class="org-src-container">
+
+<pre class="src src-C">[self.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIColor redColor], UITextAttributeTextColor,
+                                             nil] forState:UIControlStateNormal];
+</pre>
+</div>
+<p>
+把此代码放到uiView的[viewDidAppear]和[viewDidDisAppear]里面。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26"><span class="section-number-2">26</span> Xcode快捷键</h2>
+<div class="outline-text-2" id="text-26">
+</div><div id="outline-container-sec-26-1" class="outline-3">
+<h3 id="sec-26-1"><span class="section-number-3">26.1</span> 代码格式化</h3>
+<div class="outline-text-3" id="text-26-1">
+<p>
+Xcode  版本：4.2和4.2之前的版本
+             选中需要格式化代码 -&gt; Edit -&gt; Format -&gt;Re-Indent
+Xcode 版本：4.2之后的版本
+             选中需要格式化代码 -&gt; Editor -&gt; Structure -&gt;Re-Indent 或者
+             选中需要格式化代码 -&gt; 右击 -&gt;选中 Structure -&gt;Re-Indent
+command ＋ '］': 代码块 右移
+command + '［': 代码块 左移
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27"><span class="section-number-2">27</span> 如何清除xcode里面的mobileprovision文件</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+首先cd到目录“~/Library/MobileDevice/Provisioning\ Profiles”
+然后删除里面所有的mobileprovision文件
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C">cd ~/Library/MobileDevice/Provisioning\ Profiles/
+rm *.mobileprovision
+</pre>
+</div>
+
+
+<p>
+这样再看xcode的时候，所有的mobileprovision，发现没有任何provisioning profile了。这个时候不需要再次的去一个一个的添加。
+</p>
+
+<p>
+访问XCode的Preferences&gt;Accounts，在Apple IDs里面找到你的帐号，选中后，在右侧，在Name下面会有一行描述。双击。在弹出窗口里面，有个刷新按钮，点击之后，属于这个帐号的provisioning profile就会再次出现
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28"><span class="section-number-2">28</span> GCD</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+什么是GCD
+Grand Central Dispatch (GCD)是Apple开发的一个多核编程的解决方法。该方法在Mac OS X 10.6雪豹中首次推出，并随后被引入到了iOS4.0中。GCD是一个替代诸如NSThread, NSOperationQueue, NSInvocationOperation等技术的很高效和强大的技术，它看起来象就其它语言的闭包(Closure)一样，但苹果把它叫做blocks。
+</p>
+
+<p>
+应用举例
+让我们来看一个编程场景。我们要在iphone上做一个下载网页的功能，该功能非常简单，就是在iphone上放置一个按钮，点击该按钮时，显示一个转动的圆圈，表示正在进行下载，下载完成之后，将内容加载到界面上的一个文本控件中。
+</p>
+
+<p>
+不用GCD前
+虽然功能简单，但是我们必须把下载过程放到后台线程中，否则会阻塞UI线程显示。所以，如果不用GCD, 我们需要写如下3个方法：
+</p>
+
+<p>
+someClick 方法是点击按钮后的代码，可以看到我们用NSInvocationOperation建了一个后台线程，并且放到NSOperationQueue中。后台线程执行download方法。
+download 方法处理下载网页的逻辑。下载完成后用performSelectorOnMainThread执行download<sub>completed</sub> 方法。
+download<sub>completed</sub> 进行clear up的工作，并把下载的内容显示到文本控件中。
+这3个方法的代码如下。可以看到，虽然 开始下载 -&gt; 下载中 -&gt; 下载完成 这3个步骤是整个功能的三步。但是它们却被切分成了3块。他们之间因为是3个方法，所以还需要传递数据参数。如果是复杂的应用，数据参数很可能就不象本例子中的NSString那么简单了，另外，下载可能放到Model的类中来做，而界面的控制放到View Controller层来做，这使得本来就分开的代码变得更加散落。代码的可读性大大降低。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">static</span> <span style="color: #00f900;">NSOperationQueue</span> * <span style="color: #fefb00; background-color: #000000;">queue</span>; 
+
+- (<span style="color: #00f900;">IBAction</span>)someClick:(<span style="color: #00f900;">id</span>)sender { 
+    self.indicator.hidden = NO; 
+    [self.indicator startAnimating]; 
+    queue = [[NSOperationQueue alloc] init]; 
+    <span style="color: #00f900;">NSInvocationOperation</span> * <span style="color: #fefb00; background-color: #000000;">op</span> = [[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(download) object:nil] autorelease]; 
+    [queue addOperation:op]; 
+} 
+
+- (<span style="color: #00f900;">void</span>)download { 
+    <span style="color: #00f900;">NSURL</span> * <span style="color: #fefb00; background-color: #000000;">url</span> = [NSURL URLWithString:@<span style="color: #ff40ff;">"http://www.youdao.com"</span>]; 
+    <span style="color: #00f900;">NSError</span> * <span style="color: #fefb00; background-color: #000000;">error</span>; 
+    <span style="color: #00f900;">NSString</span> * <span style="color: #fefb00; background-color: #000000;">data</span> = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error]; 
+    <span style="color: #00fcff; background-color: #000000;">if</span> (data != nil) { 
+        [self performSelectorOnMainThread:@selector(download_completed:) withObject:data waitUntilDone:NO]; 
+    } <span style="color: #00fcff; background-color: #000000;">else</span> { 
+        NSLog(@<span style="color: #ff40ff;">"error when download:%@"</span>, error); 
+        [queue release]; 
+    } 
+} 
+
+- (<span style="color: #00f900;">void</span>) download_completed:(<span style="color: #00f900;">NSString</span> *) data { 
+    NSLog(@<span style="color: #ff40ff;">"call back"</span>); 
+    [self.indicator stopAnimating]; 
+    self.indicator.hidden = YES; 
+    self.content.text = data; 
+    [queue release]; 
+}
+</pre>
+</div>
+
+<p>
+使用GCD后
+如果使用GCD，以上3个方法都可以放到一起，如下所示：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#21407;&#20195;&#30721;&#22359;&#19968; </span>
+self.indicator.hidden = NO; 
+[self.indicator startAnimating]; 
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{ 
+    <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#21407;&#20195;&#30721;&#22359;&#20108; </span>
+    <span style="color: #00f900;">NSURL</span> * <span style="color: #fefb00; background-color: #000000;">url</span> = [NSURL URLWithString:@<span style="color: #ff40ff;">"http://www.youdao.com"</span>]; 
+    <span style="color: #00f900;">NSError</span> * <span style="color: #fefb00; background-color: #000000;">error</span>; 
+    <span style="color: #00f900;">NSString</span> * <span style="color: #fefb00; background-color: #000000;">data</span> = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&amp;error]; 
+    <span style="color: #00fcff; background-color: #000000;">if</span> (data != nil) { 
+        <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#21407;&#20195;&#30721;&#22359;&#19977; </span>
+        dispatch_async(dispatch_get_main_queue(), ^{ 
+            [self.indicator stopAnimating]; 
+            self.indicator.hidden = YES; 
+            self.content.text = data; 
+        }); 
+    } <span style="color: #00fcff; background-color: #000000;">else</span> { 
+        NSLog(@<span style="color: #ff40ff;">"error when download:%@"</span>, error); 
+    } 
+});
+</pre>
+</div>
+
+
+<p>
+首先我们可以看到，代码变短了。因为少了原来3个方法的定义，也少了相互之间需要传递的变量的封装。
+</p>
+
+<p>
+另外，代码变清楚了，虽然是异步的代码，但是它们被GCD合理的整合在一起，逻辑非常清晰。如果应用上MVC模式，我们也可以将View Controller层的回调函数用GCD的方式传递给Modal层，这相比以前用@selector的方式，代码的逻辑关系会更加清楚。
+</p>
+
+<p>
+GCD的定义
+简单GCD的定义有点象函数指针，差别是用 ^ 替代了函数指针的 * 号，如下所示：
+</p>
+
+<p>
+// 申明变量 
+ (void) (<sup>loggerBlock</sup>)(void); 
+ // 定义 
+ loggerBlock = ^{ 
+      NSLog(@"Hello world"); 
+ }; 
+ // 调用 
+ loggerBlock(); 
+但是大多数时候，我们通常使用内联的方式来定义它，即将它的程序块写在调用的函数里面，例如这样：
+</p>
+
+<p>
+dispatch<sub>async</sub>(dispatch<sub>get</sub><sub>global</sub><sub>queue</sub>(0, 0), ^{ 
+     // something 
+}); 
+从上面大家可以看出，block有如下特点：
+</p>
+
+<p>
+程序块可以在代码中以内联的方式来定义。
+程序块可以访问在创建它的范围内的可用的变量。
+系统提供的dispatch方法
+为了方便地使用GCD，苹果提供了一些方法方便我们将block放在主线程 或 后台线程执行，或者延后执行。使用的例子如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">//  </span><span style="color: #ff2600;">&#21518;&#21488;&#25191;&#34892;&#65306; </span>
+ dispatch_async(dispatch_get_global_queue(0, 0), ^{ 
+      <span style="color: #ff922e;">// </span><span style="color: #ff2600;">something </span>
+ }); 
+ <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#20027;&#32447;&#31243;&#25191;&#34892;&#65306; </span>
+ dispatch_async(dispatch_get_main_queue(), ^{ 
+      <span style="color: #ff922e;">// </span><span style="color: #ff2600;">something </span>
+ }); 
+ <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#19968;&#27425;&#24615;&#25191;&#34892;&#65306; </span>
+ <span style="color: #00fcff; background-color: #000000;">static</span> <span style="color: #00f900;">dispatch_once_t</span> <span style="color: #fefb00; background-color: #000000;">onceToken</span>; 
+ dispatch_once(&amp;onceToken, ^{ 
+     <span style="color: #ff922e;">// </span><span style="color: #ff2600;">code to be executed once </span>
+ }); 
+ <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#24310;&#36831;2&#31186;&#25191;&#34892;&#65306; </span>
+ <span style="color: #00f900;">double</span> <span style="color: #fefb00; background-color: #000000;">delayInSeconds</span> = 2.0; 
+ <span style="color: #00f900;">dispatch_time_t</span> <span style="color: #fefb00; background-color: #000000;">popTime</span> = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC); 
+ dispatch_after(popTime, dispatch_get_main_queue(), ^(<span style="color: #00f900;">void</span>){ 
+     <span style="color: #ff922e;">// </span><span style="color: #ff2600;">code to be executed on the main queue after delay </span>
+ }); 
+<span style="color: #00f900;">dispatch_queue_t</span> <span style="color: #fefb00; background-color: #000000;">&#20063;&#21487;&#20197;&#33258;&#24049;&#23450;&#20041;</span>&#65292;&#22914;&#35201;&#35201;&#33258;&#23450;&#20041;queue&#65292;&#21487;&#20197;&#29992;dispatch_queue_create&#26041;&#27861;&#65292;&#31034;&#20363;&#22914;&#19979;&#65306;
+
+dispatch_queue_t urls_queue = dispatch_queue_create(<span style="color: #ff40ff;">"blog.devtang.com"</span>, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>); 
+dispatch_async(urls_queue, ^{ 
+     <span style="color: #ff922e;">// </span><span style="color: #ff2600;">your code </span>
+}); 
+dispatch_release(urls_queue);
+</pre>
+</div>
+
+<p>
+另外，GCD还有一些高级用法，例如让后台2个线程并行执行，然后等2个线程都结束后，再汇总执行结果。这个可以用dispatch<sub>group</sub>, dispatch<sub>group</sub><sub>async</sub> 和 dispatch<sub>group</sub><sub>notify来实现，示例如下：</sub>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">dispatch_group_t</span> <span style="color: #fefb00; background-color: #000000;">group</span> = dispatch_group_create(); 
+dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{ 
+      <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#24182;&#34892;&#25191;&#34892;&#30340;&#32447;&#31243;&#19968; </span>
+ }); 
+ dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{ 
+      <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#24182;&#34892;&#25191;&#34892;&#30340;&#32447;&#31243;&#20108; </span>
+ }); 
+ dispatch_group_notify(group, dispatch_get_global_queue(0,0), ^{ 
+      <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#27719;&#24635;&#32467;&#26524; </span>
+ });
+</pre>
+</div>
+<p>
+修改block之外的变量
+默认情况下，在程序块中访问的外部变量是复制过去的，即写操作不对原变量生效。但是你可以加上 _<sub>block来让其写操作生效，示例代码如下：</sub>
+</p>
+
+<p>
+_<sub>block</sub> int a = 0; 
+void  (<sup>foo</sup>)(void) = ^{ 
+     a = 1; 
+} 
+foo(); 
+// 这里，a的值被修改为1 
+后台运行
+GCD的另一个用处是可以让程序在后台较长久的运行。在没有使用GCD时，当app被按home键退出后，app仅有最多5秒钟的时候做一些保存或清理资源的工作。但是在使用GCD后，app最多有10分钟的时间在后台长久运行。这个时间可以用来做清理本地缓存，发送统计数据等工作。
+</p>
+
+<p>
+让程序在后台长久运行的示例代码如下：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #ff922e;">// </span><span style="color: #ff2600;">AppDelegate.h&#25991;&#20214; </span>
+<span style="color: #00fcff; background-color: #000000;">@property</span> (assign, nonatomic) <span style="color: #00f900;">UIBackgroundTaskIdentifier</span> <span style="color: #fefb00; background-color: #000000;">backgroundUpdateTask</span>; 
+
+<span style="color: #ff922e;">// </span><span style="color: #ff2600;">AppDelegate.m&#25991;&#20214; </span>
+- (<span style="color: #00f900;">void</span>)applicationDidEnterBackground:(<span style="color: #00f900;">UIApplication</span> *)application 
+{ 
+    [self beingBackgroundUpdateTask]; 
+    <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#22312;&#36825;&#37324;&#21152;&#19978;&#20320;&#38656;&#35201;&#38271;&#20037;&#36816;&#34892;&#30340;&#20195;&#30721; </span>
+    [self endBackgroundUpdateTask]; 
+} 
+
+- (<span style="color: #00f900;">void</span>)beingBackgroundUpdateTask 
+{ 
+    self.backgroundUpdateTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{ 
+        [self endBackgroundUpdateTask]; 
+    }]; 
+} 
+
+- (<span style="color: #00f900;">void</span>)endBackgroundUpdateTask 
+{ 
+    [[UIApplication sharedApplication] endBackgroundTask: self.backgroundUpdateTask]; 
+    self.backgroundUpdateTask = UIBackgroundTaskInvalid; 
+}
+</pre>
+</div>
+<p>
+总结
+总体来说，GCD能够极大地方便开发者进行多线程编程。如果你的app不需要支持iOS4.0以下的系统，那么就应该尽量使用GCD来处理后台线程和UI线程的交互。
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 5ad26efa05b7e6a56245672392a978c418af053e
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Linux下socket连接超时的设置</title>
+<!-- 2014-12-24 Wed 15:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Linux下socket连接超时的设置</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Connection reset by peer</a></li>
+</ul>
+</div>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-C">&#30446;&#21069;&#21508;&#24179;&#21488;&#36890;&#29992;&#30340;&#35774;&#32622;&#22871;&#25509;&#23383;&#65288;socket&#65289;&#36830;&#25509;&#36229;&#26102;&#30340;&#21150;&#27861;&#26159;&#65306;
+&#21019;&#24314;&#22871;&#25509;&#23383;&#65292;&#23558;&#20854;&#35774;&#32622;&#25104;&#38750;&#38459;&#22622;&#29366;&#24577;&#12290;
+&#35843;&#29992;connect&#36830;&#25509;&#23545;&#31471;&#20027;&#26426;&#65292;&#22914;&#26524;&#22833;&#36133;&#65292;&#21028;&#26029;&#24403;&#26102;&#30340;errno&#26159;&#21542;&#20026;EINPROGRESS&#65292;&#20063;&#23601;&#26159;&#35828;&#26159;&#19981;&#26159;&#36830;&#25509;&#27491;&#22312;&#36827;&#34892;&#20013;&#65292;&#22914;&#26524;&#26159;&#65292;&#36716;&#21040;&#27493;&#39588;3&#65292;&#22914;&#26524;&#19981;&#26159;&#65292;&#36820;&#22238;&#38169;&#35823;&#12290;
+&#29992;select&#22312;&#25351;&#23450;&#30340;&#36229;&#26102;&#26102;&#38388;&#20869;&#30417;&#21548;&#22871;&#25509;&#23383;&#30340;&#20889;&#23601;&#32490;&#20107;&#20214;&#65292;&#22914;&#26524;select&#26377;&#30417;&#21548;&#21040;&#65292;&#35777;&#26126;&#36830;&#25509;&#25104;&#21151;&#65292;&#21542;&#21017;&#36830;&#25509;&#22833;&#36133;&#12290;
+&#12288;&#12288;&#20197;&#19979;&#26159;Linux&#29615;&#22659;&#19979;&#30340;&#31034;&#20363;&#20195;&#30721;:
+
+
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdlib.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdio.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;unistd.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;fcntl.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;netinet/in.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;errno.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;time.h&gt;</span>
+
+<span style="color: #00f900;">int</span> main(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">argc</span>, <span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">argv</span>[])
+{
+        <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">fd</span>, <span style="color: #fefb00; background-color: #000000;">retval</span>;
+        <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">addr</span>;
+        <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">timeval</span> <span style="color: #fefb00; background-color: #000000;">timeo</span> = {3, 0};
+        <span style="color: #00f900;">socklen_t</span> <span style="color: #fefb00; background-color: #000000;">len</span> = <span style="color: #00fcff; background-color: #000000;">sizeof</span>(timeo);
+        <span style="color: #00f900;">fd_set</span> <span style="color: #fefb00; background-color: #000000;">set</span>;
+
+        fd = socket(AF_INET, SOCK_STREAM, 0);
+        <span style="color: #00fcff; background-color: #000000;">if</span> (argc == 4)
+                timeo.tv_sec = atoi(argv[3]);
+        fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK);
+        addr.sin_family = AF_INET;
+        addr.sin_addr.s_addr = inet_addr(argv[1]);
+        addr.sin_port = htons(atoi(argv[2]));
+        printf(<span style="color: #ff40ff;">"%dn"</span>, time(<span style="color: #8cf900; background-color: #5a529c;">NULL</span>));
+        <span style="color: #00fcff; background-color: #000000;">if</span> (connect(fd, (<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span>*)&amp;addr, <span style="color: #00fcff; background-color: #000000;">sizeof</span>(addr)) == 0) {
+                printf(<span style="color: #ff40ff;">"connectedn"</span>);
+                <span style="color: #00fcff; background-color: #000000;">return</span> 0;
+        }
+        <span style="color: #00fcff; background-color: #000000;">if</span> (errno != EINPROGRESS) {
+                perror(<span style="color: #ff40ff;">"connect"</span>);
+                <span style="color: #00fcff; background-color: #000000;">return</span> -1;
+        }
+        FD_ZERO(&amp;set);
+        FD_SET(fd, &amp;set);
+        retval = select(fd + 1, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>, &amp;set, <span style="color: #8cf900; background-color: #5a529c;">NULL</span>, &amp;timeo);
+        <span style="color: #00fcff; background-color: #000000;">if</span> (retval == -1) {
+                perror(<span style="color: #ff40ff;">"select"</span>);
+                <span style="color: #00fcff; background-color: #000000;">return</span> -1;
+        } <span style="color: #00fcff; background-color: #000000;">else</span> <span style="color: #00fcff; background-color: #000000;">if</span>(retval == 0) {
+                fprintf(stderr, <span style="color: #ff40ff;">"timeoutn"</span>);
+                printf(<span style="color: #ff40ff;">"%dn"</span>, time(<span style="color: #8cf900; background-color: #5a529c;">NULL</span>));
+                <span style="color: #00fcff; background-color: #000000;">return</span> 0;
+        }
+        printf(<span style="color: #ff40ff;">"connectedn"</span>);
+
+        <span style="color: #00fcff; background-color: #000000;">return</span> 0;
+}
+
+
+&#12288;&#12288;&#23454;&#38469;&#36816;&#34892;&#32467;&#26524;&#22914;&#19979;:
+
+xiaosuo@gentux perl $ ./a.out 10.16.101.1 90
+1180289276
+timeout
+1180289279
+xiaosuo@gentux perl $ ./a.out 10.16.101.1 90 1
+1180289281
+timeout
+1180289282
+
+&#12288;&#12288;&#21487;&#20197;&#30475;&#21040;&#65292;&#20197;&#19978;&#20195;&#30721;&#24037;&#20316;&#30340;&#24456;&#22909;&#65292;&#24182;&#19988;&#22914;&#26524;&#20320;&#24819;&#30693;&#36947;&#36830;&#25509;&#21457;&#29983;&#38169;&#35823;&#26102;&#30340;&#30830;&#20999;&#20449;&#24687;&#30340;&#35805;&#65292;&#20320;&#21487;&#20197;&#29992;getsocketopt&#33719;&#24471;:
+
+<span style="color: #00f900;">int</span> error;
+<span style="color: #00f900;">socklen_t</span> <span style="color: #fefb00; background-color: #000000;">errorlen</span> = <span style="color: #00fcff; background-color: #000000;">sizeof</span>(error);
+
+getsockopt(fd, SOL_socket, SO_ERROR, &amp;error, &amp;errorlen);
+
+
+&#12288;&#12288;&#20294;&#26159;&#22810;&#23569;&#26377;&#20123;&#22797;&#26434;&#65292;&#22914;&#26524;&#26377;&#35937;SO_SNDTIMO/SO_RCVTIMO&#19968;&#26679;&#30340;&#22871;&#25509;&#23383;&#21442;&#25968;&#21487;&#20197;&#35753;&#36229;&#26102;&#25805;&#20316;&#36339;&#36807;select&#30340;&#35805;&#65292;&#19990;&#30028;&#23558;&#21464;&#24471;&#26356;&#32654;&#22909;&#12290;&#24403;&#28982;&#20320;&#36824;&#21487;&#20197;&#36873;&#29992;&#35937;apr&#19968;&#26679;&#25552;&#20379;&#20102;&#31616;&#21333;&#25509;&#21475;&#30340;&#24211;&#65292;&#20294;&#25105;&#36825;&#37324;&#35201;&#25552;&#30340;&#26159;&#21478;&#19968;&#31181;&#26041;&#27861;&#12290;
+
+&#12288;&#12288;&#21621;&#21621;&#65292;&#24341;&#23376;&#20284;&#20046;&#22826;&#38271;&#20102;&#28857;&#20799;&#12290;&#35835;Linux&#20869;&#26680;&#28304;&#30721;&#30340;&#26102;&#20505;&#20598;&#28982;&#21457;&#29616;&#20854;connect&#30340;&#36229;&#26102;&#21442;&#25968;&#31455;&#28982;&#21644;&#29992;SO_SNDTIMO&#25805;&#20316;&#30340;&#21442;&#25968;&#19968;&#33268;:
+
+&#12288;&#12288;File: net/ipv4/af_inet.c
+
+   559      timeo = sock_sndtimeo(sk, flags &amp; O_NONBLOCK);
+   560
+   561      <span style="color: #00fcff; background-color: #000000;">if</span> ((1 &lt;&lt; sk-&gt;sk_state) &amp; (TCPF_SYN_SENT | TCPF_SYN_RECV)) {
+   562          <span style="color: #ff922e;">/* </span><span style="color: #ff2600;">Error code is set above </span><span style="color: #ff922e;">*/</span>
+   563          <span style="color: #00fcff; background-color: #000000;">if</span> (!timeo || !inet_wait_for_connect(sk, timeo))
+   564              <span style="color: #00fcff; background-color: #000000;">goto</span> <span style="color: #8cf900; background-color: #5a529c;">out</span>;
+   565
+   566          err = sock_intr_errno(timeo);
+   567          <span style="color: #00fcff; background-color: #000000;">if</span> (signal_pending(current))
+   568              <span style="color: #00fcff; background-color: #000000;">goto</span> <span style="color: #8cf900; background-color: #5a529c;">out</span>;
+   569      }
+
+&#12288;&#12288;&#36825;&#24847;&#21619;&#30528;&#65306;&#22312;Linux&#24179;&#21488;&#19979;&#65292;&#21487;&#20197;&#36890;&#36807;&#22312;connect&#20043;&#21069;&#35774;&#32622;SO_SNDTIMO&#26469;&#36798;&#21040;&#25511;&#21046;&#36830;&#25509;&#36229;&#26102;&#30340;&#30446;&#30340;&#12290;&#31616;&#21333;&#30340;&#20889;&#20102;&#20221;&#27979;&#35797;&#20195;&#30721;:
+
+
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdlib.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;stdio.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/types.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;sys/socket.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;netinet/in.h&gt;</span>
+<span style="color: #bdcfe4;">#include</span> <span style="color: #ff40ff;">&lt;errno.h&gt;</span>
+
+<span style="color: #00f900;">int</span> main(<span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">argc</span>, <span style="color: #00f900;">char</span> *<span style="color: #fefb00; background-color: #000000;">argv</span>[])
+{
+        <span style="color: #00f900;">int</span> <span style="color: #fefb00; background-color: #000000;">fd</span>;
+        <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr_in</span> <span style="color: #fefb00; background-color: #000000;">addr</span>;
+        <span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">timeval</span> <span style="color: #fefb00; background-color: #000000;">timeo</span> = {3, 0};
+        <span style="color: #00f900;">socklen_t</span> <span style="color: #fefb00; background-color: #000000;">len</span> = <span style="color: #00fcff; background-color: #000000;">sizeof</span>(timeo);
+
+        fd = socket(AF_INET, SOCK_STREAM, 0);
+        <span style="color: #00fcff; background-color: #000000;">if</span> (argc == 4)
+                timeo.tv_sec = atoi(argv[3]);
+        setsockopt(fd, SOL_socket, SO_SNDTIMEO, &amp;timeo, len);
+        addr.sin_family = AF_INET;
+        addr.sin_addr.s_addr = inet_addr(argv[1]);
+        addr.sin_port = htons(atoi(argv[2]));
+        <span style="color: #00fcff; background-color: #000000;">if</span> (connect(fd, (<span style="color: #00fcff; background-color: #000000;">struct</span> <span style="color: #00f900;">sockaddr</span>*)&amp;addr, <span style="color: #00fcff; background-color: #000000;">sizeof</span>(addr)) == -1) {
+                <span style="color: #00fcff; background-color: #000000;">if</span> (errno == EINPROGRESS) {
+                        fprintf(stderr, <span style="color: #ff40ff;">"timeoutn"</span>);
+                        <span style="color: #00fcff; background-color: #000000;">return</span> -1;
+                }
+                perror(<span style="color: #ff40ff;">"connect"</span>);
+                <span style="color: #00fcff; background-color: #000000;">return</span> 0;
+        }
+        printf(<span style="color: #ff40ff;">"connectedn"</span>);
+
+        <span style="color: #00fcff; background-color: #000000;">return</span> 0;
+}
+
+
+&#12288;&#12288;&#25191;&#34892;&#32467;&#26524;:
+
+xiaosuo@gentux perl $ ./a.out 10.16.101.1 90
+1180290583
+timeout
+1180290586
+xiaosuo@gentux perl $ ./a.out 10.16.101.1 90 2
+1180290590
+timeout
+1180290592
+&#12288;&#12288;&#21644;&#35774;&#24819;&#23436;&#20840;&#19968;&#33268;&#65281;
+</pre>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Connection reset by peer</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+经过测试，出现这个错误的情况是 
+</p>
+<ul class="org-ul">
+<li>服务器端进行了 send/write操作
+</li>
+<li>但客户端没有进行 read/recv来读取这些数据
+</li>
+<li>而是直接关闭了socket
+</li>
+</ul>
+<p>
+这样服务器端就会产生这个异常。</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

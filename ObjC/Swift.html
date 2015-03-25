@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Swift 学习笔记</title>
+<!-- 2014-12-24 Wed 15:17 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Swift 学习笔记</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 变量与常量</a>
+<ul>
+<li><a href="#sec-1-1">1.1. let 用来定义一个常量 ： 初始赋值之后不能改变</a></li>
+<li><a href="#sec-1-2">1.2. var 用来定义一个变量 ： 初始赋值之后可以改变</a></li>
+<li><a href="#sec-1-3">1.3. 变量的类型</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. 追加字符串</a></li>
+<li><a href="#sec-3">3. 数组与字典</a>
+<ul>
+<li><a href="#sec-3-1">3.1. 数组</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. 初始化</a></li>
+<li><a href="#sec-3-1-2">3.1.2. 读取和修改</a></li>
+</ul>
+</li>
+<li><a href="#sec-3-2">3.2. 字典</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Swift中的？和！</a>
+<ul>
+<li><a href="#sec-4-1">4.1. ？</a></li>
+<li><a href="#sec-4-2">4.2. ！</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Swift隐藏键盘</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 变量与常量</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> let 用来定义一个常量 ： 初始赋值之后不能改变</h3>
+</div>
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> var 用来定义一个变量 ： 初始赋值之后可以改变</h3>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 变量的类型</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+变量的类型可以根据 其赋值 来隐式的指定
+也可以在变量名 后面 增加 【colon + 类型】 ，显式的指定变量的类型
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">implicitInteger</span> = 70
+let implicitDouble = 70.0
+let explicitDouble : Double = 70
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 追加字符串</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>使用 加号 【+】
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-objc"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">label</span> = <span style="color: #ff40ff;">"The width is "</span>
+let width = 94
+let widthLabel = label + String(width)
+</pre>
+</div>
+<ul class="org-ul">
+<li>使用 斜线 括号 【\()】
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-objc">&#8220; backslash (\) before <span style="color: #00f900;">the</span> <span style="color: #fefb00; background-color: #000000;">parentheses</span>. For example:&#8221;
+let apples = 3
+let oranges = 5
+let appleSummary = <span style="color: #ff40ff;">"I have \(apples) apples."</span>
+let fruitSummary = <span style="color: #ff40ff;">"I have \(apples + oranges) pieces of fruit."</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 数组与字典</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 数组</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> 初始化</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<ul class="org-ul">
+<li>对于单一类型的数组初始化
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">a</span>:String[] = [<span style="color: #ff40ff;">"1"</span>,<span style="color: #ffffff; background-color: #ff2600;">"</span><span style="color: #ff40ff;">n&#8221;]</span>
+<span style="color: #ff40ff;">String[]&#34920;&#31034;&#23383;&#31526;&#20018;&#25968;&#32452;&#31867;&#22411;</span>
+<span style="color: #ff40ff;">Swift &#25903;&#25345;&#38544;&#24335;&#34920;&#36798;&#24335;&#65292;&#25152;&#20197;&#20063;&#21487;&#20197;&#19981;&#25351;&#23450;&#31867;&#22411;</span>
+<span style="color: #ff40ff;">let a = ["</span>1<span style="color: #ff40ff;">", "</span>n<span style="color: #ffffff; background-color: #ff2600;">"</span><span style="color: #ff40ff;">]</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>Swift 中也可以存储多种不同类型的值
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">a</span>:Array = [<span style="color: #ff40ff;">"1"</span>, 1, [<span style="color: #ff40ff;">"1"</span>, <span style="color: #ff40ff;">"n"</span>]]
+&#20063;&#21487;&#20197;&#38544;&#24335;&#22768;&#26126;
+let a = [<span style="color: #ff40ff;">"1"</span>, 1, [<span style="color: #ff40ff;">"1"</span>, <span style="color: #ff40ff;">"n"</span>]]
+</pre>
+</div>
+
+<p>
+@&lt;font color="#ff0000"&gt;
+注意
+</p>
+
+<p>
+同一个数组，最好只存一种类型的值，这样方便存取，也不容易出bug。
+定义数组的时候最好使用显示定义。
+显示定义时，如果书写错误，编译器可以直接报错
+@&lt;/font&gt;
+<img src="./ArrayError1.jpeg" alt="ArrayError1.jpeg" />
+</p>
+
+
+<ul class="org-ul">
+<li>初始化空数组
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> = Int[]() <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#25324;&#21495;&#34920;&#31034;&#19968;&#20010;&#20989;&#25968;&#35843;&#29992;&#21543;</span>
+</pre>
+</div>
+<p>
+@&lt;font color="#ff0000"&gt;
+注意
+未初始化的数组不能使用
+@&lt;/font&gt;
+<img src="./ArrayError2.jpeg" alt="ArrayError2.jpeg" />
+</p>
+
+<ul class="org-ul">
+<li>Swift数组类型也提供初始化方法来创建确定长度和提供默认数值的数组。你可以通过这个初始化方法增加一个新的数组，元素的数量成为count，合适的默认值为repeatedValue
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">threeDoubles</span> = Double[](count: 3, repeatedValue: 0.0)  <span style="color: #ff922e;">// </span><span style="color: #ff2600;">threeDoubles &#30340;&#31867;&#22411;&#20026; Double[], &#20197;&#21450;&#31561;&#20110; [0.0, 0.0, 0.0]</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>也可以使用Array初始化数组
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> =Array(count:2, repeatedValue:0)
+&#20294;&#19981;&#33021;&#24573;&#30053;count&#21644;repeatedValue
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="./ArrayError3.jpeg" alt="ArrayError3.jpeg" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> 读取和修改</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div><ol class="org-ol"><li><a id="sec-3-1-2-1" name="sec-3-1-2-1"></a>let 定义的数组属于常量数组，不可改变 长度， 但可以改变每个位置的值<br  /><div class="outline-text-5" id="text-3-1-2-1">
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">a</span> = [1, 2, 4, 5]
+a[0] = 9
+
+a   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">a = [9, 2, 4, 5]</span>
+</pre>
+</div>
+</div>
+</li>
+
+
+<li><a id="sec-3-1-2-2" name="sec-3-1-2-2"></a>var 定义的数组，可以改变长度，<br  /><div class="outline-text-5" id="text-3-1-2-2">
+<ul class="org-ul">
+<li>使用append增加 元素
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> = [1, 2, 3, 5]
+a.append(6)
+
+a   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">a = [1, 2, 3, 5, 6]</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li>使用+= 增加 元素   
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> = [1, 2, 3, 5]
+a += 6    <span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#19981;&#33021;&#20351;&#29992; a = a + 6</span>
+
+a   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">a = [1, 2, 3, 5, 6]</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-3-1-2-3" name="sec-3-1-2-3"></a>下标语法来修改数组的值<br  /><div class="outline-text-5" id="text-3-1-2-3">
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> = [1, 2, 3, 4]
+a[0...1] = [7, 8]
+a <span style="color: #ff922e;">// </span><span style="color: #ff2600;">a == [7, 8, 3, 4]</span>
+
+<span style="color: #ff922e;">// </span><span style="color: #ff2600;">let &#23450;&#20041;&#30340;&#25968;&#32452;&#19981;&#33021;&#29992;&#36825;&#20010;&#26041;&#27861;&#20462;&#25913;&#25968;&#32452;&#30340;&#20540;</span>
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-3-1-2-4" name="sec-3-1-2-4"></a>几个命令<br  /><div class="outline-text-5" id="text-3-1-2-4">
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> = [1,2,3,4]
+a.insert(8, atIndex:0)
+a   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">a = [8, 1,2,3,4]</span>
+
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">c</span> = a.removeAtIndex(0)    <span style="color: #ff922e;">// </span><span style="color: #ff2600;">c == 8 ,  a = [1,2,3,4]</span>
+
+
+<span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">d</span> = a.removeLast()   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">d = 4,  a = [1,2,3]</span>
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 字典</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+let 定义的字典不能改变，
+var 定义的字典可以改变。
+字典 是无序的
+有一个方法： uddateValue(forKey:) 需要研究一下其返回值
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Swift中的？和！</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> ？</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Swift语言使用var定义变量，但和别的语言不同，Swift里不会自动给变量赋初始值，即变量没有默认值，所以在使用变量之前没有赋值就会出问题
+如果希望声明变量时，希望这个变量有个初始值，那就需要把这个变量定义成 【Optional】
+</p>
+
+<p>
+声明为Optional只需要在类型后面紧跟一个?即可。如:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">strValue</span>: String?   <span style="color: #ff922e;">//</span><span style="color: #ff2600;">?&#30456;&#24403;&#20110;&#19979;&#38754;&#36825;&#31181;&#20889;&#27861;&#30340;&#35821;&#27861;&#31958;</span>
+var strValue: Optional&lt;Int&gt;
+</pre>
+</div>
+
+<p>
+Optional其实是个enum，里面有None和Some两种类型。其实所谓的nil就是Optional.None, 非nil就是Optional.Some, 然后会通过Some(T)包装（wrap）原始值，这也是为什么在使用Optional的时候要拆包（从enum里取出来原始值）的原因, 也是PlayGround会把Optional值显示为类似{Some "hello world"}的原因，这里是enum Optional的定义：
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">enum</span> <span style="color: #00f900;">Optional</span>&lt;T&gt; : LogicValue, <span style="color: #00f900;">Reflectable</span> {
+    <span style="color: #00fcff; background-color: #000000;">case</span> None
+    <span style="color: #00fcff; background-color: #000000;">case</span> Some(T)
+    init()
+    init(<span style="color: #00f900;">_</span> <span style="color: #fefb00; background-color: #000000;">some</span>: T)
+
+    <span style="color: #ff922e;">/// </span><span style="color: #ff2600;">Allow use in a Boolean context.</span>
+    <span style="color: #00f900;">func</span> <span style="color: #fefb00; background-color: #000000;">getLogicValue</span>() -&gt; Bool
+
+    <span style="color: #ff922e;">/// </span><span style="color: #ff2600;">Haskell's fmap, which was mis-named</span>
+    func map&lt;U&gt;(f: (T) -&gt; U) -&gt; U?
+    func getMirror() -&gt; Mirror
+}
+</pre>
+</div>
+
+
+<p>
+文档中也有提到说，在使用Optional值的时候需要在具体的操作，比如调用方法、属性、下标索引等前面需要加上一个?，经喵神指正，”Optional Chaining的问号的意思是询问是否响应后面这个方法，和原来的isResponseToSelector有些类似”，如果是nil值，也就是Optional.None，固然不能响应后面的方法，所以就会跳过，如果有值，就是Optional.Some，可能就会拆包(unwrap)，然后对拆包后的值执行后面的操作，比如：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">let</span> <span style="color: #fefb00; background-color: #000000;">hashValue</span> = strValue?.hashValue
+</pre>
+</div>
+
+<p>
+一旦声明为Optional的，如果不显式的赋值就会有个默认值nil。判断一个Optional的值是否有值，可以用if来判断：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">if</span> strValue {
+    <span style="color: #ff922e;">//</span><span style="color: #ff2600;">do sth with strValue</span>
+}
+</pre>
+</div>
+
+<p>
+当我们需要使用这个Optional变量的值的时候，可以使用如下方法：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">strValue</span> : String?
+let tempValue = strValue
+<span style="color: #00fcff; background-color: #000000;">if</span> tempValue {
+<span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#22914;&#26524; tempValue&#30340;&#20540;&#19981;&#20026;nil&#65292;&#23601;&#25191;&#34892;&#36825;&#37324;</span>
+}<span style="color: #00fcff; background-color: #000000;">else</span>{
+<span style="color: #ff922e;">// </span><span style="color: #ff2600;">&#22914;&#26524; tempValue&#30340;&#20540;&#20026;nil &#23601;&#25191;&#34892;&#36825;&#37324;</span>
+}
+
+
+&#19978;&#38754;&#20960;&#34892;&#35821;&#21477;&#21487;&#20197;&#31616;&#20889;&#25104;
+<span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">strValue</span> ; String?
+<span style="color: #00fcff; background-color: #000000;">if</span> let tempValue = strValue {
+<span style="color: #ff922e;">//</span><span style="color: #ff2600;">&#20351;&#29992;tempValue</span>
+}<span style="color: #00fcff; background-color: #000000;">else</span> {
+}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> ！</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+我们可以在确定知道 一个Optional变量不为nil的时候，使用 ！ 来对Optional进行强行解包（unwrapp）来得到变量的哈希值。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: #00f900;">var</span> <span style="color: #fefb00; background-color: #000000;">a</span> : String? = <span style="color: #ff40ff;">"aa"</span>
+a  <span style="color: #ff922e;">// </span><span style="color: #ff2600;">{some "aa"}</span>
+a!.hashvalue   <span style="color: #ff922e;">// </span><span style="color: #ff2600;">5,863,207  &#36825;&#20010;&#25968;&#23383;&#30340;&#21547;&#20041;&#26242;&#26102;&#19981;&#29702;&#35299;</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Swift隐藏键盘</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+self.view.endEditing(true)</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

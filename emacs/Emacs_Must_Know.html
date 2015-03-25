@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Must Know</title>
+<!-- 2014-12-24 Wed 15:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="weikent" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Must Know</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 知道Emacs的基本概念</a></li>
+<li><a href="#sec-2">2. 学会看文档</a></li>
+<li><a href="#sec-3">3. 会些简单的配置</a></li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="./Emacs初学者必知必会   Emacs中文网.png" alt="Emacs初学者必知必会   Emacs中文网.png" />
+</p>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 知道Emacs的基本概念</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>buffer
+</li>
+</ul>
+<p>
+缓冲区. Emacs并不直接对文件进行操作, 它是把文件加载进buffer, 用户直接操作buffer, 只有当用户确定把buffer中所做的修改写人文件时, Emacs才把buffer中的内容写入文件. buffer实际上就是一个内存缓冲区, 这和一般编辑器中都一样, 应该很好理解.
+</p>
+
+<ul class="org-ul">
+<li>window
+</li>
+</ul>
+<p>
+窗口. 由于Emacs很早就诞生了, 它的窗口概念和现在基于窗口的操作系统中的窗口概念不是一样的. Emacs中的窗口是用来显示buffer的一个区域. 它并不像操作系统中的窗口拥有自己的标题栏,系统菜单栏.
+</p>
+
+<ul class="org-ul">
+<li>frame
+</li>
+</ul>
+<p>
+Emacs中的frame就是操作系统中的窗口.
+buffer是文件的内存表示, windows则是显示buffer的区域, 一个frame中可以有多个window, Emacs则可以有多个frame.
+</p>
+
+<ul class="org-ul">
+<li>Emacs Lisp
+</li>
+</ul>
+<p>
+Emacs最基础的部分是用c写的，其他部分都是用Emacs Lisp语言写的，Emacs Lisp语言是基于lisp语言的. lisp是LISt Processor的缩写, 即链表处理语言, 所以lisp语言的操作都是基于链表的, 它的语法也是链表结构, 链表第一个元素表示函数名, 其他元素是参数, 比如通常语言中的a+b, 在lisp就是(+ a b)
+</p>
+
+<ul class="org-ul">
+<li>mode
+</li>
+</ul>
+<p>
+mode有major mode和minor mode之分, 每个缓冲区对应一个major mode, 也只有一个major mode, 但是可以有多个minor mode. Emacs对每一种文件都有一个mode.
+</p>
+
+<ul class="org-ul">
+<li>命令
+</li>
+</ul>
+<p>
+你对Emacs所有的操作都是对Emacs的命令的调用。比如，你在text-mode里，当你按下任何字母键进行编辑的时候，实际上是调用的emacs的命令self-insert-command.
+</p>
+
+<ul class="org-ul">
+<li>快捷键
+</li>
+</ul>
+<p>
+Emacs中Control键用C表示,Alt键用M表示, 即: C-c表示Control C, M-x表示Alt x.
+除掉以Alt键开头的，比如Alt a，Emacs中的快捷键基本上都有一个前缀，Emacs中最多的快捷键前缀就是C-x，C-c，前缀表示，你不必要一起按下前缀和后缀，可以先按下前缀，Emacs会等待你按下剩余的快捷键，这样Emacs中的快捷键按起来非常的方便。
+</p>
+
+<ul class="org-ul">
+<li>keymap
+</li>
+</ul>
+<p>
+键盘映射. Emacs的快捷键是通过keymap来控制的. 有全局和局部的keymap. 每个mode都会有一个自己的局部的keymap, 局部的keymap会覆盖全局的keymap, 另外如果对应的major mode有开启的minor mode, 而且这个minor mode有keymap的话, 这个minor mode的keymap会覆盖major mode的keymap.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 学会看文档</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Emacs的文档非常丰富, 有Elisp自己的自文档, 还有更详细的info. Elisp中的变量, 函数都有文档. 对于大多数情况都够用了.
+</p>
+
+<ul class="org-ul">
+<li>查看变量的值和文档
+</li>
+</ul>
+<p>
+C-h v (describe-variable)
+</p>
+
+<ul class="org-ul">
+<li>查看函数的文档
+</li>
+</ul>
+<p>
+C-h f (describe-function)
+</p>
+
+<ul class="org-ul">
+<li>查看face的文档
+</li>
+</ul>
+<p>
+M-x describe-face
+</p>
+
+<ul class="org-ul">
+<li>查看某个mode的文档
+</li>
+</ul>
+<p>
+C-h m (describe-mode)
+刚开始学习某个mode的时候, 可以用C-h m看看当前buffer对应的主mode和副mode的文档, 这个文档一般都会包括mode中的命令和快捷键列表.
+</p>
+
+<ul class="org-ul">
+<li>查看某个快捷键对应的命令
+</li>
+</ul>
+<p>
+C-h k (describe-key)
+</p>
+
+<ul class="org-ul">
+<li>查看某个命令对应的快捷键
+</li>
+</ul>
+<p>
+C-h w (where-is)
+</p>
+
+<ul class="org-ul">
+<li>查看当前buffer所有的快捷键列表
+</li>
+</ul>
+<p>
+C-h b (describe-bindings)
+</p>
+
+<ul class="org-ul">
+<li>查看当前buffer中以某个快捷键序列开头的快捷键列表
+</li>
+</ul>
+<p>
+&lt;待查看的快捷键序列&gt; C-h，比如你想查看当前buffer中所有以C-c开头的快捷键列表，按C-c C-h就可以了。
+</p>
+
+<ul class="org-ul">
+<li>查看函数的代码
+</li>
+</ul>
+<p>
+find-function
+</p>
+
+<ul class="org-ul">
+<li>查看变量的代码
+</li>
+</ul>
+<p>
+find-variable
+</p>
+
+<ul class="org-ul">
+<li>查看face的代码
+</li>
+</ul>
+<p>
+find-face-definition
+</p>
+
+<ul class="org-ul">
+<li>M-x apropos
+</li>
+</ul>
+<p>
+查看包含某个关键词的函数,变量,face
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 会些简单的配置</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>执行Elisp代码
+<ul class="org-ul">
+<li>在某条语句后面按C-x C-e (eval-last-sexp)可以执行那条语句
+</li>
+<li>M-x eval-buffer 可以执行当前buffer内的Elisp代码
+</li>
+<li>选中一个region后, M-x eval-region可以执行这个region内的代码
+</li>
+</ul>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>安装插件
+Emacs的插件一般都是一个以el为后缀名的文件, 把这个文件下载下来后放到一个目录, 比如~/emacs/lisps, 然后执行下面这两条语句:
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">(add-to-list 'load-path "~/emacs/lisps")
+(require 'pluginname)
+</pre>
+</div>
+
+
+<ul class="org-ul">
+<li>快捷键定制
+</li>
+</ul>
+<p>
+全局绑定global-set-key, 绑定某个mode的快捷键用define-key. global-set-key的定义为:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">(global-set-key key command)
+</pre>
+</div>
+
+<p>
+比如想把C-j绑定到”到达指定行上”(goto-line), 这样就可以了:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">(global-set-key (kbd "C-j") 'goto-line)
+</pre>
+</div>
+
+<p>
+kbd是Emacs的宏, 把快捷键转换为Emacs的内部按键表示. 然后执行上面那条语句, 就会使你的配置生效. 然后你可以用C-h k检查一下你的定制是否成功了.
+如果对于比较复杂的快捷键, 比如Control x F3, 改怎么写呢? 按C-h k(describe-key), 然后再按下Control x F3, Emacs会出现一个”C-x “, 这个就是你要写到kbd宏里面的内容.
+如果你想对某个特定模式比如c++-mode进行快捷键定制, 用define-key即可, 对于上面的例子这样写:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">(define-key c++-mode-map (kbd "C-j") 'goto-line)
+</pre>
+</div>
+
+<p>
+define-key第一个参数map一般为mode后面直接加”-map”
+</p>
+
+<ul class="org-ul">
+<li>简单的颜色定制
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">;;dddddd
+(set-background-color "black") ;; 使用黑色背景
+(set-foreground-color "white") ;; 使用白色前景
+(set-face-foreground 'region "red")  ;; 区域前景颜色设为红色
+(set-face-background 'region "blue") ;; 区域背景色设为蓝色
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: weikent (<a href="mailto:weishijian@localhost">weishijian@localhost</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

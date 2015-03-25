@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>ORG MODE 笔记   (Org Mode 的强大，其实我不懂)</title>
+<!-- 2015-03-19 Thu 20:29 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="ddddddd" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="../emacs.css" type="text/css"/>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">ORG MODE 笔记   (Org Mode 的强大，其实我不懂)</h1>
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> install org</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">M-x list-packages Enter
+Ctrl+s org Enter
+Click the "Install Button"
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> uninstall and reinstall</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">M-x package-list Enter
+Ctrl+s org enter
+Type the letter d
+Then press x
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Org Mode 标记语言的一些疑问</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+可以访问网页
+</p>
+
+<p>
+<a href="http://blog.waterlin.org/articles/emacs-org-mode-subscripter-setting.html">Org Mode 标记语言到一些疑问</a>
+</p>
+
+<p>
+<a href="http://www.worldhello.net/gotgithub/appendix/markups.html">轻量级标记语言</a>
+</p>
+
+<p>
+<a href="http://orgmode.org/manual/Export-options.html">官方说明</a>
+</p>
+
+
+<p>
+在org-mode中，
+</p>
+
+<p>
+<b>粗体</b> <br  />
+<i>斜体</i> <br  />
+<del>删除线</del> <br  />
+<span class="underline">下划线</span> <br  />
+下标： H_2 O <br  />
+上标： E=mc^2 <br  />
+等宽字：  <code>git</code>  或者 <code>git</code> <br  />
+</p>
+
+<p>
+以上都是转义字符，但当在文档中需要输入这些转义字符的时候该怎么办呢？
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 单个org文件的解决办法</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+可以在文件开头的地方用下面的设置来关闭这个功能。
+</p>
+
+
+<p>
+用"{}"来替代"_"    此时：a_b 与 a_{b} 相同效果。
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Org Mode 中重要文字的颜色区分</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+@&lt;font color="#ff0000"&gt;
+    //此处填写要标记颜色的文字
+@&lt;/font&gt;
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Org Mode 快捷键</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> 输入 &lt;s TAB 会补全#+BEGIN_SRC #+END_SRC, 并等待输入src的语言。</h3>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> 输入 &lt;e TAB 会补全#+BEGIN_EXAMPLE</h3>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> C-c C-x C-v   org-toggle-inline-image 用來顯示當前頁面插入的圖片</h3>
+</div>
+
+
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> 链接</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+ C-c C-l        编辑链接
+C-c C-o        打开链接
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> org Mode 的标记语言</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+在 Emacs Org Mode 里，默认情况下 _ 这种字符会被当成标记语言来进行转义。有的时候，如果你只是写写文章，这种默认的转义，会让你很不方便，尤其是你在写一篇介绍技术的文章，里面出现的变量名有很多的下划线。这时，你会说：”Oh, my god! 难道要我一个一个去标记不让 _ 转义么？”
+</p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> 如何让orgmode在默认情况下，不去转义'_'字符呢</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+可以在org文件的开头，用下面的设置来关闭这个功能。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">#+OPTIONS ^:nil
+</pre>
+</div>
+
+<p>
+也可以用下面的设置
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">#+OPTIONS ^:{}
+</pre>
+</div>
+<p>
+这样，只有写成下面这个样子的时候才转义
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">a_{b}
+</pre>
+</div>
+<p>
+'_'后面的被'{}'括起来的内容才被转义， 而a_b，就按普贤通方式来显示。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2"><span class="section-number-3">6.2</span> 如何在导出html时，不插入table of content</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+&#x2026;
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. install org</a></li>
+<li><a href="#sec-2">2. uninstall and reinstall</a></li>
+<li><a href="#sec-3">3. Org Mode 标记语言的一些疑问</a>
+<ul>
+<li><a href="#sec-3-1">3.1. 单个org文件的解决办法</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Org Mode 中重要文字的颜色区分</a></li>
+<li><a href="#sec-5">5. Org Mode 快捷键</a>
+<ul>
+<li><a href="#sec-5-1">5.1. 输入 &lt;s TAB 会补全#+BEGIN_SRC #+END_SRC, 并等待输入src的语言。</a></li>
+<li><a href="#sec-5-2">5.2. 输入 &lt;e TAB 会补全#+BEGIN_EXAMPLE</a></li>
+<li><a href="#sec-5-3">5.3. C-c C-x C-v   org-toggle-inline-image 用來顯示當前頁面插入的圖片</a></li>
+<li><a href="#sec-5-4">5.4. 链接</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. org Mode 的标记语言</a>
+<ul>
+<li><a href="#sec-6-1">6.1. 如何让orgmode在默认情况下，不去转义'_'字符呢</a></li>
+<li><a href="#sec-6-2">6.2. 如何在导出html时，不插入table of content</a></li>
+<li><a href="#sec-6-3">6.3. 修改作者</a></li>
+<li><a href="#sec-6-4">6.4. 禁用下划线转义</a></li>
+<li><a href="#sec-6-5">6.5. 生成目录表</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7. org mode在输出html的时候，不换行</a></li>
+<li><a href="#sec-8">8. org mode 在输出html的时候，code source 高亮</a></li>
+<li><a href="#sec-9">9. table 操作</a></li>
+<li><a href="#sec-10">10. 大纲相关的快捷键</a></li>
+<li><a href="#sec-11">11. org 支持的语言</a></li>
+<li><a href="#sec-12">12. ditaa</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3"><span class="section-number-3">6.3</span> 修改作者</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+</div>
+
+<div id="outline-container-sec-6-4" class="outline-3">
+<h3 id="sec-6-4"><span class="section-number-3">6.4</span> 禁用下划线转义</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">#+OPTIONS: ^:nil
+(setq-default org-use-sub-superscripts nil)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-6-5" class="outline-3">
+<h3 id="sec-6-5"><span class="section-number-3">6.5</span> 生成目录表</h3>
+<div class="outline-text-3" id="text-6-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">#+OPTIONS: toc:t  ^:nil author:nil num:2
+也可以设置 org-export-with-toc 这个变量
+
+(setq org-export-with-toc t)
+如果只想针对前面两个级别生成目录表，可以设置该值为相应的数字
+
+#+OPTIONS: toc:2  ^:nil author:nil num:2
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> org mode在输出html的时候，不换行</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+可以在org文件的最前面加上
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">#+OPTIONS: \n:t
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> org mode 在输出html的时候，code source 高亮</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+
+<pre class="src src-emacs_lisp">(require 'htmlize)
+(setq org-src-fontify-natively t)
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> table 操作</h2>
+<div class="outline-text-2" id="text-9">
+<ol class="org-ol">
+<li>创建和转换表格
+</li>
+</ol>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">快捷键</th>
+<th scope="col" class="left">命令</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-c 竖线</td>
+<td class="left">&#xa0;</td>
+<td class="left">创建或转换成表格</td>
+</tr>
+</tbody>
+</table>
+
+<ol class="org-ol">
+<li>调整和区域移动
+</li>
+</ol>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">快捷键</th>
+<th scope="col" class="left">命令</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">&#xa0;</td>
+<td class="left">调整表格，不移动光标</td>
+</tr>
+
+<tr>
+<td class="left">TAB</td>
+<td class="left">&#xa0;</td>
+<td class="left">移动到下一区域，必要时新建一行</td>
+</tr>
+
+<tr>
+<td class="left">S-TAB</td>
+<td class="left">&#xa0;</td>
+<td class="left">移动到上一区域</td>
+</tr>
+
+<tr>
+<td class="left">RET</td>
+<td class="left">&#xa0;</td>
+<td class="left">移动到下一行，必要时新建一行</td>
+</tr>
+</tbody>
+</table>
+
+<ol class="org-ol">
+<li>编辑行和列
+</li>
+</ol>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">快捷键</td>
+<td class="left">命令</td>
+<td class="left">说明</td>
+</tr>
+
+<tr>
+<td class="left">M-LEFT/RIGHT</td>
+<td class="left">&#xa0;</td>
+<td class="left">移动列</td>
+</tr>
+
+<tr>
+<td class="left">M-UP/DOWN</td>
+<td class="left">&#xa0;</td>
+<td class="left">移动行</td>
+</tr>
+
+<tr>
+<td class="left">M-S-LEFT/RIGHT</td>
+<td class="left">&#xa0;</td>
+<td class="left">删除/插入列</td>
+</tr>
+
+<tr>
+<td class="left">M-S-UP/DOWN</td>
+<td class="left">&#xa0;</td>
+<td class="left">删除/插入行</td>
+</tr>
+
+<tr>
+<td class="left">C-c -</td>
+<td class="left">&#xa0;</td>
+<td class="left">添加水平分割线</td>
+</tr>
+
+<tr>
+<td class="left">C-c RET</td>
+<td class="left">&#xa0;</td>
+<td class="left">添加水平分割线并跳到下一行</td>
+</tr>
+
+<tr>
+<td class="left">C-c ^</td>
+<td class="left">&#xa0;</td>
+<td class="left">根据当前列排序，可以选择排序方式</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+<div class="figure">
+<p><img src="./key.png" alt="key.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> 大纲相关的快捷键</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>折叠大纲
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">快捷键</th>
+<th scope="col" class="left">命令</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">S-TAB</td>
+<td class="left">org-shifttab</td>
+<td class="left">循环切换整个文档的大纲状态（三种状态：折叠，打开下一级，打开全部）</td>
+</tr>
+
+<tr>
+<td class="left">TAB</td>
+<td class="left">org-cycle</td>
+<td class="left">循环切换光标所在大纲的状态</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>在大纲之间移动
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">快捷键</th>
+<th scope="col" class="left">命令</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">C-c C-n/p</td>
+<td class="left">&#xa0;</td>
+<td class="left">下/上一标题</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-f/b</td>
+<td class="left">&#xa0;</td>
+<td class="left">下/上一标题（仅限同级标题）</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-u</td>
+<td class="left">&#xa0;</td>
+<td class="left">跳到上一级标题</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-j</td>
+<td class="left">&#xa0;</td>
+<td class="left">切换到大纲浏览状态</td>
+</tr>
+</tbody>
+</table>
+
+<ul class="org-ul">
+<li>基于大纲的编辑
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">快捷键</th>
+<th scope="col" class="left">命令</th>
+<th scope="col" class="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">M-RET</td>
+<td class="left">&#xa0;</td>
+<td class="left">插入一个同级标题</td>
+</tr>
+
+<tr>
+<td class="left">M-S-RET</td>
+<td class="left">&#xa0;</td>
+<td class="left">插入一个同级TODO 标题</td>
+</tr>
+
+<tr>
+<td class="left">M-LEFT/RIGHT</td>
+<td class="left">&#xa0;</td>
+<td class="left">将当前标题升/降级</td>
+</tr>
+
+<tr>
+<td class="left">M-S-LEFT/RIGHT</td>
+<td class="left">&#xa0;</td>
+<td class="left">将子树升/降级</td>
+</tr>
+
+<tr>
+<td class="left">M-S-UP/DOWN</td>
+<td class="left">&#xa0;</td>
+<td class="left">将子树上/下移</td>
+</tr>
+
+<tr>
+<td class="left">C-c *</td>
+<td class="left">&#xa0;</td>
+<td class="left">将本行设为标题/正文</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-w</td>
+<td class="left">&#xa0;</td>
+<td class="left">将子树或区域移动到另一标题处（跨缓冲区）</td>
+</tr>
+
+<tr>
+<td class="left">C-x n s/w</td>
+<td class="left">&#xa0;</td>
+<td class="left">只显示当前子树/返回</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-x b</td>
+<td class="left">&#xa0;</td>
+<td class="left">在新缓冲区显示当前分支（类似C-x n s)</td>
+</tr>
+
+<tr>
+<td class="left">C-c /</td>
+<td class="left">&#xa0;</td>
+<td class="left">只列出包含搜索结果的大纲，并高亮，支持多种搜索方式</td>
+</tr>
+
+<tr>
+<td class="left">C-c C-c</td>
+<td class="left">&#xa0;</td>
+<td class="left">取消高亮</td>
+</tr>
+</tbody>
+</table>
+<p>
+更多的快捷键可以通过C-c C-x C-h查看。
+</p>
+
+<ul class="org-ul">
+<li>大纲的显示方式
+</li>
+</ul>
+<p>
+默认的大纲显示没有缩进，显得有些乱。可以用 M-x org-indent-mode切换到另一种显示方式：
+</p>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> org 支持的语言</h2>
+<div class="outline-text-2" id="text-11">
+
+<div class="figure">
+<p><img src="./org_language.png" alt="org_language.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> ditaa</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+参数说明
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">param</td>
+<td class="left">long param</td>
+<td class="left">desc</td>
+</tr>
+
+<tr>
+<td class="left">-e</td>
+<td class="left">–encoding</td>
+<td class="left">指定编码</td>
+</tr>
+
+<tr>
+<td class="left">-E</td>
+<td class="left">–no-separation</td>
+<td class="left">嵌套矩形是否分隔,缺省有分隔,设置后无</td>
+</tr>
+
+<tr>
+<td class="left">-r</td>
+<td class="left">–round-corners</td>
+<td class="left">圆角矩形</td>
+</tr>
+
+<tr>
+<td class="left">-s</td>
+<td class="left">–scale</td>
+<td class="left">矩形大小 ,比如 0.8</td>
+</tr>
+
+<tr>
+<td class="left">-o</td>
+<td class="left">–overwrite</td>
+<td class="left">如果有同名文件覆盖</td>
+</tr>
+
+<tr>
+<td class="left">-S</td>
+<td class="left">–no-shadows</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">-A</td>
+<td class="left">–no-antialias</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">-v</td>
+<td class="left">–verbose</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">-h</td>
+<td class="left">–help</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">-t</td>
+<td class="left">–tabs</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">-h</td>
+<td class="left">–html</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+<p>
+图形规则
+</p>
+
+<p>
+圆角矩形: 用/ \ 作为图形的四个顶角
+color
+cxxx xxx别表示RGB
+也可以采用预设的值: cRED cGRE cBLK cBLU cPNK cYEL
+tags 在矩形内部标记:
+{d} document
+{s} storage
+{io} input/output
+dashed lines 虚线 竖虚线 :: : 横虚线 :: =
+</p>
+<p>
+*
+矩形内的文本: o :: · 号</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr><p class="author">Author: ddddddd (<a href="mailto:weishijian@weikents-MacBook-Air.local">weishijian@weikents-MacBook-Air.local</a>)</p>
+<p class="date">Date: </p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
