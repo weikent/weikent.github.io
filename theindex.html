@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>StoryBoard 笔记</title>
-<!-- 2015-03-25 Wed 22:51 -->
+<title>Index</title>
+<!-- 2015-03-26 Thu 10:20 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="weikent" />
@@ -138,68 +138,13 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">StoryBoard 笔记</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#sec-1">1. 在storyboard中设计 barButtonItem 的 Exit 功能</a></li>
-</ul>
-</div>
-</div>
-
-
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> 在storyboard中设计 barButtonItem 的 Exit 功能</h2>
-<div class="outline-text-2" id="text-1">
+<h1 class="title">Index</h1>
 <p>
-当一个ViewController（A）中的按钮 push 另一个ViewController（B)之后，
-如何从 B 返回 A，
+<a href="file:///English/English.html">English</a>
 </p>
 
 <p>
-这时就需要用到 B 页面的 Exit 功能
-</p>
-
-<ol class="org-ol">
-<li>需要为A创建一个头文件 
-在头文件中添加如下代码
-<div class="org-src-container">
-
-<pre class="src src-C"><span style="color: #00fcff; background-color: #000000;">@interface</span> <span style="color: #00f900;">ToDoListTableViewController</span> (Workaround)
--(<span style="color: #00f900;">IBAction</span>)unwindToList : (<span style="color: #00f900;">UIStoryboardSegue</span> *)segue;
-
-@end
-</pre>
-</div>
-</li>
-
-<li>修改A的定义 在Class 前面添加
-<div class="org-src-container">
-
-<pre class="src src-C"><span style="color: #00f900;">class</span> <span style="color: #fefb00; background-color: #000000;">ToDoListTableViewController</span>: UITableViewController {
-&#25913;&#20026;
-@objc(ToDoListTableViewController) <span style="color: #00f900;">class</span> <span style="color: #fefb00; background-color: #000000;">ToDoListTableViewController</span>: UITableViewController
-</pre>
-</div>
-</li>
-
-<li>在A中实现 这个方法
-<div class="org-src-container">
-
-<pre class="src src-C">@IBAction func unwindToList(segue:UIStoryboardSegue)
-{}
-&#20989;&#25968;&#20307;&#20026;&#31354;&#21363;&#21487;
-</pre>
-</div>
-</li>
-
-<li>在B实现prepareForSegue，此方法是执行Exit之前的准备
-</li>
-</ol>
-</div>
-</div>
+<a href="./English/English.html">English2</a></p>
 </div>
 <div id="postamble" class="status">
 <hr><p class="author">Author: weikent (<a href="mailto:weishijian@weikents-MacBook-Air.local">weishijian@weikents-MacBook-Air.local</a>)</p>
