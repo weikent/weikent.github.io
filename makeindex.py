@@ -1,4 +1,167 @@
-<?xml version="1.0" encoding="utf-8"?>
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import os
+import sys
+import time
+import re
+
+import platform
+
+
+
+fileType = ["html", "htm"]
+
+    
+defaultFolder = "Org_Publish"
+
+ubuntuDefaultPath = "/media/psf/Home/Kuaipan/Org_Git"
+macDefaultPath = "/Users/weishijian/Kuaipan/Org_Git"
+
+defaultPath = ""
+
+
+if platform.system() == "Darwin":
+    defaultPath = macDefaultPath
+elif platform.system() == "Linux":
+    defaultPath = ubuntuDefaultPath
+
+defaultPathLen = len(defaultPath) + len(defaultFolder) + 1  # 1是一个 "/" 的长度
+
+
+
+def delFile(path):
+    """
+    
+    Arguments:
+    - `path`:
+    """
+#    print path
+
+    if path[-3 :] == "mp3" or path[-3 :] == "pdf" or path[-3 :] == "txt" or path[-3 :] == "rar":
+        pass
+    else:
+        os.remove(path)
+
+def changeInfo1(rootDir, folder):
+
+    print "--------------------------------------------------------------------------------"
+    rootDir = rootDir + "/"
+    rootPath = os.path.join(rootDir, folder)
+    # print "1===" + rootPath
+    # print "2====" + folder
+    folderName = folder
+
+    # if folder == "refs":  
+    #     return
+
+    for dirName in os.listdir(rootPath): 
+        # print "dirname " + dirName
+        # print "5===" + rootPath
+        # print "6====" + dirName
+
+        path = os.path.join(rootPath, dirName) 
+
+        if os.path.isdir(path):
+            needInsertDirName = False
+
+
+            for dirName1 in os.listdir(path):
+                # print "88====" + dirName1
+                if dirName1.endswith("html"):
+                    needInsertDirName = True
+                    break
+
+            if needInsertDirName:
+                f.write("<h2>" + dirName + "</h2>\r\n")  #把标题放在这里的话，如果文件夹里面没有html文件的话，也会添加一个空目录标题
+                # print "3===" + rootPath
+                # print "4====" + dirName
+                
+                changeInfo1(rootPath, dirName)
+
+
+
+            # f.write("<h2>" + dirName + "</h2>\r\n")  #把标题放在这里的话，如果文件夹里面没有html文件的话，也会添加一个空目录标题
+            # changeInfo1(rootPath, dirName)
+
+        else:
+            if path[-4 :] in fileType:
+                print "path = ", path
+                i = path.rfind("/") # 路径中 / 最后出现的位置     rfind 反向查找
+                
+
+                f.write("<a href = " + path[defaultPathLen:] + ">" + path[i+1:-5] + "</a>")
+                f.write("<br>")
+
+
+
+
+import getopt, sys
+def usage():
+    print '''
+NAME
+    this file is used to make a index file of my org project.
+Usage
+    python makeindex.py
+    should use it in the same dir with the root of the [org_publish]
+'''[1:-1]
+
+if __name__ == '__main__':
+
+
+
+
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "hf:", ["help", "file="])
+        getopt.getopt
+    except getopt.GetoptError as err:
+        # print help information and exit:
+        print str(err) # will print something like "option -a not recognized"
+        usage()
+        sys.exit(2)
+
+    file=""
+
+    print "opts is "
+    print opts
+    print args
+    if opts:
+        print "a"
+    else:
+        print "nb"
+
+    if args:
+        if args.len == 2:
+            defaultFolder = args[1]
+            defaultPath = args[0]
+        else:
+            print "wrong args"
+            usage()
+            sys.exit()
+    else:
+        print "use default args"
+
+
+    for o, a in opts:
+        print "o is" + o
+        print "a is" + a
+        if o in ("-h", "--help"):
+            usage()
+            sys.exit()
+        elif o in ("-f", "--file"):
+            file= a
+        else:
+            assert False, "unhandled option"
+    
+
+    print "hello world";
+
+
+    if os.path.isfile("./index.html"):
+        os.remove("./index.html")
+    
+    f = open("./index.html", 'a')
+    f.write('''<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
@@ -140,27 +303,30 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">Index</h1>
 
-    <h2>C</h2>
-<a href = /C/C.html>C</a><br><a href = /C/README.html>README</a><br><a href = /C/Socket.html>Socket</a><br><a href = /C/socket_Func.html>socket_Func</a><br><a href = /C/socket_http.html>socket_http</a><br><h2>Django</h2>
-<a href = /Django/Django.html>Django</a><br><a href = /Django/README.html>README</a><br><h2>emacs</h2>
-<a href = /emacs/emacs.html>emacs</a><br><a href = /emacs/Emacs_Must_Know.html>Emacs_Must_Know</a><br><a href = /emacs/emacsSetup.html>emacsSetup</a><br><a href = /emacs/README.html>README</a><br><h2>English</h2>
-<a href = /English/English.html>English</a><br><a href = /English/English_ConfusingWord.html>English_ConfusingWord</a><br><a href = /English/EnglishNodus.html>EnglishNodus</a><br><a href = /English/README.html>README</a><br><a href = /English/句子成分.html>句子成分</a><br><a href = /English/赖世雄.html>赖世雄</a><br><a href = /English/赖世雄入门.html>赖世雄入门</a><br><a href = /English/赖世雄语法.html>赖世雄语法</a><br><a href = /English/音标.html>音标</a><br><h2>Git</h2>
-<a href = /Git/git.html>git</a><br><a href = /Git/README.html>README</a><br><a href = /index.html>index</a><br><h2>Mac</h2>
-<a href = /Mac/Mac.html>Mac</a><br><a href = /Mac/README.html>README</a><br><h2>Makefile</h2>
-<a href = /Makefile/Makefile.html>Makefile</a><br><a href = /Makefile/README.html>README</a><br><h2>Md</h2>
-<a href = /Md/md.html>md</a><br><a href = /Md/README.html>README</a><br><h2>MySQL</h2>
-<a href = /MySQL/MySQL.html>MySQL</a><br><a href = /MySQL/README.html>README</a><br><h2>ObjC</h2>
-<a href = /ObjC/ObjectiveC.html>ObjectiveC</a><br><a href = /ObjC/question.html>question</a><br><a href = /ObjC/README.html>README</a><br><a href = /ObjC/StoryBoard.html>StoryBoard</a><br><a href = /ObjC/Swift.html>Swift</a><br><a href = /ObjC/Swift_Closures.html>Swift_Closures</a><br><a href = /ObjC/SWift_Enmu.html>SWift_Enmu</a><br><a href = /ObjC/Swift_Framework.html>Swift_Framework</a><br><a href = /ObjC/Swift_Func.html>Swift_Func</a><br><a href = /ObjC/Swift_Test.html>Swift_Test</a><br><a href = /ObjC/TableView.html>TableView</a><br><a href = /ObjC/Xcode.html>Xcode</a><br><h2>Org</h2>
-<a href = /Org/Org.html>Org</a><br><a href = /Org/README.html>README</a><br><a href = /Programming.html>Programming</a><br><h2>Python</h2>
-<a href = /Python/python.html>python</a><br><a href = /Python/README.html>README</a><br><a href = /README.html>README</a><br><a href = /Regular.html>Regular</a><br><h2>Shell</h2>
-<a href = /Shell/command.html>command</a><br><a href = /Shell/README.html>README</a><br><a href = /Shell/shell.html>shell</a><br><a href = /theindex.html>theindex</a><br><h2>thttpd</h2>
-<a href = /thttpd/README.html>README</a><br><a href = /thttpd/thttpd.html>thttpd</a><br><h2>Ubuntu</h2>
-<a href = /Ubuntu/README.html>README</a><br><a href = /Ubuntu/Ubuntu.html>Ubuntu</a><br><a href = /VPN.html>VPN</a><br></div>
+    ''')
+    
+
+# 实际写入内容的代码
+
+    changeInfo1(defaultPath, defaultFolder)
+
+
+
+    f.write('''</div>
 <div id="postamble" class="status">
 <hr><p class="author">Author: weikent (<a href="mailto:weishijian@weikents-MacBook-Air.local">weishijian@weikents-MacBook-Air.local</a>)</p>
-<p class="date">Date: 2015-03-27 : 11 : 17 : 10</p>
+<p class="date">Date: ''')
+    timeStr = time.strftime('%Y-%m-%d : %H : %M : %S',time.localtime(time.time()))
+    f.write(timeStr)
+    f.write('''</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.4.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
 </html>
+''')
+
+    f.close()
+
+
+    print(platform.system())
