@@ -348,7 +348,9 @@ table th{
 }
 
 
-
+.example{
+    font-size: 2.15em;    
+}
 /*    body { */
 /*         padding: 50px 150px 50px 150px; */
 /*         border-style: solid; */
@@ -777,3 +779,4 @@ table th{
 /*     background-color:#000; */
 
 /* } */
+
